@@ -1,0 +1,13 @@
+# OS / Editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Local-only artifacts
+.playwright-mcp/

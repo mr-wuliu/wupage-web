@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#6366f1" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <title>WuPage Translator — 一键翻译整个网页，双语对照阅读</title>
+  <meta name="description" content="基于 Manifest V3 的浏览器翻译扩展，支持 Chrome 与 Edge。一键翻译整个网页，双语对照阅读，支持多种翻译服务，无需自建代理。" />
+  <meta name="author" content="WuPage Translator" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="WuPage Translator — 一键翻译整个网页" />
+  <meta property="og:description" content="基于 Manifest V3 的浏览器翻译扩展，双语对照阅读，支持多种翻译服务。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="WuPage Translator 首页">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="8" fill="url(#brandGrad)"/>
+            <path d="M7 9.5h14M7 14h9M7 18.5h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="brandGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6366f1"/>
+                <stop offset="1" stop-color="#3b82f6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="brand-name">WuPage</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="主导航">
+        <a href="#features">功能特色</a>
+        <a href="#guide">功能指导</a>
+        <a href="#showcase">效果展示</a>
+        <a href="#api">API 获取</a>
+        <a href="#install">下载安装</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-ghost btn-sm" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a class="btn btn-primary btn-sm" href="#guide">查看使用指南</a>
+        <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="nav-mobile" id="mobileNav" aria-label="移动端导航" hidden>
+      <a href="#features">功能特色</a>
+      <a href="#guide">功能指导</a>
+      <a href="#showcase">效果展示</a>
+      <a href="#api">API 获取</a>
+      <a href="#install">下载安装</a>
+      <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">前往 GitHub 仓库</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="mesh mesh-1"></span>
+        <span class="mesh mesh-2"></span>
+        <span class="mesh mesh-3"></span>
+        <span class="grid-overlay"></span>
+      </div>
+
+      <div class="container hero-inner">
+        <span class="pill reveal" data-reveal>
+          <span class="pill-dot"></span>
+          Manifest V3 · Chrome / Edge
+        </span>
+        <h1 class="hero-title reveal" data-reveal id="heroTitle">
+          <span class="grad-text">WuPage</span> Translator
+        </h1>
+        <p class="hero-tagline reveal" data-reveal>一键翻译整个网页，双语对照阅读，支持多种翻译服务</p>
+        <p class="hero-subtext reveal" data-reveal>
+          基于 Manifest V3 的浏览器翻译扩展，支持 Chrome 与 Edge。<br class="hide-mobile" />
+          无需自建代理，请求直达翻译服务。
+        </p>
+        <div class="hero-cta reveal" data-reveal>
+          <a href="#guide" class="btn btn-primary btn-lg">
+            查看使用指南
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9h10m0 0L9 4m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#api" class="btn btn-secondary btn-lg">获取翻译 API</a>
+        </div>
+
+        <div class="hero-stats reveal" data-reveal>
+          <div class="stat"><span class="stat-num">5+</span><span class="stat-label">翻译服务</span></div>
+          <span class="stat-divider" aria-hidden="true"></span>
+          <div class="stat"><span class="stat-num">2</span><span class="stat-label">浏览器</span></div>
+          <span class="stat-divider" aria-hidden="true"></span>
+          <div class="stat"><span class="stat-num">0</span><span class="stat-label">自建代理</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section" id="features" aria-labelledby="featuresTitle">
+      <div class="container">
+        <div class="section-head reveal" data-reveal>
+          <span class="eyebrow">功能特色</span>
+          <h2 class="section-title" id="featuresTitle">为阅读外文网页而生</h2>
+          <p class="section-desc">每一项功能都围绕「快速、清晰、可控」的翻译体验打磨。</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card feature-card reveal" data-reveal>
+            <div class="feature-icon" style="--ic-1:#6366f1;--ic-2:#3b82f6">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 16l4 2-4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>一键全文翻译</h3>
+            <p>点击即可翻译整个页面，无需选中文字。整页内容即刻获得对照译文。</p>
+          </article>
+
+          <article class="card feature-card reveal" data-reveal>
+            <div class="feature-icon" style="--ic-1:#0ea5e9;--ic-2:#06b6d4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h7M4 12h7M4 17h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 7l5 1m-5 4l5 1m-5 4l5 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>双语对照渲染</h3>
+            <p>保留原文，译文紧跟其后插入，对照阅读更清晰，长文也不迷路。</p>
+          </article>
+
+          <article class="card feature-card reveal" data-reveal>
+            <div class="feature-icon" style="--ic-1:#14b8a6;--ic-2:#06b6d4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5L12 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>多翻译服务支持</h3>
+            <p>内置 Google Web、微软、Google Cloud、OpenAI 兼容、HTTP 模板，按需切换。</p>
+          </article>
+
+          <article class="card feature-card reveal" data-reveal>
+            <div class="feature-icon" style="--ic-1:#8b5cf6;--ic-2:#6366f1">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7l8-4 8 4M4 7v10l8 4 8-4V7M4 7l8 4 8-4M12 11v10" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>本地缓存</h3>
+            <p>按「服务+目标语言+原文」缓存，重复内容不重复请求，省额度也省时间。</p>
+          </article>
+
+          <article class="card feature-card reveal" data-reveal>
+            <div class="feature-icon" style="--ic-1:#3b82f6;--ic-2:#0ea5e9">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>悬浮球快捷入口</h3>
+            <p>页面悬浮球，随时唤起翻译，无需打开弹窗，操作路径更短。</p>
+          </article>
+
+          <article class="card feature-card reveal" data-reveal>
+            <div class="feature-icon" style="--ic-1:#6366f1;--ic-2:#14b8a6">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <h3>段落模式</h3>
+            <p>可切换段落级翻译，精细化控制翻译粒度，适合逐段精读。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GUIDE ============ -->
+    <section class="section section-subtle" id="guide" aria-labelledby="guideTitle">
+      <div class="container">
+        <div class="section-head reveal" data-reveal>
+          <span class="eyebrow">功能指导</span>
+          <h2 class="section-title" id="guideTitle">几步开始使用</h2>
+          <p class="section-desc">从安装扩展到高级配置，跟着步骤即可跑通完整翻译流程。</p>
+        </div>
+
+        <ol class="steps reveal" data-reveal>
+          <li class="step">
+            <span class="step-num">01</span>
+            <div class="step-body">
+              <h3>安装扩展</h3>
+              <p>从 <code>dist/</code> 目录在 <code>chrome://extensions</code> 或 <code>edge://extensions</code> 开启开发者模式后加载。</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">02</span>
+            <div class="step-body">
+              <h3>打开弹窗</h3>
+              <p>点击浏览器工具栏的 WuPage 图标，呼出翻译控制面板。</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">03</span>
+            <div class="step-body">
+              <h3>选择目标语言</h3>
+              <p>在「目标语言」下拉中选择要翻译成的语言。</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">04</span>
+            <div class="step-body">
+              <h3>选择翻译服务</h3>
+              <p>在「翻译服务」下拉中选择服务商（推荐先用免 Key 的 Google Web）。</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">05</span>
+            <div class="step-body">
+              <h3>点击「翻译全文」</h3>
+              <p>一键翻译，原文下方即出现译文，双语对照即刻呈现。</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">06</span>
+            <div class="step-body">
+              <h3>高级设置</h3>
+              <p>点击「设置」进入选项页，可配置分块大小、并发数、缓存、各服务商密钥。</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">07</span>
+            <div class="step-body">
+              <h3>清除缓存</h3>
+              <p>弹窗内点「清除缓存」可重置本地翻译缓存，便于调试或更换服务。</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ SHOWCASE ============ -->
+    <section class="section" id="showcase" aria-labelledby="showcaseTitle">
+      <div class="container">
+        <div class="section-head reveal" data-reveal>
+          <span class="eyebrow">效果展示</span>
+          <h2 class="section-title" id="showcaseTitle">真实的插件界面</h2>
+          <p class="section-desc">以下为基于真实插件 UI 的高保真还原，非真实截图。</p>
+        </div>
+
+        <div class="showcase-tabs reveal" data-reveal role="tablist" aria-label="效果展示切换">
+          <button class="showcase-tab is-active" role="tab" aria-selected="true" data-showcase-tab="popup">弹窗 Popup</button>
+          <button class="showcase-tab" role="tab" aria-selected="false" data-showcase-tab="options">选项页 Options</button>
+          <button class="showcase-tab" role="tab" aria-selected="false" data-showcase-tab="bilingual">双语对照</button>
+        </div>
+
+        <!-- (A) Popup mockup -->
+        <div class="showcase-panel is-active reveal" data-reveal data-showcase-panel="popup">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+              <span class="browser-url">chrome-extension://wupage/popup.html</span>
+            </div>
+            <div class="browser-body popup-stage">
+              <div class="popup-card">
+                <div class="popup-head">
+                  <div class="popup-brand">
+                    <span class="popup-logo" aria-hidden="true">W</span>
+                    <span class="popup-title">WuPage</span>
+                  </div>
+                  <button class="popup-settings" type="button">设置</button>
+                </div>
+
+                <div class="popup-field">
+                  <label>目标语言</label>
+                  <div class="fake-select">
+                    <span class="fake-select-val">中文</span>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                </div>
+
+                <div class="popup-field">
+                  <label>翻译服务</label>
+                  <div class="fake-select">
+                    <span class="fake-select-val">Google Web Translate</span>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                </div>
+
+                <div class="popup-toggle-row">
+                  <span>段落模式</span>
+                  <span class="switch" aria-label="段落模式 关闭"><span class="switch-knob"></span></span>
+                </div>
+                <div class="popup-toggle-row">
+                  <span>悬浮球</span>
+                  <span class="switch is-on" aria-label="悬浮球 开启"><span class="switch-knob"></span></span>
+                </div>
+
+                <button class="popup-primary" type="button">翻译全文</button>
+
+                <div class="popup-secondary">
+                  <button class="popup-mini" type="button">Debug</button>
+                  <button class="popup-mini" type="button">清除缓存</button>
+                </div>
+
+                <a class="popup-foot" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- (B) Options mockup -->
+        <div class="showcase-panel reveal" data-reveal data-showcase-panel="options">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+              <span class="browser-url">chrome-extension://wupage/options.html</span>
+            </div>
+            <div class="browser-body options-stage">
+              <div class="options-page">
+                <h3 class="options-h">WuPage 设置</h3>
+
+                <section class="options-section">
+                  <h4 class="options-section-title"><span class="opts-marker"></span>通用</h4>
+                  <div class="options-grid">
+                    <div class="opt-field">
+                      <label>目标语言</label>
+                      <div class="fake-select fake-select-sm">
+                        <span class="fake-select-val">中文</span>
+                        <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </div>
+                    </div>
+                    <div class="opt-field">
+                      <label>源语言</label>
+                      <input class="opt-input" type="text" value="auto" readonly />
+                    </div>
+                    <div class="opt-field">
+                      <label>分块大小</label>
+                      <input class="opt-input" type="text" value="800" readonly />
+                    </div>
+                    <div class="opt-field">
+                      <label>并发数</label>
+                      <input class="opt-input" type="text" value="4" readonly />
+                    </div>
+                    <div class="opt-field opt-check">
+                      <span class="check-box is-checked" aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </span>
+                      <span>启用本地缓存</span>
+                    </div>
+                    <div class="opt-field opt-check">
+                      <span class="check-box is-checked" aria-hidden="true">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </span>
+                      <span>显示悬浮球</span>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="options-section">
+                  <h4 class="options-section-title"><span class="opts-marker"></span>翻译服务</h4>
+                  <div class="opt-field opt-field-row">
+                    <label>当前服务</label>
+                    <div class="fake-select fake-select-sm">
+                      <span class="fake-select-val">Google Cloud Translation</span>
+                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                  </div>
+                  <div class="options-grid">
+                    <div class="opt-field">
+                      <label>API Key</label>
+                      <input class="opt-input opt-input-mono" type="text" value="AIzaSy••••••••••••••••" readonly />
+                    </div>
+                    <div class="opt-field">
+                      <label>Endpoint</label>
+                      <input class="opt-input opt-input-mono" type="text" value="translation.googleapis.com" readonly />
+                    </div>
+                  </div>
+                </section>
+
+                <div class="options-actions">
+                  <button class="opt-btn opt-btn-primary" type="button">保存</button>
+                  <button class="opt-btn" type="button">测试服务</button>
+                  <button class="opt-btn opt-btn-ghost" type="button">恢复默认设置</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- (C) Bilingual demo -->
+        <div class="showcase-panel reveal" data-reveal data-showcase-panel="bilingual">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+              <span class="browser-url">https://example.com/article</span>
+            </div>
+            <div class="browser-body article-stage">
+              <article class="article">
+                <h2 class="article-title">The State of Web Translation in 2026</h2>
+                <p class="article-p">
+                  <span class="orig">The quick brown fox jumps over the lazy dog.</span>
+                  <span class="trans">敏捷的棕色狐狸跳过了懒狗。</span>
+                </p>
+                <p class="article-p">
+                  <span class="orig">Modern browsers allow extensions to access page content directly, making real-time bilingual reading a reality.</span>
+                  <span class="trans">现代浏览器允许扩展直接访问页面内容，让实时双语阅读成为现实。</span>
+                </p>
+                <p class="article-p">
+                  <span class="orig">With Manifest V3, service workers handle background tasks efficiently without persistent background pages.</span>
+                  <span class="trans">借助 Manifest V3，Service Worker 无需常驻后台即可高效处理后台任务。</span>
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ API ============ -->
+    <section class="section section-subtle" id="api" aria-labelledby="apiTitle">
+      <div class="container">
+        <div class="section-head reveal" data-reveal>
+          <span class="eyebrow">API 获取流程</span>
+          <h2 class="section-title" id="apiTitle">五种翻译服务接入指南</h2>
+          <p class="section-desc">从免 Key 开箱即用到完全自定义模板，总有一种适合你。</p>
+        </div>
+
+        <div class="api-tabs reveal" data-reveal role="tablist" aria-label="翻译服务切换">
+          <button class="api-tab is-active" role="tab" aria-selected="true" data-api-tab="gweb">Google Web<em>免 Key</em></button>
+          <button class="api-tab" role="tab" aria-selected="false" data-api-tab="ms">微软 Translator</button>
+          <button class="api-tab" role="tab" aria-selected="false" data-api-tab="gcloud">Google Cloud</button>
+          <button class="api-tab" role="tab" aria-selected="false" data-api-tab="openai">OpenAI 兼容</button>
+          <button class="api-tab" role="tab" aria-selected="false" data-api-tab="http">HTTP 模板</button>
+        </div>
+
+        <div class="api-panels">
+          <!-- Google Web -->
+          <div class="api-panel is-active reveal" data-reveal data-api-panel="gweb">
+            <div class="api-grid">
+              <div class="api-card api-info card">
+                <span class="api-badge api-badge-free">免 Key</span>
+                <h3>Google Web Translate</h3>
+                <p class="api-lead">无需 API Key，开箱即用，适合快速体验。</p>
+                <div class="api-endpoint">
+                  <span class="api-endpoint-label">端点</span>
+                  <code class="api-endpoint-val">https://translate.googleapis.com/translate_a/single</code>
+                </div>
+                <div class="api-note">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5A6.5 6.5 0 1 1 1.5 8 6.5 6.5 0 0 1 8 1.5zM8 5.5v3M8 10.5v.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                  <span>非官方接口，可能被限速、屏蔽或变更。</span>
+                </div>
+              </div>
+              <ol class="api-steps card">
+                <li class="api-step">
+                  <span class="api-step-num">1</span>
+                  <div><h4>直接选择服务</h4><p>在 WuPage 弹窗的「翻译服务」下拉中选择「Google Web Translate」即可。</p></div>
+                </li>
+                <li class="api-step">
+                  <span class="api-step-num">2</span>
+                  <div><h4>无需任何配置</h4><p>无需填写 Key、Endpoint，立即点击「翻译全文」开始使用。</p></div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Microsoft -->
+          <div class="api-panel reveal" data-reveal data-api-panel="ms">
+            <div class="api-grid">
+              <div class="api-card api-info card">
+                <span class="api-badge api-badge-azure">Azure</span>
+                <h3>Microsoft Translator</h3>
+                <p class="api-lead">微软 Azure 认知服务翻译，稳定、支持区域路由。</p>
+                <div class="api-endpoint">
+                  <span class="api-endpoint-label">端点</span>
+                  <code class="api-endpoint-val">POST https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&amp;to={targetLang}</code>
+                </div>
+              </div>
+              <ol class="api-steps card">
+                <li class="api-step">
+                  <span class="api-step-num">1</span>
+                  <div><h4>创建 Translator 资源</h4><p>登录 <a href="https://portal.azure.com" target="_blank" rel="noopener">Azure Portal</a>，创建「Translator」资源。</p></div>
+                </li>
+                <li class="api-step">
+                  <span class="api-step-num">2</span>
+                  <div><h4>获取 Key 与区域</h4><p>在资源的「密钥和终结点」页获取 Key 和区域（如 <code>eastasia</code>）。</p></div>
+                </li>
+                <li class="api-step">
+                  <span class="api-step-num">3</span>
+                  <div><h4>填入 WuPage</h4><p>在 WuPage 选项页填入 API key 与 Region，保存后即可使用。</p></div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Google Cloud -->
+          <div class="api-panel reveal" data-reveal data-api-panel="gcloud">
+            <div class="api-grid">
+              <div class="api-card api-info card">
+                <span class="api-badge api-badge-gcp">GCP</span>
+                <h3>Google Cloud Translation</h3>
+                <p class="api-lead">官方 Translation Basic API，按量计费、稳定可靠。</p>
+                <div class="api-endpoint">
+                  <span class="api-endpoint-label">端点</span>
+                  <code class="api-endpoint-val">POST https://translation.googleapis.com/language/translate/v2?key={apiKey}</code>
+                </div>
+              </div>
+              <ol class="api-steps card">
+                <li class="api-step">
+                  <span class="api-step-num">1</span>
+                  <div><h4>启用 API</h4><p>登录 <a href="https://console.cloud.google.com" target="_blank" rel="noopener">Google Cloud Console</a>，启用 Translation Basic API。</p></div>
+                </li>
+                <li class="api-step">
+                  <span class="api-step-num">2</span>
+                  <div><h4>创建 API Key</h4><p>在「凭据」页面创建 API Key，建议限制其只调用 Translation API。</p></div>
+                </li>
+                <li class="api-step">
+                  <span class="api-step-num">3</span>
+                  <div><h4>填入 WuPage</h4><p>在 WuPage 选项页填入 API key，保存即可。</p></div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- OpenAI -->
+          <div class="api-panel reveal" data-reveal data-api-panel="openai">
+            <div class="api-grid">
+              <div class="api-card api-info card">
+                <span class="api-badge api-badge-llm">LLM</span>
+                <h3>OpenAI 兼容</h3>
+                <p class="api-lead">支持任意 OpenAI 兼容的 <code>/chat/completions</code> 服务，如 OpenAI、DeepSeek 等。</p>
+                <div class="api-endpoint">
+                  <span class="api-endpoint-label">示例</span>
+                  <code class="api-endpoint-val">POST {baseURL}/chat/completions</code>
+                </div>
+              </div>
+              <ol class="api-steps card">
+                <li class="api-step">
+                  <span class="api-step-num">1</span>
+                  <div><h4>获取凭据</h4><p>在服务商处获取 API Key 与 baseURL。</p></div>
+                </li>
+                <li class="api-step">
+                  <span class="api-step-num">2</span>
+                  <div><h4>填入配置</h4><p>在 WuPage 选项页填入 baseURL、API key、model、prompt。</p></div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- HTTP Template -->
+          <div class="api-panel reveal" data-reveal data-api-panel="http">
+            <div class="api-grid">
+              <div class="api-card api-info card">
+                <span class="api-badge api-badge-custom">自定义</span>
+                <h3>HTTP 模板</h3>
+                <p class="api-lead">适配任意免费 / 付费翻译 API，按模板拼装请求与解析响应。</p>
+                <div class="api-placeholders">
+                  <span class="api-endpoint-label">支持占位符</span>
+                  <div class="ph-list">
+                    <code>{{targetLang}}</code><code>{{sourceLang}}</code><code>{{texts}}</code><code>{{json texts}}</code>
+                  </div>
+                </div>
+                <div class="api-note">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5A6.5 6.5 0 1 1 1.5 8 6.5 6.5 0 0 1 8 1.5zM8 5.5v3M8 10.5v.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                  <span>响应路径必须解析为与输入顺序一致的译文数组。</span>
+                </div>
+              </div>
+              <ol class="api-steps card">
+                <li class="api-step">
+                  <span class="api-step-num">1</span>
+                  <div><h4>填写请求模板</h4><p>在选项页填入 URL 模板、请求方法（GET/POST）、请求体模板。</p></div>
+                </li>
+                <li class="api-step">
+                  <span class="api-step-num">2</span>
+                  <div><h4>填写响应路径</h4><p>配置响应路径，使解析结果为顺序一致的译文数组。</p></div>
+                </li>
+                <li class="api-step">
+                  <span class="api-step-num">3</span>
+                  <div><h4>测试并保存</h4><p>点击「测试服务」验证后保存，即可在弹窗选择该服务使用。</p></div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INSTALL ============ -->
+    <section class="section" id="install" aria-labelledby="installTitle">
+      <div class="container">
+        <div class="section-head reveal" data-reveal>
+          <span class="eyebrow">下载安装</span>
+          <h2 class="section-title" id="installTitle">手动加载扩展</h2>
+          <p class="section-desc">当前为开发者预览版本，按以下步骤在 Chrome 或 Edge 中手动加载。</p>
+        </div>
+
+        <div class="install-layout">
+          <div class="install-steps card reveal" data-reveal>
+            <div class="install-item">
+              <span class="install-num">1</span>
+              <div class="install-body">
+                <h3>克隆仓库</h3>
+                <div class="code-block"><code>git clone https://github.com/mr-wuliu/wupage</code></div>
+              </div>
+            </div>
+            <div class="install-item">
+              <span class="install-num">2</span>
+              <div class="install-body">
+                <h3>安装依赖并构建</h3>
+                <div class="code-block"><code>npm install &amp;&amp; npm run build</code></div>
+              </div>
+            </div>
+            <div class="install-item">
+              <span class="install-num">3</span>
+              <div class="install-body">
+                <h3>打开扩展管理页</h3>
+                <p>Chrome 访问 <code>chrome://extensions</code>，Edge 访问 <code>edge://extensions</code>。</p>
+              </div>
+            </div>
+            <div class="install-item">
+              <span class="install-num">4</span>
+              <div class="install-body">
+                <h3>开启「开发者模式」</h3>
+                <p>在扩展管理页右上角勾选「开发者模式」开关。</p>
+              </div>
+            </div>
+            <div class="install-item">
+              <span class="install-num">5</span>
+              <div class="install-body">
+                <h3>加载已解压的扩展程序</h3>
+                <p>点击「加载已解压的扩展程序」，选择仓库中的 <code>dist/</code> 目录。</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="install-cta card reveal" data-reveal>
+            <h3>从源码开始</h3>
+            <p>插件代码完全开源，欢迎 Star、Issue 与 PR。</p>
+            <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              前往 GitHub 仓库
+            </a>
+            <ul class="install-meta">
+              <li>Manifest V3</li>
+              <li>TypeScript + Vite</li>
+              <li>Chrome / Edge</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#top" class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="8" fill="url(#footerGrad)"/>
+              <path d="M7 9.5h14M7 14h9M7 18.5h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              <defs><linearGradient id="footerGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>
+            </svg>
+          </span>
+          <span class="brand-name">WuPage Translator</span>
+        </a>
+        <p class="footer-tagline">一键翻译整个网页，双语对照阅读。<br />基于 Manifest V3，请求直达翻译服务，无需自建代理。</p>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>产品</h4>
+          <a href="#features">功能特色</a>
+          <a href="#guide">使用指南</a>
+          <a href="#showcase">效果展示</a>
+        </div>
+        <div class="footer-col">
+          <h4>开发</h4>
+          <a href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">GitHub 仓库</a>
+          <a href="#api">API 文档</a>
+          <a href="#install">下载安装</a>
+        </div>
+        <div class="footer-col">
+          <h4>翻译服务</h4>
+          <a href="#api">Google Web</a>
+          <a href="#api">微软 Translator</a>
+          <a href="#api">Google Cloud</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 WuPage Translator. 开源项目。</span>
+        <span class="footer-built">Built with HTML · CSS · JS · 零构建</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
