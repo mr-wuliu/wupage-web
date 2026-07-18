@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "wupage-web",
+  "compatibility_date": "2026-07-18",
+  "assets": {
+    // 纯静态站点：所有文件在仓库根目录（index.html + _headers + assets/）
+    "directory": "./",
+
+    // /about 与 /about/ 等价，自动补全或去除尾斜杠以匹配真实文件
+    "html_handling": "auto-trailing-slash"
+
+    // 不配置 "binding" —— 本项目没有 Worker 脚本，仅提供静态资源。
+    // 不配置 "not_found_handling" —— 站点使用 hash 锚点导航（#features 等），
+    //   不是 SPA 路由；未匹配路径应直接 404，而不是回退到 index.html。
+    //
+    // _headers 文件由 Workers Static Assets 原生解析，无需在此声明。
+    // 参考文档：
+    //   https://developers.cloudflare.com/workers/static-assets/
+  }
+}

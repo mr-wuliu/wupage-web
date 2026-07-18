@@ -1,6 +1,7 @@
 /*
-  Content-Type / caching / security headers for Cloudflare Pages
-  Docs: https://developers.cloudflare.com/pages/configuration/headers/
+  Content-Type / caching / security headers for Cloudflare Workers Static Assets
+  Docs: https://developers.cloudflare.com/workers/static-assets/
+  格式与 Cloudflare Pages 完全兼容，由 Workers Static Assets 原生解析。
 */
 
 # ---- Long-cache static assets (1 year, immutable) ----

@@ -1,7 +1,7 @@
 # WuPage Translator 官网
 
 [WuPage Translator](https://github.com/mr-wuliu/wupage) 浏览器翻译扩展的官方网站。
-纯静态站点（HTML + CSS + 原生 JS），**零构建步骤**，可直接部署到 Cloudflare Pages。
+纯静态站点（HTML + CSS + 原生 JS），**零构建步骤**，部署到 [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)（推送 main 分支即由 GitHub Actions 自动部署）。
 
 ## 项目简介
 
@@ -38,42 +38,62 @@ python3 -m http.server 8080
 
 然后在浏览器打开 `http://localhost:8080`（或终端提示的端口）即可。
 
-## 部署到 Cloudflare Pages
+## 部署到 Cloudflare Workers Static Assets
 
-### 方式一：Git 连接（推荐）
+本项目使用 **[Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)**（Cloudflare 当前推荐方案；Pages 已进入维护模式，不再有新功能）。
 
-1. 将本仓库推送到 GitHub / GitLab。
-2. 登录 [Cloudflare Dashboard](https://dash.cloudflare.com)，进入 **Workers & Pages → Create → Pages → Connect to Git**。
-3. 选择本仓库，构建配置填写：
-   - **Framework preset**：`None`
-   - **Build command**：留空
-   - **Build output directory**：`/`（根目录）
-4. 点击 **Save and Deploy**，Cloudflare 会自动读取根目录的 `_headers` 应用缓存与安全头。
+配置位于根目录的 [`wrangler.jsonc`](./wrangler.jsonc)，`assets.directory` 指向仓库根目录，无需 Worker 脚本。`_headers` 文件由 Workers Static Assets 原生解析，与 Pages 格式完全兼容。
 
-### 方式二：Wrangler CLI
+### 方式一：GitHub Actions（推荐，已内置）
 
-确保已安装 [`wrangler`](https://developers.cloudflare.com/workers/wrangler/)：
+推送到 `main` 分支会自动触发 [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml) 进行部署。**首次使用前需要配置两个 GitHub Secrets**：
+
+1. **创建 Cloudflare API Token**
+   - 打开 <https://dash.cloudflare.com/profile/api-tokens>
+   - 选择 **Create Token** → 使用 **Edit Cloudflare Workers** 官方模板
+   - Account Resources 选你的账户，Zone Resources 留空即可
+   - 复制生成的 Token（仅显示一次）
+
+2. **找到 Cloudflare Account ID**
+   - 在 [Cloudflare Dashboard](https://dash.cloudflare.com) 首页或任意 Worker 概览页右侧栏可见
+   - 形如 `abcd1234abcd1234abcd1234abcd1234`
+
+3. **在 GitHub 仓库添加 Secrets**
+   - 进入仓库 **Settings → Secrets and variables → Actions → New repository secret**
+   - 添加两个：
+     - `CLOUDFLARE_API_TOKEN` → 第 1 步生成的 Token
+     - `CLOUDFLARE_ACCOUNT_ID` → 第 2 步的 Account ID
+
+4. **触发部署**
+   - 推送一次代码到 `main`（或任意已推送的 commit 上手动触发：Actions 页 → Deploy to Cloudflare Workers → Run workflow）
+   - 部署完成后会输出形如 `https://wupage-web.<你的 workers.dev 子域>.workers.dev` 的访问地址
+   - 如需自定义域名：在 Cloudflare Dashboard → Workers & Pages → 选中 `wupage-web` Worker → Settings → Domains & Routes 添加
+
+### 方式二：Wrangler CLI（本地手动部署）
 
 ```bash
-# 安装（任选其一）
+# 安装 wrangler v4（任选其一）
 npm install -g wrangler
-# 或使用 npx
+# 或直接用 npx
 
-# 登录（首次需要）
+# 登录（首次需要浏览器授权）
 wrangler login
 
 # 在项目根目录执行部署
-wrangler pages deploy .
+wrangler deploy
 ```
 
-命令执行后会输出形如 `https://<project>.pages.dev` 的访问地址。
+> 注意：是 `wrangler deploy`（不是 `wrangler pages deploy`）。配置已由 `wrangler.jsonc` 接管。
 
 ## 目录结构
 
 ```
 wupage_web/
 ├── index.html            # 单页站点入口（包含全部 7 个章节）
-├── _headers              # Cloudflare Pages 缓存 / 安全 / MIME 头
+├── _headers              # 缓存 / 安全 / MIME 头（Workers Static Assets 原生解析）
+├── wrangler.jsonc        # Cloudflare Workers Static Assets 部署配置
+├── .github/workflows/
+│   └── deploy.yml        # GitHub Actions：push main 自动部署到 Workers
 ├── README.md             # 本文档
 └── assets/
     ├── css/
@@ -91,7 +111,8 @@ wupage_web/
 ## 相关链接
 
 - 插件仓库：<https://github.com/mr-wuliu/wupage>
-- Cloudflare Pages 文档：<https://developers.cloudflare.com/pages/>
-- Wrangler 文档：<https://developers.cloudflare.com/workers/wrangler/>
+- Workers Static Assets 文档：<https://developers.cloudflare.com/workers/static-assets/>
+- Wrangler 配置参考：<https://developers.cloudflare.com/workers/wrangler/configuration/>
+- Pages → Workers 迁移指南：<https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/>
 
 © 2026 WuPage Translator. 开源项目。

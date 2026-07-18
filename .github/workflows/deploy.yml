@@ -1,0 +1,39 @@
+name: Deploy to Cloudflare Workers
+
+# 推送到 main 分支时自动部署到 Cloudflare Workers Static Assets。
+# 替代了原 Cloudflare Pages 的 Git 自动构建。
+#
+# 前置条件（在 GitHub 仓库 Settings → Secrets and variables → Actions 中配置）：
+#   - CLOUDFLARE_API_TOKEN   Cloudflare API Token，需要 "Edit Cloudflare Workers" 权限
+#       创建入口：https://dash.cloudflare.com/profile/api-tokens
+#       模板：Edit Cloudflare Workers（官方预置模板）
+#   - CLOUDFLARE_ACCOUNT_ID  Cloudflare 账户 ID
+#       在 dashboard 右上角账户下拉或任一 Worker 概览页可复制
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # 允许在 Actions 页面手动触发
+
+# 同一分支新推送到来时取消进行中的部署，避免并发
+concurrency:
+  group: deploy-cloudflare-workers
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # wrangler-action 会自动安装 wrangler，读取仓库根目录的 wrangler.jsonc，
+          # 把 ./ 下的全部静态资源 + _headers 推送到 Workers Static Assets。
+          # 部署完成会输出 https://wupage-web.<workers.dev 子域>.workers.dev 地址。
