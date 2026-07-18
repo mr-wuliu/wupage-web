@@ -16,5 +16,18 @@
     // _headers 文件由 Workers Static Assets 原生解析，无需在此声明。
     // 参考文档：
     //   https://developers.cloudflare.com/workers/static-assets/
-  }
+  },
+
+  // 自定义域名：wupage.mrwuliu.top（Cloudflare 自动建 DNS + 签 TLS 证书）
+  // workers.dev 子域依然作为兜底备用域名可用。
+  // 显式写 zone_name 绕过 wrangler 的 zone 推断，避免 token Zone Resources
+  // 受限时报 Authentication error [code: 10000]。
+  // 参考：https://developers.cloudflare.com/workers/configuration/routing/custom-domains/
+  "routes": [
+    {
+      "pattern": "wupage.mrwuliu.top",
+      "custom_domain": true,
+      "zone_name": "mrwuliu.top"
+    }
+  ]
 }
