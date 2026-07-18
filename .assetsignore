@@ -1,0 +1,18 @@
+# Workers Static Assets 排除清单（语法同 .gitignore）
+# 文档：https://developers.cloudflare.com/workers/static-assets/#assetsignore
+
+# CI 由 wrangler-action 装的开发工具，绝不能当静态资源上传
+node_modules/
+.git/
+.github/
+.omo/
+.playwright-mcp/
+.wrangler/
+
+# 日志
+*.log
+
+# 配置 / 元数据文件，不属于面向用户的站点内容
+wrangler.jsonc
+.gitignore
+.assetsignore
