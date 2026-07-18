@@ -242,7 +242,7 @@
         <div class="section-head reveal" data-reveal>
           <span class="eyebrow">效果展示</span>
           <h2 class="section-title" id="showcaseTitle">真实的插件界面</h2>
-          <p class="section-desc">以下为基于真实插件 UI 的高保真还原，非真实截图。</p>
+          <p class="section-desc">WuPage Translator v0.1.1 真实使用截图 —— 扩展已加载于真实 Chromium 浏览器，翻译由 Google Web Translate 实际执行。</p>
         </div>
 
         <div class="showcase-tabs reveal" data-reveal role="tablist" aria-label="效果展示切换">
@@ -258,53 +258,8 @@
               <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
               <span class="browser-url">chrome-extension://wupage/popup.html</span>
             </div>
-            <div class="browser-body popup-stage">
-              <div class="popup-card">
-                <div class="popup-head">
-                  <div class="popup-brand">
-                    <span class="popup-logo" aria-hidden="true">W</span>
-                    <span class="popup-title">WuPage</span>
-                  </div>
-                  <button class="popup-settings" type="button">设置</button>
-                </div>
-
-                <div class="popup-field">
-                  <label>目标语言</label>
-                  <div class="fake-select">
-                    <span class="fake-select-val">中文</span>
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </div>
-                </div>
-
-                <div class="popup-field">
-                  <label>翻译服务</label>
-                  <div class="fake-select">
-                    <span class="fake-select-val">Google Web Translate</span>
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </div>
-                </div>
-
-                <div class="popup-toggle-row">
-                  <span>段落模式</span>
-                  <span class="switch" aria-label="段落模式 关闭"><span class="switch-knob"></span></span>
-                </div>
-                <div class="popup-toggle-row">
-                  <span>悬浮球</span>
-                  <span class="switch is-on" aria-label="悬浮球 开启"><span class="switch-knob"></span></span>
-                </div>
-
-                <button class="popup-primary" type="button">翻译全文</button>
-
-                <div class="popup-secondary">
-                  <button class="popup-mini" type="button">Debug</button>
-                  <button class="popup-mini" type="button">清除缓存</button>
-                </div>
-
-                <a class="popup-foot" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-                  GitHub
-                </a>
-              </div>
+            <div class="browser-body screenshot-body popup-stage">
+              <img class="screenshot-img" src="assets/img/showcase/popup.png" alt="WuPage Translator 弹窗真实截图：显示翻译语言选择、翻译服务、段落模式与悬浮球开关、翻译全文按钮" loading="lazy" width="320" height="560">
             </div>
           </div>
         </div>
@@ -316,74 +271,8 @@
               <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
               <span class="browser-url">chrome-extension://wupage/options.html</span>
             </div>
-            <div class="browser-body options-stage">
-              <div class="options-page">
-                <h3 class="options-h">WuPage 设置</h3>
-
-                <section class="options-section">
-                  <h4 class="options-section-title"><span class="opts-marker"></span>通用</h4>
-                  <div class="options-grid">
-                    <div class="opt-field">
-                      <label>目标语言</label>
-                      <div class="fake-select fake-select-sm">
-                        <span class="fake-select-val">中文</span>
-                        <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      </div>
-                    </div>
-                    <div class="opt-field">
-                      <label>源语言</label>
-                      <input class="opt-input" type="text" value="auto" readonly />
-                    </div>
-                    <div class="opt-field">
-                      <label>分块大小</label>
-                      <input class="opt-input" type="text" value="800" readonly />
-                    </div>
-                    <div class="opt-field">
-                      <label>并发数</label>
-                      <input class="opt-input" type="text" value="4" readonly />
-                    </div>
-                    <div class="opt-field opt-check">
-                      <span class="check-box is-checked" aria-hidden="true">
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      </span>
-                      <span>启用本地缓存</span>
-                    </div>
-                    <div class="opt-field opt-check">
-                      <span class="check-box is-checked" aria-hidden="true">
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      </span>
-                      <span>显示悬浮球</span>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="options-section">
-                  <h4 class="options-section-title"><span class="opts-marker"></span>翻译服务</h4>
-                  <div class="opt-field opt-field-row">
-                    <label>当前服务</label>
-                    <div class="fake-select fake-select-sm">
-                      <span class="fake-select-val">Google Cloud Translation</span>
-                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
-                  </div>
-                  <div class="options-grid">
-                    <div class="opt-field">
-                      <label>API Key</label>
-                      <input class="opt-input opt-input-mono" type="text" value="AIzaSy••••••••••••••••" readonly />
-                    </div>
-                    <div class="opt-field">
-                      <label>Endpoint</label>
-                      <input class="opt-input opt-input-mono" type="text" value="translation.googleapis.com" readonly />
-                    </div>
-                  </div>
-                </section>
-
-                <div class="options-actions">
-                  <button class="opt-btn opt-btn-primary" type="button">保存</button>
-                  <button class="opt-btn" type="button">测试服务</button>
-                  <button class="opt-btn opt-btn-ghost" type="button">恢复默认设置</button>
-                </div>
-              </div>
+            <div class="browser-body screenshot-body options-stage">
+              <img class="screenshot-img" src="assets/img/showcase/options.png" alt="WuPage Translator 选项页真实截图：通用设置（翻译语言/分块大小/并发数/缓存/悬浮球）与翻译服务配置（Google Web Translate）" loading="lazy" width="945" height="869">
             </div>
           </div>
         </div>
@@ -393,24 +282,10 @@
           <div class="browser-frame">
             <div class="browser-bar">
               <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
-              <span class="browser-url">https://example.com/article</span>
+              <span class="browser-url">https://en.wikipedia.org/wiki/Web_browser</span>
             </div>
-            <div class="browser-body article-stage">
-              <article class="article">
-                <h2 class="article-title">The State of Web Translation in 2026</h2>
-                <p class="article-p">
-                  <span class="orig">The quick brown fox jumps over the lazy dog.</span>
-                  <span class="trans">敏捷的棕色狐狸跳过了懒狗。</span>
-                </p>
-                <p class="article-p">
-                  <span class="orig">Modern browsers allow extensions to access page content directly, making real-time bilingual reading a reality.</span>
-                  <span class="trans">现代浏览器允许扩展直接访问页面内容，让实时双语阅读成为现实。</span>
-                </p>
-                <p class="article-p">
-                  <span class="orig">With Manifest V3, service workers handle background tasks efficiently without persistent background pages.</span>
-                  <span class="trans">借助 Manifest V3，Service Worker 无需常驻后台即可高效处理后台任务。</span>
-                </p>
-              </article>
+            <div class="browser-body screenshot-body article-stage">
+              <img class="screenshot-img" src="assets/img/showcase/bilingual.png" alt="WuPage Translator 在 Wikipedia Web_browser 词条上的真实翻译截图：左侧目录与正文首段已译为中文，与英文原文并列显示" loading="lazy" width="1280" height="800">
             </div>
           </div>
         </div>

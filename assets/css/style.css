@@ -732,6 +732,27 @@ code {
 }
 .browser-body { padding: clamp(20px, 3vw, 36px); }
 
+/* ---- Real screenshot (replaces mockups) ---- */
+.screenshot-body { padding: 0; }
+.screenshot-body.popup-stage {
+  padding: clamp(28px, 4vw, 56px);
+  background: var(--bg-subtle);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.screenshot-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.screenshot-body.popup-stage .screenshot-img {
+  width: auto;
+  max-width: min(360px, 100%);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+}
+
 /* ---- Popup mockup ---- */
 .popup-stage { display: flex; justify-content: center; }
 .popup-card {
