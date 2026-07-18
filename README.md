@@ -1,118 +1,90 @@
-# WuPage Translator 官网
+# WuPage Translator
 
-[WuPage Translator](https://github.com/mr-wuliu/wupage) 浏览器翻译扩展的官方网站。
-纯静态站点（HTML + CSS + 原生 JS），**零构建步骤**，部署到 [Cloudflare Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)（推送 main 分支即由 GitHub Actions 自动部署）。
+> 一键翻译整个网页，双语对照阅读。Manifest V3 浏览器扩展，支持 Chrome / Edge。
 
-## 项目简介
+官网：<https://wupage.mrwuliu.top> ｜ 插件源码：<https://github.com/mr-wuliu/wupage>
 
-本仓库是 WuPage Translator 的产品落地页，包含：
+## 这是什么
 
-- **Hero**：标题、副标题、CTA 按钮
-- **功能特色**：6 张特性卡片
-- **功能指导**：7 步上手指南
-- **效果展示**：基于真实插件 UI 的高保复 HTML/CSS 还原（弹窗、选项页、双语对照）
-- **API 获取流程**：5 种翻译服务的接入步骤（Google Web / 微软 / Google Cloud / OpenAI 兼容 / HTTP 模板）
-- **下载安装**：手动加载扩展的完整步骤
-- **页脚**：相关链接与版权信息
+WuPage Translator 是一款浏览器翻译扩展：点一下工具栏图标，整页内容立即翻译为目标语言，并以**双语对照**方式呈现 —— 原文保留，译文行内插入，便于对照阅读。
 
-特性：
+所有翻译请求**由扩展直接发送到翻译服务商**，不经过任何中转代理。你填入的 API Key 只在本机使用，不会上传到 WuPage 的服务器（也没有这个服务器）。
 
-- 中文（zh-CN）单页站点
-- 移动优先的响应式设计
-- 通过 `prefers-color-scheme` 自动适配深色模式
-- 吸顶毛玻璃导航 + 平滑滚动
-- `IntersectionObserver` 滚动渐显动画（尊重 `prefers-reduced-motion`）
-- 不依赖任何框架、构建工具或第三方 JS 库
+## 核心特性
 
-## 本地预览
+- **一键整页翻译** —— 工具栏弹出按钮，一次点击完成翻译
+- **双语对照渲染** —— 原文与译文相邻展示，对照学习更高效
+- **段落模式 / 悬浮球** —— 按需切换翻译呈现方式
+- **本地缓存** —— 按 provider + 目标语言 + 原文缓存，重复内容秒回
+- **无托管代理** —— 请求直达服务商，Key 不离开本机
+- **多 provider 支持** —— 5 种翻译服务自由启停，无需改代码
+- **全局并发与分块** —— 统一管理默认值，单个 provider 可独立覆盖（始终不超过全局上限）
 
-任意静态文件服务器即可，例如：
+## 支持的翻译服务
 
-```bash
-# 使用 npx serve（无需全局安装）
-npx serve .
+| Provider | 需要 Key | 备注 |
+|---|---|---|
+| **Google Web Translate** | 否 | 调用公开 web 端点，无官方授权。⚠️ 可能被限流、屏蔽或下线，不建议用于生产 |
+| **Microsoft Translator (Azure)** | 是 | Azure Translator 资源 key + 区域（如 `eastasia`） |
+| **Google Cloud Translation Basic** | 是 | GCP API key |
+| **OpenAI 兼容 LLM** | 是 | 可配 `baseURL` / `key` / `model` / `prompt`；支持 OpenAI Chat Completions 与 Anthropic Messages 两种格式，兼容 OpenAI / DeepSeek 等 OpenAI 兼容网关 |
+| **HTTP 模板** | 视情况 | 自定义 URL + 请求模板，占位符 `{{targetLang}}` `{{sourceLang}}` `{{texts}}` `{{json texts}}`；响应需解析为与输入顺序一致的字符串数组 |
 
-# 或使用 Python 内置服务器
-python3 -m http.server 8080
-```
+**具体端点：**
 
-然后在浏览器打开 `http://localhost:8080`（或终端提示的端口）即可。
+- Google Web：`https://translate.googleapis.com/translate_a/single`
+- Azure：`POST https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to={targetLang}`
+- GCP：`POST https://translation.googleapis.com/language/translate/v2?key={apiKey}`
 
-## 部署到 Cloudflare Workers Static Assets
+## 安装扩展
 
-本项目使用 **[Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/)**（Cloudflare 当前推荐方案；Pages 已进入维护模式，不再有新功能）。
-
-配置位于根目录的 [`wrangler.jsonc`](./wrangler.jsonc)，`assets.directory` 指向仓库根目录，无需 Worker 脚本。`_headers` 文件由 Workers Static Assets 原生解析，与 Pages 格式完全兼容。
-
-### 方式一：GitHub Actions（推荐，已内置）
-
-推送到 `main` 分支会自动触发 [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml) 进行部署。**首次使用前需要配置两个 GitHub Secrets**：
-
-1. **创建 Cloudflare API Token**
-   - 打开 <https://dash.cloudflare.com/profile/api-tokens>
-   - 选择 **Create Token** → 使用 **Edit Cloudflare Workers** 官方模板
-   - Account Resources 选你的账户，Zone Resources 留空即可
-   - 复制生成的 Token（仅显示一次）
-
-2. **找到 Cloudflare Account ID**
-   - 在 [Cloudflare Dashboard](https://dash.cloudflare.com) 首页或任意 Worker 概览页右侧栏可见
-   - 形如 `abcd1234abcd1234abcd1234abcd1234`
-
-3. **在 GitHub 仓库添加 Secrets**
-   - 进入仓库 **Settings → Secrets and variables → Actions → New repository secret**
-   - 添加两个：
-     - `CLOUDFLARE_API_TOKEN` → 第 1 步生成的 Token
-     - `CLOUDFLARE_ACCOUNT_ID` → 第 2 步的 Account ID
-
-4. **触发部署**
-   - 推送一次代码到 `main`（或任意已推送的 commit 上手动触发：Actions 页 → Deploy to Cloudflare Workers → Run workflow）
-   - 部署完成后会输出形如 `https://wupage-web.<你的 workers.dev 子域>.workers.dev` 的访问地址
-   - 如需自定义域名：在 Cloudflare Dashboard → Workers & Pages → 选中 `wupage-web` Worker → Settings → Domains & Routes 添加
-
-### 方式二：Wrangler CLI（本地手动部署）
+当前版本需手动加载未打包扩展：
 
 ```bash
-# 安装 wrangler v4（任选其一）
-npm install -g wrangler
-# 或直接用 npx
-
-# 登录（首次需要浏览器授权）
-wrangler login
-
-# 在项目根目录执行部署
-wrangler deploy
+git clone https://github.com/mr-wuliu/wupage.git
+cd wupage
+npm install
+npm run build
 ```
 
-> 注意：是 `wrangler deploy`（不是 `wrangler pages deploy`）。配置已由 `wrangler.jsonc` 接管。
+然后在浏览器：
 
-## 目录结构
+1. 打开 `chrome://extensions`（Edge 为 `edge://extensions`）
+2. 右上角开启**开发者模式**
+3. 点击**加载已解压的扩展程序**，选中 `wupage/dist/` 目录
 
-```
-wupage_web/
-├── index.html            # 单页站点入口（包含全部 7 个章节）
-├── _headers              # 缓存 / 安全 / MIME 头（Workers Static Assets 原生解析）
-├── wrangler.jsonc        # Cloudflare Workers Static Assets 部署配置
-├── .github/workflows/
-│   └── deploy.yml        # GitHub Actions：push main 自动部署到 Workers
-├── README.md             # 本文档
-└── assets/
-    ├── css/
-    │   └── style.css     # 设计系统 + 全部组件样式（含深色模式）
-    └── js/
-        └── main.js       # 导航 / 平滑滚动 / 标签切换 / 滚动渐显
-```
+加载成功后工具栏会出现 WuPage Translator 图标，点击即可使用。
 
-## 自定义
+## 使用
 
-- **主题色**：修改 `assets/css/style.css` 顶部 `:root` 中的 `--brand-1` / `--brand-2` / `--accent-1`。
-- **深色模式**：通过 `@media (prefers-color-scheme: dark)` 块覆盖令牌，无需手动开关。
-- **文案**：所有中文文案直接写在 `index.html` 内对应章节中。
+- **弹窗（popup）**：选择目标语言与翻译服务，开关段落模式 / 悬浮球，点「翻译全文」开始；含 Debug 与清除缓存按钮
+- **选项页（options）**：通用设置（源语言、分块大小、并发数、缓存开关、悬浮球显示）＋ 翻译服务管理（增删改、测试连通性、恢复默认）
+
+## 隐私
+
+- 翻译请求**直接**从扩展发往你配置的翻译服务商
+- 没有任何 WuPage 自有的中转服务器
+- 你的 API Key 只存在浏览器本地，不会上传
+- 翻译缓存只在你本地
 
 ## 相关链接
 
-- 插件仓库：<https://github.com/mr-wuliu/wupage>
-- Workers Static Assets 文档：<https://developers.cloudflare.com/workers/static-assets/>
-- Wrangler 配置参考：<https://developers.cloudflare.com/workers/wrangler/configuration/>
-- Pages → Workers 迁移指南：<https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/>
+- **官网（在线体验、图文介绍、API 获取流程）**：<https://wupage.mrwuliu.top>
+- **插件源码仓库**：<https://github.com/mr-wuliu/wupage>
+- **问题反馈**：<https://github.com/mr-wuliu/wupage/issues>
+
+---
+
+## 关于本仓库
+
+> 如果你是来**使用** WuPage Translator 的，不需要继续往下读 —— 直接去[官网](https://wupage.mrwuliu.top)或[插件仓库](https://github.com/mr-wuliu/wupage)即可。
+
+本仓库（`wupage-web`）是上述官网的源代码。纯静态 HTML / CSS / 原生 JS，零构建步骤，零运行时依赖。出于学习参考目的可查看：
+
+- `index.html` —— 单页站点入口，所有章节内容
+- `assets/css/style.css` —— 设计系统、组件样式、深色模式
+- `assets/js/main.js` —— 导航、平滑滚动、标签切换、滚动渐显
+
+部署通过 GitHub Actions 自动推送到 Cloudflare Workers Static Assets，配置见 `.github/workflows/deploy.yml` 与 `wrangler.jsonc`。
 
 © 2026 WuPage Translator. 开源项目。
