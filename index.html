@@ -45,7 +45,7 @@
         <a href="#features">功能特色</a>
         <a href="#guide">功能指导</a>
         <a href="#showcase">效果展示</a>
-        <a href="#api">API 获取</a>
+        <a href="/api.html">API 获取</a>
         <a href="#install">下载安装</a>
       </nav>
 
@@ -65,7 +65,7 @@
       <a href="#features">功能特色</a>
       <a href="#guide">功能指导</a>
       <a href="#showcase">效果展示</a>
-      <a href="#api">API 获取</a>
+      <a href="/api.html">API 获取</a>
       <a href="#install">下载安装</a>
       <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">前往 GitHub 仓库</a>
     </nav>
@@ -99,11 +99,11 @@
             查看使用指南
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9h10m0 0L9 4m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#api" class="btn btn-secondary btn-lg">获取翻译 API</a>
+          <a href="/api.html" class="btn btn-secondary btn-lg">获取翻译 API</a>
         </div>
 
         <div class="hero-stats reveal" data-reveal>
-          <div class="stat"><span class="stat-num">5+</span><span class="stat-label">翻译服务</span></div>
+          <div class="stat"><span class="stat-num">6+</span><span class="stat-label">翻译服务</span></div>
           <span class="stat-divider" aria-hidden="true"></span>
           <div class="stat"><span class="stat-num">2</span><span class="stat-label">浏览器</span></div>
           <span class="stat-divider" aria-hidden="true"></span>
@@ -296,166 +296,55 @@
     <section class="section section-subtle" id="api" aria-labelledby="apiTitle">
       <div class="container">
         <div class="section-head reveal" data-reveal>
-          <span class="eyebrow">API 获取流程</span>
-          <h2 class="section-title" id="apiTitle">五种翻译服务接入指南</h2>
-          <p class="section-desc">从免 Key 开箱即用到完全自定义模板，总有一种适合你。</p>
+          <span class="eyebrow">API 获取</span>
+          <h2 class="section-title" id="apiTitle">六种翻译服务，任你选择</h2>
+          <p class="section-desc">从免 Key 开箱即用到自定义 HTTP 模板，从国内直连到国际服务。完整的申请与配置教程已在独立页面展开。</p>
         </div>
 
-        <div class="api-tabs reveal" data-reveal role="tablist" aria-label="翻译服务切换">
-          <button class="api-tab is-active" role="tab" aria-selected="true" data-api-tab="gweb">Google Web<em>免 Key</em></button>
-          <button class="api-tab" role="tab" aria-selected="false" data-api-tab="ms">微软 Translator</button>
-          <button class="api-tab" role="tab" aria-selected="false" data-api-tab="gcloud">Google Cloud</button>
-          <button class="api-tab" role="tab" aria-selected="false" data-api-tab="openai">OpenAI 兼容</button>
-          <button class="api-tab" role="tab" aria-selected="false" data-api-tab="http">HTTP 模板</button>
+        <div class="provider-preview-grid reveal" data-reveal>
+          <a class="provider-preview-card card" href="/api.html#gweb">
+            <span class="api-badge api-badge-free">免 Key</span>
+            <h3>Google Web</h3>
+            <p>无需 API Key，开箱即用，适合快速体验。</p>
+            <span class="provider-preview-cta">查看教程 →</span>
+          </a>
+          <a class="provider-preview-card card" href="/api.html#glm">
+            <span class="api-badge api-badge-glm">推荐</span>
+            <h3>智谱 GLM</h3>
+            <p>国内可直连的 OpenAI 兼容大模型，翻译质量优秀。</p>
+            <span class="provider-preview-cta">查看教程 →</span>
+          </a>
+          <a class="provider-preview-card card" href="/api.html#ms">
+            <span class="api-badge api-badge-azure">Azure</span>
+            <h3>微软 Translator</h3>
+            <p>Azure 认知服务翻译，稳定、支持区域路由。</p>
+            <span class="provider-preview-cta">查看教程 →</span>
+          </a>
+          <a class="provider-preview-card card" href="/api.html#gcloud">
+            <span class="api-badge api-badge-gcp">GCP</span>
+            <h3>Google Cloud</h3>
+            <p>官方 Translation Basic API，按量计费、稳定可靠。</p>
+            <span class="provider-preview-cta">查看教程 →</span>
+          </a>
+          <a class="provider-preview-card card" href="/api.html#openai">
+            <span class="api-badge api-badge-llm">LLM</span>
+            <h3>OpenAI 兼容</h3>
+            <p>支持任意 OpenAI 兼容的 chat/completions 服务。</p>
+            <span class="provider-preview-cta">查看教程 →</span>
+          </a>
+          <a class="provider-preview-card card" href="/api.html#http">
+            <span class="api-badge api-badge-custom">自定义</span>
+            <h3>HTTP 模板</h3>
+            <p>适配任意翻译 API，按模板拼装请求与解析响应。</p>
+            <span class="provider-preview-cta">查看教程 →</span>
+          </a>
         </div>
 
-        <div class="api-panels">
-          <!-- Google Web -->
-          <div class="api-panel is-active reveal" data-reveal data-api-panel="gweb">
-            <div class="api-grid">
-              <div class="api-card api-info card">
-                <span class="api-badge api-badge-free">免 Key</span>
-                <h3>Google Web Translate</h3>
-                <p class="api-lead">无需 API Key，开箱即用，适合快速体验。</p>
-                <div class="api-endpoint">
-                  <span class="api-endpoint-label">端点</span>
-                  <code class="api-endpoint-val">https://translate.googleapis.com/translate_a/single</code>
-                </div>
-                <div class="api-note">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5A6.5 6.5 0 1 1 1.5 8 6.5 6.5 0 0 1 8 1.5zM8 5.5v3M8 10.5v.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-                  <span>非官方接口，可能被限速、屏蔽或变更。</span>
-                </div>
-              </div>
-              <ol class="api-steps card">
-                <li class="api-step">
-                  <span class="api-step-num">1</span>
-                  <div><h4>直接选择服务</h4><p>在 WuPage 弹窗的「翻译服务」下拉中选择「Google Web Translate」即可。</p></div>
-                </li>
-                <li class="api-step">
-                  <span class="api-step-num">2</span>
-                  <div><h4>无需任何配置</h4><p>无需填写 Key、Endpoint，立即点击「翻译全文」开始使用。</p></div>
-                </li>
-              </ol>
-            </div>
-          </div>
-
-          <!-- Microsoft -->
-          <div class="api-panel reveal" data-reveal data-api-panel="ms">
-            <div class="api-grid">
-              <div class="api-card api-info card">
-                <span class="api-badge api-badge-azure">Azure</span>
-                <h3>Microsoft Translator</h3>
-                <p class="api-lead">微软 Azure 认知服务翻译，稳定、支持区域路由。</p>
-                <div class="api-endpoint">
-                  <span class="api-endpoint-label">端点</span>
-                  <code class="api-endpoint-val">POST https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&amp;to={targetLang}</code>
-                </div>
-              </div>
-              <ol class="api-steps card">
-                <li class="api-step">
-                  <span class="api-step-num">1</span>
-                  <div><h4>创建 Translator 资源</h4><p>登录 <a href="https://portal.azure.com" target="_blank" rel="noopener">Azure Portal</a>，创建「Translator」资源。</p></div>
-                </li>
-                <li class="api-step">
-                  <span class="api-step-num">2</span>
-                  <div><h4>获取 Key 与区域</h4><p>在资源的「密钥和终结点」页获取 Key 和区域（如 <code>eastasia</code>）。</p></div>
-                </li>
-                <li class="api-step">
-                  <span class="api-step-num">3</span>
-                  <div><h4>填入 WuPage</h4><p>在 WuPage 选项页填入 API key 与 Region，保存后即可使用。</p></div>
-                </li>
-              </ol>
-            </div>
-          </div>
-
-          <!-- Google Cloud -->
-          <div class="api-panel reveal" data-reveal data-api-panel="gcloud">
-            <div class="api-grid">
-              <div class="api-card api-info card">
-                <span class="api-badge api-badge-gcp">GCP</span>
-                <h3>Google Cloud Translation</h3>
-                <p class="api-lead">官方 Translation Basic API，按量计费、稳定可靠。</p>
-                <div class="api-endpoint">
-                  <span class="api-endpoint-label">端点</span>
-                  <code class="api-endpoint-val">POST https://translation.googleapis.com/language/translate/v2?key={apiKey}</code>
-                </div>
-              </div>
-              <ol class="api-steps card">
-                <li class="api-step">
-                  <span class="api-step-num">1</span>
-                  <div><h4>启用 API</h4><p>登录 <a href="https://console.cloud.google.com" target="_blank" rel="noopener">Google Cloud Console</a>，启用 Translation Basic API。</p></div>
-                </li>
-                <li class="api-step">
-                  <span class="api-step-num">2</span>
-                  <div><h4>创建 API Key</h4><p>在「凭据」页面创建 API Key，建议限制其只调用 Translation API。</p></div>
-                </li>
-                <li class="api-step">
-                  <span class="api-step-num">3</span>
-                  <div><h4>填入 WuPage</h4><p>在 WuPage 选项页填入 API key，保存即可。</p></div>
-                </li>
-              </ol>
-            </div>
-          </div>
-
-          <!-- OpenAI -->
-          <div class="api-panel reveal" data-reveal data-api-panel="openai">
-            <div class="api-grid">
-              <div class="api-card api-info card">
-                <span class="api-badge api-badge-llm">LLM</span>
-                <h3>OpenAI 兼容</h3>
-                <p class="api-lead">支持任意 OpenAI 兼容的 <code>/chat/completions</code> 服务，如 OpenAI、DeepSeek 等。</p>
-                <div class="api-endpoint">
-                  <span class="api-endpoint-label">示例</span>
-                  <code class="api-endpoint-val">POST {baseURL}/chat/completions</code>
-                </div>
-              </div>
-              <ol class="api-steps card">
-                <li class="api-step">
-                  <span class="api-step-num">1</span>
-                  <div><h4>获取凭据</h4><p>在服务商处获取 API Key 与 baseURL。</p></div>
-                </li>
-                <li class="api-step">
-                  <span class="api-step-num">2</span>
-                  <div><h4>填入配置</h4><p>在 WuPage 选项页填入 baseURL、API key、model、prompt。</p></div>
-                </li>
-              </ol>
-            </div>
-          </div>
-
-          <!-- HTTP Template -->
-          <div class="api-panel reveal" data-reveal data-api-panel="http">
-            <div class="api-grid">
-              <div class="api-card api-info card">
-                <span class="api-badge api-badge-custom">自定义</span>
-                <h3>HTTP 模板</h3>
-                <p class="api-lead">适配任意免费 / 付费翻译 API，按模板拼装请求与解析响应。</p>
-                <div class="api-placeholders">
-                  <span class="api-endpoint-label">支持占位符</span>
-                  <div class="ph-list">
-                    <code>{{targetLang}}</code><code>{{sourceLang}}</code><code>{{texts}}</code><code>{{json texts}}</code>
-                  </div>
-                </div>
-                <div class="api-note">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5A6.5 6.5 0 1 1 1.5 8 6.5 6.5 0 0 1 8 1.5zM8 5.5v3M8 10.5v.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-                  <span>响应路径必须解析为与输入顺序一致的译文数组。</span>
-                </div>
-              </div>
-              <ol class="api-steps card">
-                <li class="api-step">
-                  <span class="api-step-num">1</span>
-                  <div><h4>填写请求模板</h4><p>在选项页填入 URL 模板、请求方法（GET/POST）、请求体模板。</p></div>
-                </li>
-                <li class="api-step">
-                  <span class="api-step-num">2</span>
-                  <div><h4>填写响应路径</h4><p>配置响应路径，使解析结果为顺序一致的译文数组。</p></div>
-                </li>
-                <li class="api-step">
-                  <span class="api-step-num">3</span>
-                  <div><h4>测试并保存</h4><p>点击「测试服务」验证后保存，即可在弹窗选择该服务使用。</p></div>
-                </li>
-              </ol>
-            </div>
-          </div>
+        <div class="api-cta-wrap reveal" data-reveal>
+          <a href="/api.html" class="btn btn-primary btn-lg">
+            查看完整 API 教程
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9h10m0 0L9 4m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
       </div>
     </section>

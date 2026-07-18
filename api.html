@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#6366f1" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <title>API 获取教程 — WuPage Translator</title>
+  <meta name="description" content="WuPage Translator 六种翻译服务的完整接入指南：Google Web、智谱 GLM、微软 Azure、Google Cloud、OpenAI 兼容、HTTP 模板。含 GLM 8 步图文教程。" />
+  <meta name="author" content="WuPage Translator" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="API 获取教程 — WuPage Translator" />
+  <meta property="og:description" content="六种翻译服务的完整接入指南，含 GLM 8 步图文教程。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="/" class="brand" aria-label="WuPage Translator 首页">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="8" fill="url(#brandGrad)"/>
+            <path d="M7 9.5h14M7 14h9M7 18.5h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="brandGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6366f1"/>
+                <stop offset="1" stop-color="#3b82f6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="brand-name">WuPage</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="主导航">
+        <a href="/#features">功能特色</a>
+        <a href="/#guide">功能指导</a>
+        <a href="/#showcase">效果展示</a>
+        <a href="/api.html" aria-current="page">API 获取</a>
+        <a href="/#install">下载安装</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-ghost btn-sm" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a class="btn btn-primary btn-sm" href="/#guide">查看使用指南</a>
+        <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="nav-mobile" id="mobileNav" aria-label="移动端导航" hidden>
+      <a href="/#features">功能特色</a>
+      <a href="/#guide">功能指导</a>
+      <a href="/#showcase">效果展示</a>
+      <a href="/api.html">API 获取</a>
+      <a href="/#install">下载安装</a>
+      <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">前往 GitHub 仓库</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ============ SUB-HERO ============ -->
+    <section class="section section-subtle docs-hero" aria-labelledby="docsTitle">
+      <div class="container">
+        <div class="section-head reveal" data-reveal>
+          <span class="eyebrow">API 获取教程</span>
+          <h1 class="section-title" id="docsTitle">六种翻译服务接入指南</h1>
+          <p class="section-desc">从免 Key 开箱即用到自定义模板，从国内到国际，总有一种适合你。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DOCS TWO-COLUMN LAYOUT ============ -->
+    <section class="section docs-section">
+      <div class="container docs-layout">
+        <!-- LEFT SIDEBAR -->
+        <aside class="docs-sidebar" aria-label="供应商列表">
+          <nav class="docs-nav" aria-label="翻译服务教程导航">
+            <a href="#gweb" class="docs-nav-link is-active">Google Web <em>免 Key</em></a>
+            <a href="#glm" class="docs-nav-link">智谱 GLM <em>推荐</em></a>
+            <a href="#ms" class="docs-nav-link">微软 Translator</a>
+            <a href="#gcloud" class="docs-nav-link">Google Cloud</a>
+            <a href="#openai" class="docs-nav-link">OpenAI 兼容</a>
+            <a href="#http" class="docs-nav-link">HTTP 模板</a>
+          </nav>
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <div class="docs-content">
+          <!-- ========== Google Web ========== -->
+          <article id="gweb" class="docs-article reveal" data-reveal>
+            <header class="docs-article-head">
+              <span class="api-badge api-badge-free">免 Key</span>
+              <h2>Google Web Translate</h2>
+              <p class="api-lead">无需 API Key，开箱即用，适合快速体验。</p>
+              <div class="api-endpoint">
+                <span class="api-endpoint-label">端点</span>
+                <code class="api-endpoint-val">https://translate.googleapis.com/translate_a/single</code>
+              </div>
+              <div class="api-note">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5A6.5 6.5 0 1 1 1.5 8 6.5 6.5 0 0 1 8 1.5zM8 5.5v3M8 10.5v.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span>非官方接口，可能被限速、屏蔽或变更。</span>
+              </div>
+            </header>
+            <ol class="docs-steps">
+              <li class="docs-step">
+                <span class="docs-step-num">1</span>
+                <div>
+                  <h3>直接选择服务</h3>
+                  <p>在 WuPage 弹窗的「翻译服务」下拉中选择「Google Web Translate」即可。</p>
+                </div>
+              </li>
+              <li class="docs-step">
+                <span class="docs-step-num">2</span>
+                <div>
+                  <h3>无需任何配置</h3>
+                  <p>无需填写 Key、Endpoint，立即点击「翻译全文」开始使用。</p>
+                </div>
+              </li>
+            </ol>
+          </article>
+
+          <!-- ========== GLM (featured) ========== -->
+          <article id="glm" class="docs-article docs-article-featured reveal" data-reveal>
+            <header class="docs-article-head">
+              <span class="api-badge api-badge-glm">推荐</span>
+              <h2>智谱 GLM</h2>
+              <p class="api-lead">国内可直连的 OpenAI 兼容大模型，翻译质量优秀。</p>
+              <div class="api-endpoint">
+                <span class="api-endpoint-label">Base URL</span>
+                <code class="api-endpoint-val">https://open.bigmodel.cn/api/paas/v4</code>
+              </div>
+            </header>
+            <ol class="docs-steps docs-steps-rich">
+              <li class="docs-step docs-step-with-img">
+                <span class="docs-step-num">1</span>
+                <div>
+                  <h3>访问 bigmodel.cn</h3>
+                  <p>打开 <a href="https://bigmodel.cn" target="_blank" rel="noopener">bigmodel.cn</a>。首次访问可能弹出&ldquo;完善联系信息&rdquo;对话框，可填写邮箱和场景或点击「跳过」。</p>
+                  <figure class="docs-figure">
+                    <img src="assets/img/glm-tutorial/0.png" alt="bigmodel.cn 首页与完善信息对话框" loading="lazy" width="800" height="500">
+                    <figcaption>bigmodel.cn 首页与完善信息对话框</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="docs-step docs-step-with-img">
+                <span class="docs-step-num">2</span>
+                <div>
+                  <h3>进入控制台</h3>
+                  <p>在首页右上角点击「控制台」按钮，进入开发者控制台。</p>
+                  <figure class="docs-figure">
+                    <img src="assets/img/glm-tutorial/1.png" alt="点击右上角控制台按钮进入开发者控制台" loading="lazy" width="800" height="500">
+                    <figcaption>从首页右上角进入「控制台」</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="docs-step docs-step-with-img">
+                <span class="docs-step-num">3</span>
+                <div>
+                  <h3>打开 API Key 页</h3>
+                  <p>在控制台左侧导航中点击「API Key」进入密钥管理页面。</p>
+                  <figure class="docs-figure">
+                    <img src="assets/img/glm-tutorial/2.png" alt="控制台左侧导航中的 API Key 入口" loading="lazy" width="800" height="500">
+                    <figcaption>在左侧导航点击「API Key」</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="docs-step docs-step-with-img">
+                <span class="docs-step-num">4</span>
+                <div>
+                  <h3>新建 API Key</h3>
+                  <p>点击页面右上角「+ 新建API Key」按钮，在弹窗中输入名称（例如 <code>translate</code>），点击「确定」。</p>
+                  <figure class="docs-figure">
+                    <img src="assets/img/glm-tutorial/3.png" alt="新建 API Key 弹窗，输入名称后确定" loading="lazy" width="800" height="500">
+                    <figcaption>新建 API Key 并命名</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="docs-step docs-step-with-img">
+                <span class="docs-step-num">5</span>
+                <div>
+                  <h3>复制 API Key</h3>
+                  <p>在 API Key 列表中找到刚创建的密钥，将鼠标悬停在「API key」列上，点击出现的「复制」按钮。</p>
+                  <figure class="docs-figure">
+                    <img src="assets/img/glm-tutorial/4.png" alt="悬停 API key 列点击复制按钮" loading="lazy" width="800" height="500">
+                    <figcaption>悬停 API key 列出现「复制」按钮</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="docs-step docs-step-with-img">
+                <span class="docs-step-num">6</span>
+                <div>
+                  <h3>打开 WuPage 扩展</h3>
+                  <p>点击浏览器工具栏中的 WuPage 扩展图标，打开弹窗。</p>
+                  <figure class="docs-figure">
+                    <img src="assets/img/glm-tutorial/5.png" alt="浏览器工具栏的 WuPage 扩展弹窗" loading="lazy" width="800" height="500">
+                    <figcaption>点击工具栏 WuPage 图标打开弹窗</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="docs-step docs-step-with-img">
+                <span class="docs-step-num">7</span>
+                <div>
+                  <h3>选择 GLM 服务</h3>
+                  <p>在 WuPage 弹窗中，将「翻译服务」切换为「Zhipu GLM」，然后点击弹窗内的「设置」按钮进入选项页。</p>
+                  <figure class="docs-figure">
+                    <img src="assets/img/glm-tutorial/6.png" alt="WuPage 弹窗翻译服务切换为 Zhipu GLM 并点击设置" loading="lazy" width="800" height="500">
+                    <figcaption>翻译服务切到「Zhipu GLM」后点「设置」</figcaption>
+                  </figure>
+                </div>
+              </li>
+              <li class="docs-step docs-step-with-img">
+                <span class="docs-step-num">8</span>
+                <div>
+                  <h3>填入凭据并保存</h3>
+                  <p>在选项页的「翻译服务」区域确认或填写以下配置，然后点击「保存」：</p>
+                  <ul class="docs-checklist">
+                    <li>Base URL：<code>https://open.bigmodel.cn/api/paas/v4</code></li>
+                    <li>API key：粘贴刚才复制的密钥</li>
+                    <li>模型：<code>glm-4-flash-250414</code>（或其他 GLM 模型）</li>
+                  </ul>
+                  <figure class="docs-figure">
+                    <img src="assets/img/glm-tutorial/7.png" alt="WuPage 选项页填入 GLM 凭据并保存" loading="lazy" width="800" height="500">
+                    <figcaption>选项页填入 Base URL / API key / 模型后保存</figcaption>
+                  </figure>
+                </div>
+              </li>
+            </ol>
+            <div class="docs-callout">
+              <strong>测试与使用：</strong>点击「测试服务」按钮验证连通性。通过后，在任意网页点击「翻译全文」即可使用 GLM 翻译。
+            </div>
+          </article>
+
+          <!-- ========== Microsoft Translator ========== -->
+          <article id="ms" class="docs-article reveal" data-reveal>
+            <header class="docs-article-head">
+              <span class="api-badge api-badge-azure">Azure</span>
+              <h2>Microsoft Translator</h2>
+              <p class="api-lead">微软 Azure 认知服务翻译，稳定、支持区域路由。</p>
+              <div class="api-endpoint">
+                <span class="api-endpoint-label">端点</span>
+                <code class="api-endpoint-val">POST https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&amp;to={targetLang}</code>
+              </div>
+            </header>
+            <ol class="docs-steps">
+              <li class="docs-step">
+                <span class="docs-step-num">1</span>
+                <div>
+                  <h3>创建 Translator 资源</h3>
+                  <p>登录 <a href="https://portal.azure.com" target="_blank" rel="noopener">Azure Portal</a>，创建「Translator」资源。</p>
+                </div>
+              </li>
+              <li class="docs-step">
+                <span class="docs-step-num">2</span>
+                <div>
+                  <h3>获取 Key 与区域</h3>
+                  <p>在资源的「密钥和终结点」页获取 Key 和区域（如 <code>eastasia</code>）。</p>
+                </div>
+              </li>
+              <li class="docs-step">
+                <span class="docs-step-num">3</span>
+                <div>
+                  <h3>填入 WuPage</h3>
+                  <p>在 WuPage 选项页填入 API key 与 Region，保存后即可使用。</p>
+                </div>
+              </li>
+            </ol>
+          </article>
+
+          <!-- ========== Google Cloud ========== -->
+          <article id="gcloud" class="docs-article reveal" data-reveal>
+            <header class="docs-article-head">
+              <span class="api-badge api-badge-gcp">GCP</span>
+              <h2>Google Cloud Translation</h2>
+              <p class="api-lead">官方 Translation Basic API，按量计费、稳定可靠。</p>
+              <div class="api-endpoint">
+                <span class="api-endpoint-label">端点</span>
+                <code class="api-endpoint-val">POST https://translation.googleapis.com/language/translate/v2?key={apiKey}</code>
+              </div>
+            </header>
+            <ol class="docs-steps">
+              <li class="docs-step">
+                <span class="docs-step-num">1</span>
+                <div>
+                  <h3>启用 API</h3>
+                  <p>登录 <a href="https://console.cloud.google.com" target="_blank" rel="noopener">Google Cloud Console</a>，启用 Translation Basic API。</p>
+                </div>
+              </li>
+              <li class="docs-step">
+                <span class="docs-step-num">2</span>
+                <div>
+                  <h3>创建 API Key</h3>
+                  <p>在「凭据」页面创建 API Key，建议限制其只调用 Translation API。</p>
+                </div>
+              </li>
+              <li class="docs-step">
+                <span class="docs-step-num">3</span>
+                <div>
+                  <h3>填入 WuPage</h3>
+                  <p>在 WuPage 选项页填入 API key，保存即可。</p>
+                </div>
+              </li>
+            </ol>
+          </article>
+
+          <!-- ========== OpenAI 兼容 ========== -->
+          <article id="openai" class="docs-article reveal" data-reveal>
+            <header class="docs-article-head">
+              <span class="api-badge api-badge-llm">LLM</span>
+              <h2>OpenAI 兼容</h2>
+              <p class="api-lead">支持任意 OpenAI 兼容的 <code>/chat/completions</code> 服务，如 OpenAI、DeepSeek、智谱 GLM 等。</p>
+              <div class="api-endpoint">
+                <span class="api-endpoint-label">示例</span>
+                <code class="api-endpoint-val">POST {baseURL}/chat/completions</code>
+              </div>
+            </header>
+            <ol class="docs-steps">
+              <li class="docs-step">
+                <span class="docs-step-num">1</span>
+                <div>
+                  <h3>获取凭据</h3>
+                  <p>在服务商处获取 API Key 与 baseURL。</p>
+                </div>
+              </li>
+              <li class="docs-step">
+                <span class="docs-step-num">2</span>
+                <div>
+                  <h3>填入配置</h3>
+                  <p>在 WuPage 选项页填入 baseURL、API key、model、prompt。</p>
+                </div>
+              </li>
+            </ol>
+          </article>
+
+          <!-- ========== HTTP 模板 ========== -->
+          <article id="http" class="docs-article reveal" data-reveal>
+            <header class="docs-article-head">
+              <span class="api-badge api-badge-custom">自定义</span>
+              <h2>HTTP 模板</h2>
+              <p class="api-lead">适配任意免费 / 付费翻译 API，按模板拼装请求与解析响应。</p>
+              <div class="api-endpoint">
+                <span class="api-endpoint-label">支持占位符</span>
+                <div class="ph-list">
+                  <code>{{targetLang}}</code><code>{{sourceLang}}</code><code>{{texts}}</code><code>{{json texts}}</code>
+                </div>
+              </div>
+              <div class="api-note">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5A6.5 6.5 0 1 1 1.5 8 6.5 6.5 0 0 1 8 1.5zM8 5.5v3M8 10.5v.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <span>响应路径必须解析为与输入顺序一致的译文数组。</span>
+              </div>
+            </header>
+            <ol class="docs-steps">
+              <li class="docs-step">
+                <span class="docs-step-num">1</span>
+                <div>
+                  <h3>填写请求模板</h3>
+                  <p>在选项页填入 URL 模板、请求方法（GET/POST）、请求体模板。</p>
+                </div>
+              </li>
+              <li class="docs-step">
+                <span class="docs-step-num">2</span>
+                <div>
+                  <h3>填写响应路径</h3>
+                  <p>配置响应路径，使解析结果为顺序一致的译文数组。</p>
+                </div>
+              </li>
+              <li class="docs-step">
+                <span class="docs-step-num">3</span>
+                <div>
+                  <h3>测试并保存</h3>
+                  <p>点击「测试服务」验证后保存，即可在弹窗选择该服务使用。</p>
+                </div>
+              </li>
+            </ol>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="8" fill="url(#footerGrad)"/>
+              <path d="M7 9.5h14M7 14h9M7 18.5h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              <defs><linearGradient id="footerGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>
+            </svg>
+          </span>
+          <span class="brand-name">WuPage Translator</span>
+        </a>
+        <p class="footer-tagline">一键翻译整个网页，双语对照阅读。<br />基于 Manifest V3，请求直达翻译服务，无需自建代理。</p>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>产品</h4>
+          <a href="/#features">功能特色</a>
+          <a href="/#guide">使用指南</a>
+          <a href="/#showcase">效果展示</a>
+        </div>
+        <div class="footer-col">
+          <h4>开发</h4>
+          <a href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">GitHub 仓库</a>
+          <a href="/api.html">API 文档</a>
+          <a href="/#install">下载安装</a>
+        </div>
+        <div class="footer-col">
+          <h4>翻译服务</h4>
+          <a href="/api.html#gweb">Google Web</a>
+          <a href="/api.html#glm">智谱 GLM</a>
+          <a href="/api.html#ms">微软 Translator</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 WuPage Translator. 开源项目。</span>
+        <span class="footer-built">Built with HTML · CSS · JS · 零构建</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/docs.js" defer></script>
+</body>
+</html>

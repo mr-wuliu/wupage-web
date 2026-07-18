@@ -1268,3 +1268,382 @@ code {
 @media (max-width: 420px) {
   .hero-cta .btn { width: 100%; }
 }
+
+/* ============================================================
+   ---- Docs page (api.html) ----
+   Left sidebar + right scrollable content layout,
+   GLM tutorial step styles, provider preview grid (index.html)
+   ============================================================ */
+
+/* Sub-hero on docs page — tighter vertical rhythm than default .section */
+.docs-hero {
+  padding-top: clamp(80px, 12vh, 140px);
+  padding-bottom: clamp(24px, 3vw, 40px);
+}
+.docs-hero .section-head { margin-bottom: 0; }
+
+/* Two-column layout: sticky sidebar + scrollable content */
+.docs-section {
+  padding-top: clamp(40px, 5vw, 64px);
+  padding-bottom: clamp(64px, 9vw, 120px);
+}
+.docs-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--s-12);
+  align-items: start;
+}
+
+/* ---------- Sidebar ---------- */
+.docs-sidebar {
+  position: sticky;
+  top: 92px;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  padding-right: var(--s-2);
+}
+.docs-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--s-3);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+}
+.docs-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+  padding: 10px 14px;
+  border-radius: var(--r-sm);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-muted);
+  border-left: 2px solid transparent;
+  transition: color 0.2s var(--ease), background 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.docs-nav-link em {
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 2px 7px;
+  border-radius: var(--r-pill);
+  background: var(--bg-inset);
+  color: var(--text-faint);
+  border: 1px solid var(--border);
+}
+.docs-nav-link:hover {
+  color: var(--text);
+  background: var(--bg-inset);
+}
+.docs-nav-link.is-active {
+  color: var(--primary);
+  font-weight: 600;
+  background: var(--grad-brand-soft);
+  border-left-color: var(--primary);
+}
+.docs-nav-link.is-active em {
+  background: var(--grad-brand);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ---------- Right content ---------- */
+.docs-content {
+  min-width: 0; /* prevent grid overflow from long code blocks */
+}
+.docs-article {
+  margin-bottom: var(--s-20);
+  scroll-margin-top: 100px; /* anchor jumps clear sticky header */
+}
+.docs-article:last-child { margin-bottom: 0; }
+
+.docs-article-head {
+  padding-bottom: var(--s-6);
+  margin-bottom: var(--s-8);
+  border-bottom: 1px solid var(--border);
+}
+.docs-article-head .api-badge { margin-bottom: var(--s-4); }
+.docs-article-head h2 {
+  font-size: clamp(24px, 3vw, var(--fs-2xl));
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--s-3);
+  line-height: 1.15;
+}
+.docs-article-head .api-lead {
+  font-size: var(--fs-md);
+  color: var(--text-soft);
+  line-height: 1.7;
+  margin-bottom: var(--s-5);
+  max-width: 70ch;
+}
+.docs-article-head .api-endpoint { margin-bottom: 0; }
+.docs-article-head .api-note { margin-top: var(--s-4); }
+
+/* Featured article (GLM) — subtle highlight band */
+.docs-article-featured {
+  padding: clamp(24px, 3vw, 40px);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.04), transparent 60%);
+  border: 1px solid var(--border);
+  border-radius: var(--r-2xl);
+  box-shadow: var(--shadow-sm);
+}
+@media (prefers-color-scheme: dark) {
+  .docs-article-featured {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent 60%);
+  }
+}
+
+/* ---------- Docs steps ---------- */
+.docs-steps {
+  counter-reset: docsstep;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-8);
+}
+.docs-step {
+  display: flex;
+  gap: var(--s-5);
+  align-items: flex-start;
+}
+.docs-step-num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--grad-brand);
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px -4px rgba(99, 102, 241, 0.5);
+}
+.docs-step > div {
+  flex: 1;
+  min-width: 0;
+  padding-top: 4px;
+}
+.docs-step h3 {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--s-2);
+  color: var(--text);
+}
+.docs-step p {
+  font-size: var(--fs-base);
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+.docs-step p + p { margin-top: var(--s-3); }
+.docs-step a {
+  color: var(--primary);
+  font-weight: 600;
+}
+.docs-step a:hover { text-decoration: underline; }
+.docs-step code { font-size: 0.88em; }
+
+/* Rich steps (with screenshots) — more generous spacing */
+.docs-steps-rich { gap: var(--s-10); }
+
+/* Checklist inside a step (used by GLM step 8) */
+.docs-checklist {
+  margin-top: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.docs-checklist li {
+  font-size: var(--fs-sm);
+  color: var(--text-soft);
+  line-height: 1.6;
+  padding-left: var(--s-5);
+  position: relative;
+}
+.docs-checklist li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--grad-brand);
+}
+
+/* ---------- Figure (screenshot) ---------- */
+.docs-figure {
+  margin: var(--s-5) 0 0;
+}
+.docs-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}
+.docs-figure figcaption {
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-top: var(--s-2);
+  line-height: 1.5;
+}
+
+/* ---------- Callout (post-steps summary) ---------- */
+.docs-callout {
+  margin-top: var(--s-8);
+  padding: var(--s-4) var(--s-5);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+  color: var(--text-soft);
+  line-height: 1.7;
+  box-shadow: var(--shadow-sm);
+}
+.docs-callout strong { color: var(--text); font-weight: 700; }
+
+/* ---------- Responsive: sidebar -> horizontal tab strip ---------- */
+@media (max-width: 900px) {
+  .docs-layout {
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+  }
+  .docs-sidebar {
+    position: relative;
+    top: auto;
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
+    margin-bottom: var(--s-2);
+    min-width: 0;
+  }
+  .docs-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: var(--s-2);
+    padding: var(--s-2);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    max-width: 100%;
+  }
+  .docs-nav-link {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 8px 14px;
+    border-left: none;
+    border-radius: var(--r-pill);
+    font-size: var(--fs-sm);
+  }
+  .docs-nav-link.is-active {
+    border-left: none;
+    background: var(--grad-brand);
+    color: #fff;
+  }
+  .docs-nav-link.is-active em {
+    background: rgba(255, 255, 255, 0.28);
+    color: #fff;
+    border-color: transparent;
+  }
+  .docs-article { scroll-margin-top: 80px; }
+}
+
+@media (max-width: 560px) {
+  .docs-article-featured {
+    padding: var(--s-5);
+    border-radius: var(--r-lg);
+  }
+  .docs-step { gap: var(--s-4); }
+  .docs-step-num { width: 32px; height: 32px; font-size: var(--fs-xs); }
+  .docs-step h3 { font-size: var(--fs-md); }
+  .docs-step p { font-size: var(--fs-sm); }
+  .docs-steps-rich { gap: var(--s-8); }
+  .docs-callout { padding: var(--s-3) var(--s-4); }
+}
+
+/* ============================================================
+   ---- Provider preview grid (index.html #api replacement) ----
+   ============================================================ */
+.provider-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-5);
+  margin-bottom: var(--s-10);
+}
+@media (max-width: 900px) {
+  .provider-preview-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .provider-preview-grid { grid-template-columns: 1fr; }
+}
+
+.provider-preview-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-6);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.provider-preview-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grad-brand-soft);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+  pointer-events: none;
+}
+.provider-preview-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+.provider-preview-card:hover::before { opacity: 1; }
+.provider-preview-card > * { position: relative; z-index: 1; }
+
+.provider-preview-card .api-badge { margin-bottom: var(--s-1); align-self: flex-start; }
+.provider-preview-card h3 {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.provider-preview-card p {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.provider-preview-cta {
+  margin-top: auto;
+  padding-top: var(--s-3);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--primary);
+  transition: gap 0.2s var(--ease);
+}
+.provider-preview-card:hover .provider-preview-cta {
+  text-decoration: underline;
+}
+
+.api-cta-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--s-2);
+}
+
