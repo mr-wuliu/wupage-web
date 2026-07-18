@@ -355,160 +355,149 @@
       <div class="container">
         <div class="section-head reveal" data-reveal>
           <span class="eyebrow">下载安装</span>
-          <h2 class="section-title" id="installTitle">三种方式,任你选择</h2>
-          <p class="section-desc">从商店一键安装、下载预打包扩展,或从源码自行编译。</p>
+          <h2 class="section-title" id="installTitle">选择适合你的安装方式</h2>
+          <p class="section-desc">三种安装方式,从一键下载到源码编译,任你选择。</p>
         </div>
 
-        <div class="install-grid reveal" data-reveal>
+        <div class="docs-layout reveal" data-reveal>
+          <!-- LEFT SIDEBAR -->
+          <aside class="docs-sidebar" aria-label="安装方式列表">
+            <nav class="docs-nav" aria-label="安装方式导航">
+              <a href="#install-store" class="docs-nav-link is-active">商店下载 <em>审核中</em></a>
+              <a href="#install-github" class="docs-nav-link">GitHub 下载 <em>v0.1.1</em></a>
+              <a href="#install-source" class="docs-nav-link">从源码编译 <em>开发者</em></a>
+            </nav>
+          </aside>
 
-          <article class="install-card install-card-muted card" aria-labelledby="installStoreTitle">
-            <header class="install-card-head">
-              <span class="install-icon install-icon-muted" aria-hidden="true">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
-                  <path d="M3 6h18"/>
-                  <path d="M16 10a4 4 0 0 1-8 0"/>
-                </svg>
-              </span>
-              <div class="install-titles">
-                <h3 id="installStoreTitle">商店下载</h3>
-                <span class="badge-muted">审核中</span>
+          <!-- RIGHT CONTENT -->
+          <div class="docs-content">
+
+            <!-- ========== 商店下载 ========== -->
+            <article id="install-store" class="docs-article reveal" data-reveal>
+              <header class="docs-article-head">
+                <span class="api-badge api-badge-muted">审核中</span>
+                <h2>商店下载</h2>
+                <p class="api-lead">Chrome Web Store 和 Edge Add-ons 均已提交,正在审核中。上线后可一键安装。</p>
+              </header>
+              <div class="docs-callout">
+                <ul class="docs-checklist">
+                  <li>Chrome Web Store（即将上架）</li>
+                  <li>Microsoft Edge Add-ons（即将上架）</li>
+                </ul>
               </div>
-            </header>
-            <p class="install-subtext">Chrome Web Store 和 Edge Add-ons 审核中,上线后可一键安装。</p>
-            <ul class="install-sublist">
-              <li>Chrome Web Store<span class="install-sublist-note">（即将上架）</span></li>
-              <li>Microsoft Edge Add-ons<span class="install-sublist-note">（即将上架）</span></li>
-            </ul>
-            <div class="install-card-cta">
-              <button type="button" class="btn btn-primary btn-block install-btn-disabled" aria-disabled="true" disabled>暂未上线</button>
-            </div>
-          </article>
-
-          <article class="install-card install-card-featured card" aria-labelledby="installGithubTitle">
-            <header class="install-card-head">
-              <span class="install-icon" aria-hidden="true">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                  <polyline points="7 10 12 15 17 10"/>
-                  <line x1="12" y1="15" x2="12" y2="3"/>
-                </svg>
-              </span>
-              <div class="install-titles">
-                <h3 id="installGithubTitle">GitHub 下载</h3>
-                <span class="badge-brand">v0.1.1</span>
+              <div style="margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center;">
+                <button type="button" class="btn btn-primary" disabled aria-disabled="true" style="opacity: 0.6; cursor: not-allowed;">暂未上线</button>
               </div>
-            </header>
-            <p class="install-subtext">下载已打包的扩展 ZIP,解压后即可加载使用。</p>
-            <ol class="install-steps">
-              <li class="install-item">
-                <span class="install-num">1</span>
-                <div class="install-body">
-                  <h4>下载压缩包</h4>
-                  <p><code>wupage-0.1.1-edge.zip</code>（约 141 KB）</p>
-                </div>
-              </li>
-              <li class="install-item">
-                <span class="install-num">2</span>
-                <div class="install-body">
-                  <h4>解压</h4>
-                  <p>解压到任意目录。</p>
-                </div>
-              </li>
-              <li class="install-item">
-                <span class="install-num">3</span>
-                <div class="install-body">
-                  <h4>打开扩展管理页</h4>
-                  <p>Chrome 访问 <code>chrome://extensions</code>,Edge 访问 <code>edge://extensions</code>。</p>
-                </div>
-              </li>
-              <li class="install-item">
-                <span class="install-num">4</span>
-                <div class="install-body">
-                  <h4>开启「开发者模式」</h4>
-                  <p>在扩展管理页右上角开启「开发者模式」开关。</p>
-                </div>
-              </li>
-              <li class="install-item">
-                <span class="install-num">5</span>
-                <div class="install-body">
-                  <h4>加载已解压的扩展程序</h4>
-                  <p>点击「加载已解压的扩展程序」→ 选择解压后的目录。</p>
-                </div>
-              </li>
-            </ol>
-            <div class="install-card-cta">
-              <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage/releases/download/v0.1.1/wupage-0.1.1-edge.zip" download>
-                ⬇ 下载 v0.1.1 ZIP
-              </a>
-              <a class="install-link" href="https://github.com/mr-wuliu/wupage/releases/tag/v0.1.1" target="_blank" rel="noopener">查看发布说明 →</a>
-            </div>
-          </article>
+            </article>
 
-          <article class="install-card card" aria-labelledby="installSourceTitle">
-            <header class="install-card-head">
-              <span class="install-icon" aria-hidden="true">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="4 17 10 11 4 5"/>
-                  <line x1="12" y1="19" x2="20" y2="19"/>
-                </svg>
-              </span>
-              <div class="install-titles">
-                <h3 id="installSourceTitle">从源码编译</h3>
-                <span class="badge-muted">适合开发者</span>
+            <!-- ========== GitHub 下载 (featured) ========== -->
+            <article id="install-github" class="docs-article docs-article-featured reveal" data-reveal>
+              <header class="docs-article-head">
+                <span class="api-badge api-badge-brand">v0.1.1</span>
+                <h2>GitHub 下载</h2>
+                <p class="api-lead">下载已打包的扩展 ZIP,解压后即可加载使用。</p>
+              </header>
+              <ol class="docs-steps">
+                <li class="docs-step">
+                  <span class="docs-step-num">1</span>
+                  <div>
+                    <h3>下载压缩包</h3>
+                    <p><code>wupage-0.1.1-edge.zip</code>（约 141 KB）</p>
+                  </div>
+                </li>
+                <li class="docs-step">
+                  <span class="docs-step-num">2</span>
+                  <div>
+                    <h3>解压</h3>
+                    <p>解压到任意目录。</p>
+                  </div>
+                </li>
+                <li class="docs-step">
+                  <span class="docs-step-num">3</span>
+                  <div>
+                    <h3>打开扩展管理页</h3>
+                    <p>Chrome 访问 <code>chrome://extensions</code>,Edge 访问 <code>edge://extensions</code>。</p>
+                  </div>
+                </li>
+                <li class="docs-step">
+                  <span class="docs-step-num">4</span>
+                  <div>
+                    <h3>开启「开发者模式」</h3>
+                    <p>在扩展管理页右上角开启「开发者模式」开关。</p>
+                  </div>
+                </li>
+                <li class="docs-step">
+                  <span class="docs-step-num">5</span>
+                  <div>
+                    <h3>加载已解压的扩展程序</h3>
+                    <p>点击「加载已解压的扩展程序」→ 选择解压后的目录。</p>
+                  </div>
+                </li>
+              </ol>
+              <div style="margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center;">
+                <a class="btn btn-primary" href="https://github.com/mr-wuliu/wupage/releases/download/v0.1.1/wupage-0.1.1-edge.zip" download>⬇ 下载 v0.1.1 ZIP</a>
+                <a href="https://github.com/mr-wuliu/wupage/releases/tag/v0.1.1" target="_blank" rel="noopener" style="font-size: var(--fs-sm); color: var(--text-muted);">查看发布说明 →</a>
               </div>
-            </header>
-            <p class="install-subtext">克隆仓库、安装依赖、构建产物,完全开源。</p>
-            <ol class="install-steps">
-              <li class="install-item">
-                <span class="install-num">1</span>
-                <div class="install-body">
-                  <h4>克隆仓库</h4>
-                  <div class="code-block"><code>git clone https://github.com/mr-wuliu/wupage</code></div>
-                </div>
-              </li>
-              <li class="install-item">
-                <span class="install-num">2</span>
-                <div class="install-body">
-                  <h4>安装依赖并构建</h4>
-                  <div class="code-block"><code>npm install &amp;&amp; npm run build</code></div>
-                </div>
-              </li>
-              <li class="install-item">
-                <span class="install-num">3</span>
-                <div class="install-body">
-                  <h4>打开扩展管理页</h4>
-                  <p>Chrome 访问 <code>chrome://extensions</code>,Edge 访问 <code>edge://extensions</code>。</p>
-                </div>
-              </li>
-              <li class="install-item">
-                <span class="install-num">4</span>
-                <div class="install-body">
-                  <h4>开启「开发者模式」</h4>
-                  <p>在扩展管理页右上角开启「开发者模式」开关。</p>
-                </div>
-              </li>
-              <li class="install-item">
-                <span class="install-num">5</span>
-                <div class="install-body">
-                  <h4>加载已解压的扩展程序</h4>
-                  <p>点击「加载已解压的扩展程序」→ 选择仓库中的 <code>dist/</code> 目录。</p>
-                </div>
-              </li>
-            </ol>
-            <div class="install-card-cta">
-              <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-                前往 GitHub 仓库
-              </a>
-              <ul class="install-meta">
-                <li>Manifest V3</li>
-                <li>TypeScript + Vite</li>
-                <li>Chrome / Edge</li>
-              </ul>
-            </div>
-          </article>
+            </article>
 
+            <!-- ========== 从源码编译 ========== -->
+            <article id="install-source" class="docs-article reveal" data-reveal>
+              <header class="docs-article-head">
+                <span class="api-badge api-badge-muted">适合开发者</span>
+                <h2>从源码编译</h2>
+                <p class="api-lead">克隆仓库、安装依赖、构建产物,完全开源。</p>
+              </header>
+              <ol class="docs-steps">
+                <li class="docs-step">
+                  <span class="docs-step-num">1</span>
+                  <div>
+                    <h3>克隆仓库</h3>
+                    <div class="code-block"><code>git clone https://github.com/mr-wuliu/wupage</code></div>
+                  </div>
+                </li>
+                <li class="docs-step">
+                  <span class="docs-step-num">2</span>
+                  <div>
+                    <h3>安装依赖并构建</h3>
+                    <div class="code-block"><code>npm install &amp;&amp; npm run build</code></div>
+                  </div>
+                </li>
+                <li class="docs-step">
+                  <span class="docs-step-num">3</span>
+                  <div>
+                    <h3>打开扩展管理页</h3>
+                    <p>Chrome 访问 <code>chrome://extensions</code>,Edge 访问 <code>edge://extensions</code>。</p>
+                  </div>
+                </li>
+                <li class="docs-step">
+                  <span class="docs-step-num">4</span>
+                  <div>
+                    <h3>开启「开发者模式」</h3>
+                    <p>在扩展管理页右上角开启「开发者模式」开关。</p>
+                  </div>
+                </li>
+                <li class="docs-step">
+                  <span class="docs-step-num">5</span>
+                  <div>
+                    <h3>加载已解压的扩展程序</h3>
+                    <p>点击「加载已解压的扩展程序」→ 选择仓库中的 <code>dist/</code> 目录。</p>
+                  </div>
+                </li>
+              </ol>
+              <div style="margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center;">
+                <a class="btn btn-primary" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" style="margin-right: 6px; vertical-align: -2px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                  前往 GitHub 仓库
+                </a>
+                <ul class="install-meta" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: var(--s-2); font-size: var(--fs-xs);">
+                  <li>Manifest V3</li>
+                  <li>TypeScript + Vite</li>
+                  <li>Chrome / Edge</li>
+                </ul>
+              </div>
+            </article>
+
+          </div>
         </div>
       </div>
     </section>
@@ -561,5 +550,6 @@
   </footer>
 
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/docs.js" defer></script>
 </body>
 </html>
