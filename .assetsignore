@@ -16,3 +16,8 @@ node_modules/
 wrangler.jsonc
 .gitignore
 .assetsignore
+README.md
+
+# wrangler-action 在 CI 里 `npm i wrangler` 时自动生成，绝不能上传
+package.json
+package-lock.json
