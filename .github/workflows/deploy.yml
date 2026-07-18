@@ -34,6 +34,10 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # wrangler-action 会自动安装 wrangler，读取仓库根目录的 wrangler.jsonc，
-          # 把 ./ 下的全部静态资源 + _headers 推送到 Workers Static Assets。
+          # 关键：Workers Static Assets 需要 wrangler 4.x+。
+          # wrangler-action@v3 默认安装的是 3.x，会以 "Missing entry-point" 报错
+          # （因为 assets-only 配置没有 main 字段）。必须显式 pin 到 4.x。
+          wranglerVersion: "4"
+          # wrangler-action 会读取仓库根目录的 wrangler.jsonc，把 ./ 下的全部
+          # 静态资源 + _headers 推送到 Workers Static Assets。
           # 部署完成会输出 https://wupage-web.<workers.dev 子域>.workers.dev 地址。
