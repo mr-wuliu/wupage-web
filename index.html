@@ -303,14 +303,15 @@
         <div class="section-head reveal" data-reveal>
           <span class="eyebrow">下载安装</span>
           <h2 class="section-title" id="installTitle">选择适合你的安装方式</h2>
-          <p class="section-desc">三种安装方式,从一键下载到源码编译,任你选择。</p>
+          <p class="section-desc">四种安装方式,从商店一键安装到源码编译,任你选择。</p>
         </div>
 
         <div class="docs-layout reveal" data-reveal>
           <!-- LEFT SIDEBAR -->
           <aside class="docs-sidebar" aria-label="安装方式列表">
             <nav class="docs-nav" aria-label="安装方式导航">
-              <a href="#install-store" class="docs-nav-link is-active">商店下载 <em>审核中</em></a>
+              <a href="#install-edge" class="docs-nav-link is-active">Edge 商店 <em>已上线</em></a>
+              <a href="#install-chrome" class="docs-nav-link">Chrome 商店 <em>审核中</em></a>
               <a href="#install-github" class="docs-nav-link">GitHub 下载 <em>v1.0.1</em></a>
               <a href="#install-source" class="docs-nav-link">从源码编译 <em>开发者</em></a>
             </nav>
@@ -319,26 +320,44 @@
           <!-- RIGHT CONTENT -->
           <div class="docs-content">
 
-            <!-- ========== 商店下载 ========== -->
-            <article id="install-store" class="docs-article reveal" data-reveal>
+            <!-- ========== Edge Add-ons (featured, 已上线) ========== -->
+            <article id="install-edge" class="docs-article docs-article-featured reveal" data-reveal>
+              <header class="docs-article-head">
+                <span class="api-badge api-badge-brand">已上线</span>
+                <h2>Microsoft Edge Add-ons</h2>
+                <p class="api-lead">Edge 用户可从官方 Add-ons 商店一键安装,无需手动加载,支持自动更新。</p>
+              </header>
+              <div class="docs-callout">
+                <ul class="docs-checklist">
+                  <li>Microsoft Edge 浏览器（Windows / macOS / Linux）</li>
+                  <li>商店分发,Manifest V3,自动更新</li>
+                </ul>
+              </div>
+              <div style="margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center;">
+                <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/wupage-translator/ophhojnppohaklhcdaheplkodopmplfg" target="_blank" rel="noopener">前往 Edge Add-ons →</a>
+                <span style="font-size: var(--fs-sm); color: var(--text-muted);">免费 · 一键安装</span>
+              </div>
+            </article>
+
+            <!-- ========== Chrome Web Store (审核中) ========== -->
+            <article id="install-chrome" class="docs-article reveal" data-reveal>
               <header class="docs-article-head">
                 <span class="api-badge api-badge-muted">审核中</span>
-                <h2>商店下载</h2>
-                <p class="api-lead">Chrome Web Store 和 Edge Add-ons 均已提交,正在审核中。上线后可一键安装。</p>
+                <h2>Chrome Web Store</h2>
+                <p class="api-lead">Chrome Web Store 已提交,正在审核中。上线后可一键安装。在此之前请使用 Edge 商店或 GitHub 下载。</p>
               </header>
               <div class="docs-callout">
                 <ul class="docs-checklist">
                   <li>Chrome Web Store（即将上架）</li>
-                  <li>Microsoft Edge Add-ons（即将上架）</li>
                 </ul>
               </div>
               <div style="margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center;">
-                <button type="button" class="btn btn-primary" disabled aria-disabled="true" style="opacity: 0.6; cursor: not-allowed;">暂未上线</button>
+                <button type="button" class="btn btn-primary" disabled aria-disabled="true" style="opacity: 0.6; cursor: not-allowed;">Chrome 审核中</button>
               </div>
             </article>
 
-            <!-- ========== GitHub 下载 (featured) ========== -->
-            <article id="install-github" class="docs-article docs-article-featured reveal" data-reveal>
+            <!-- ========== GitHub 下载 ========== -->
+            <article id="install-github" class="docs-article reveal" data-reveal>
               <header class="docs-article-head">
                 <span class="api-badge api-badge-brand">v1.0.1</span>
                 <h2>GitHub 下载</h2>
