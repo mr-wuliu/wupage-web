@@ -694,6 +694,33 @@ code {
   to { opacity: 1; transform: translateY(0); }
 }
 
+.showcase-caption {
+  max-width: 920px;
+  margin: var(--s-5) auto 0;
+  text-align: center;
+}
+.showcase-caption h3 {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 var(--s-2);
+}
+.showcase-caption p {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+  max-width: 62ch;
+  margin-inline: auto;
+}
+.showcase-caption code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--bg-inset);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-sm);
+  padding: 1px 6px;
+}
+
 /* Browser frame */
 .browser-frame {
   background: var(--bg-elevated);

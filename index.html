@@ -44,8 +44,7 @@
 
       <nav class="nav-desktop" aria-label="主导航">
         <a href="#features">功能特色</a>
-        <a href="#guide">功能指导</a>
-        <a href="#showcase">效果展示</a>
+        <a href="#demo">功能演示</a>
         <a href="/api.html">API 获取</a>
         <a href="#install">下载安装</a>
       </nav>
@@ -55,7 +54,7 @@
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
           GitHub
         </a>
-        <a class="btn btn-primary btn-sm" href="#guide">查看使用指南</a>
+        <a class="btn btn-primary btn-sm" href="#demo">查看演示</a>
         <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileNav">
           <span></span><span></span><span></span>
         </button>
@@ -64,8 +63,7 @@
 
     <nav class="nav-mobile" id="mobileNav" aria-label="移动端导航" hidden>
       <a href="#features">功能特色</a>
-      <a href="#guide">功能指导</a>
-      <a href="#showcase">效果展示</a>
+      <a href="#demo">功能演示</a>
       <a href="/api.html">API 获取</a>
       <a href="#install">下载安装</a>
       <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">前往 GitHub 仓库</a>
@@ -96,8 +94,8 @@
           无需自建代理，请求直达翻译服务。
         </p>
         <div class="hero-cta reveal" data-reveal>
-          <a href="#guide" class="btn btn-primary btn-lg">
-            查看使用指南
+          <a href="#demo" class="btn btn-primary btn-lg">
+            查看演示
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9h10m0 0L9 4m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <a href="/api.html" class="btn btn-secondary btn-lg">获取翻译 API</a>
@@ -174,85 +172,22 @@
       </div>
     </section>
 
-    <!-- ============ GUIDE ============ -->
-    <section class="section section-subtle" id="guide" aria-labelledby="guideTitle">
+    <!-- ============ DEMO ============ -->
+    <section class="section" id="demo" aria-labelledby="demoTitle">
       <div class="container">
         <div class="section-head reveal" data-reveal>
-          <span class="eyebrow">功能指导</span>
-          <h2 class="section-title" id="guideTitle">几步开始使用</h2>
-          <p class="section-desc">从安装扩展到高级配置，跟着步骤即可跑通完整翻译流程。</p>
+          <span class="eyebrow">功能演示</span>
+          <h2 class="section-title" id="demoTitle">真实的插件界面，看图即懂</h2>
+          <p class="section-desc">WuPage Translator v1.0.1 真实使用截图 —— 从弹窗控制、选项配置到双语对照效果，每张图本身就是一份使用指南。</p>
         </div>
 
-        <ol class="steps reveal" data-reveal>
-          <li class="step">
-            <span class="step-num">01</span>
-            <div class="step-body">
-              <h3>安装扩展</h3>
-              <p>从 <code>dist/</code> 目录在 <code>chrome://extensions</code> 或 <code>edge://extensions</code> 开启开发者模式后加载。</p>
-            </div>
-          </li>
-          <li class="step">
-            <span class="step-num">02</span>
-            <div class="step-body">
-              <h3>打开弹窗</h3>
-              <p>点击浏览器工具栏的 WuPage 图标，呼出翻译控制面板。</p>
-            </div>
-          </li>
-          <li class="step">
-            <span class="step-num">03</span>
-            <div class="step-body">
-              <h3>选择目标语言</h3>
-              <p>在「目标语言」下拉中选择要翻译成的语言。</p>
-            </div>
-          </li>
-          <li class="step">
-            <span class="step-num">04</span>
-            <div class="step-body">
-              <h3>选择翻译服务</h3>
-              <p>在「翻译服务」下拉中选择服务商（推荐先用免 Key 的 Google Web）。</p>
-            </div>
-          </li>
-          <li class="step">
-            <span class="step-num">05</span>
-            <div class="step-body">
-              <h3>点击「翻译全文」</h3>
-              <p>一键翻译，原文下方即出现译文，双语对照即刻呈现。</p>
-            </div>
-          </li>
-          <li class="step">
-            <span class="step-num">06</span>
-            <div class="step-body">
-              <h3>高级设置</h3>
-              <p>点击「设置」进入选项页，可配置分块大小、并发数、缓存、各服务商密钥。</p>
-            </div>
-          </li>
-          <li class="step">
-            <span class="step-num">07</span>
-            <div class="step-body">
-              <h3>清除缓存</h3>
-              <p>弹窗内点「清除缓存」可重置本地翻译缓存，便于调试或更换服务。</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============ SHOWCASE ============ -->
-    <section class="section" id="showcase" aria-labelledby="showcaseTitle">
-      <div class="container">
-        <div class="section-head reveal" data-reveal>
-          <span class="eyebrow">效果展示</span>
-          <h2 class="section-title" id="showcaseTitle">真实的插件界面</h2>
-          <p class="section-desc">WuPage Translator v1.0.1 真实使用截图 —— 扩展已加载于真实 Chromium 浏览器，翻译由 Google Web Translate 实际执行。</p>
-        </div>
-
-        <div class="showcase-tabs reveal" data-reveal role="tablist" aria-label="效果展示切换">
+        <div class="showcase-tabs reveal" data-reveal role="tablist" aria-label="功能演示切换">
           <button class="showcase-tab is-active" role="tab" aria-selected="true" data-showcase-tab="popup">弹窗 Popup</button>
           <button class="showcase-tab" role="tab" aria-selected="false" data-showcase-tab="options">选项页 Options</button>
           <button class="showcase-tab" role="tab" aria-selected="false" data-showcase-tab="bilingual">双语对照</button>
         </div>
 
-        <!-- (A) Popup mockup -->
+        <!-- (A) Popup screenshot -->
         <div class="showcase-panel is-active reveal" data-reveal data-showcase-panel="popup">
           <div class="browser-frame">
             <div class="browser-bar">
@@ -263,9 +198,13 @@
               <img class="screenshot-img" src="assets/img/showcase/popup.png" alt="WuPage Translator 弹窗真实截图：显示翻译语言选择、翻译服务、段落模式与悬浮球开关、翻译全文按钮" loading="lazy" width="320" height="560">
             </div>
           </div>
+          <div class="showcase-caption">
+            <h3>弹窗 · 一步开始翻译</h3>
+            <p>点击工具栏 WuPage 图标呼出面板。在「目标语言」与「翻译服务」下拉中选择（推荐先用免 Key 的 <code>Google Web</code>），点击「翻译全文」即可。需要重置时点底部「清除缓存」。</p>
+          </div>
         </div>
 
-        <!-- (B) Options mockup -->
+        <!-- (B) Options screenshot -->
         <div class="showcase-panel reveal" data-reveal data-showcase-panel="options">
           <div class="browser-frame">
             <div class="browser-bar">
@@ -276,9 +215,13 @@
               <img class="screenshot-img" src="assets/img/showcase/options.png" alt="WuPage Translator 选项页真实截图：通用设置（翻译语言/分块大小/并发数/缓存/悬浮球）与翻译服务配置（Google Web Translate）" loading="lazy" width="945" height="869">
             </div>
           </div>
+          <div class="showcase-caption">
+            <h3>选项页 · 高级配置</h3>
+            <p>点击弹窗内的「设置」进入。配置通用项（分块大小、并发数、缓存开关、悬浮球显示），并管理各翻译服务商的密钥、参数与连通性测试。</p>
+          </div>
         </div>
 
-        <!-- (C) Bilingual demo -->
+        <!-- (C) Bilingual screenshot -->
         <div class="showcase-panel reveal" data-reveal data-showcase-panel="bilingual">
           <div class="browser-frame">
             <div class="browser-bar">
@@ -288,6 +231,10 @@
             <div class="browser-body screenshot-body article-stage">
               <img class="screenshot-img" src="assets/img/showcase/bilingual.png" alt="WuPage Translator 在 Wikipedia Web_browser 词条上的真实翻译截图：左侧目录与正文首段已译为中文，与英文原文并列显示" loading="lazy" width="1280" height="800">
             </div>
+          </div>
+          <div class="showcase-caption">
+            <h3>双语对照 · 翻译效果</h3>
+            <p>点击「翻译全文」后，原文下方立即插入译文，段落对照便于精读与对照学习。可在弹窗内开启「段落模式」，按需逐段翻译，精细化控制翻译粒度。</p>
           </div>
         </div>
       </div>
@@ -524,8 +471,7 @@
         <div class="footer-col">
           <h4>产品</h4>
           <a href="#features">功能特色</a>
-          <a href="#guide">使用指南</a>
-          <a href="#showcase">效果展示</a>
+          <a href="#demo">功能演示</a>
         </div>
         <div class="footer-col">
           <h4>开发</h4>
