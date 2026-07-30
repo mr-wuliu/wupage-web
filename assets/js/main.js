@@ -165,6 +165,18 @@
     'data-api-tab', 'data-api-panel'
   );
 
+  /* ---------- Smart download button (browser detection) ---------- */
+  var heroDownload = document.getElementById('heroDownload');
+  if (heroDownload) {
+    var ua = navigator.userAgent;
+    if (/Edg\//.test(ua)) {
+      heroDownload.href = 'https://microsoftedge.microsoft.com/addons/detail/wupage-translator/ophhojnppohaklhcdaheplkodopmplfg';
+      heroDownload.target = '_blank';
+      heroDownload.rel = 'noopener';
+      heroDownload.innerHTML = '前往 Edge Add-ons <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9h10m0 0L9 4m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    }
+  }
+
   /* ---------- Set current year (if needed) ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = String(new Date().getFullYear());
