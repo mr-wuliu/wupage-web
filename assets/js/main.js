@@ -132,6 +132,7 @@
           const isActive = t === tab;
           t.classList.toggle('is-active', isActive);
           t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          t.tabIndex = isActive ? 0 : -1;
         });
         section.querySelectorAll(panelSelector).forEach(function (panel) {
           const isActive = panel.getAttribute(panelAttr) === key;

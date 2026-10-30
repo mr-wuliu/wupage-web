@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#6366f1" />
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
+  <title>使用引导 — WuPage Translator</title>
+  <meta name="description" content="翻译网页、图片与 PDF，按自己的节奏阅读外文。支持双语对照、译文编辑与离线翻译，安装后即可开始。" />
+  <meta name="author" content="WuPage Translator" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="WuPage Translator — 一键翻译整个网页" />
+  <meta property="og:description" content="网页、图片与 PDF 翻译，双语阅读与译文编辑。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important;}.pdf-p .trans{display:block !important;}</style></noscript>
+  <link rel="stylesheet" href="assets/css/style.css?v=20261031" />
+</head>
+<body>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html#top" class="brand" aria-label="WuPage Translator 首页">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="8" fill="url(#brandGrad)"/>
+            <path d="M7 9.5h14M7 14h9M7 18.5h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="brandGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6366f1"/>
+                <stop offset="1" stop-color="#3b82f6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="brand-name">WuPage</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="主导航">
+        <a href="index.html#features">功能特色</a>
+        <a href="index.html#demo">阅读效果</a>
+        <a href="guide.html">使用引导</a>
+        <a href="index.html#install">下载安装</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-ghost btn-sm" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a class="btn btn-primary btn-sm" href="index.html#install">立即下载</a>
+        <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <nav class="nav-mobile" id="mobileNav" aria-label="移动端导航" hidden>
+      <a href="index.html#features">功能特色</a>
+      <a href="index.html#demo">阅读效果</a>
+        <a href="guide.html">使用引导</a>
+      <a href="index.html#install">下载安装</a>
+      <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">前往 GitHub 仓库</a>
+    </nav>
+  </header>
+
+<main id="top">
+<section class="section guide-section">
+<div class="container">
+<div class="section-head"><span class="eyebrow">WuPage 使用引导</span>
+<h1 class="section-title">从第一篇外文开始</h1>
+<p class="section-desc">跟着四个步骤，找到舒服的阅读方式。随时可以返回查看。</p>
+</div>
+<nav class="guide-progress" aria-label="引导步骤">
+<a href="#step-1" data-guide-go="0" aria-current=step><span>01</span>安装扩展</a>
+<a href="#step-2" data-guide-go="1" ><span>02</span>第一次翻译</a>
+<a href="#step-3" data-guide-go="2" ><span>03</span>阅读方式</a>
+<a href="#step-4" data-guide-go="3" ><span>04</span>更多功能</a>
+</nav>
+<p id="guideCount" class="guide-count" aria-live="polite">第 1 / 4 步</p>
+<article class="guide-card" id="step-1" data-guide-step="0">
+<div class="guide-copy"><span class="eyebrow">安装扩展</span>
+<h2 tabindex="-1">先把 WuPage 放到工具栏</h2>
+<p>推荐从 Edge 商店安装。Chrome 用户下载最新发布中的 Edge ZIP 包，解压后在扩展管理页开启「开发者模式」，选择「加载已解压的扩展程序」。</p>
+<div class="guide-tip">安装完成后，将扩展固定到工具栏，并刷新已经打开的网页。</div>
+</div>
+<div class="guide-visual">
+<a class="btn btn-primary" href="index.html#install">选择安装方式</a>
+</div>
+</article>
+<article class="guide-card" id="step-2" data-guide-step="1">
+<div class="guide-copy"><span class="eyebrow">第一次翻译</span>
+<h2 tabindex="-1">打开一篇你想读的外文文章</h2>
+<p>点击工具栏的 WuPage 图标，源语言保留「自动检测」，目标语言选择「简体中文」，使用默认的 Google Web Translate，点击「翻译全文」。</p>
+<div class="guide-tip">看到原文下方出现译文，就可以开始阅读了。点击「显示全文」可恢复原文。</div>
+</div>
+<div class="guide-visual">
+<div class="reading-sample">
+<p>Good ideas can come from anywhere.</p>
+<p class="sample-translation">好想法可以来自任何地方。</p><small>双语阅读效果示意</small>
+</div>
+</div>
+</article>
+<article class="guide-card" id="step-3" data-guide-step="2">
+<div class="guide-copy"><span class="eyebrow">阅读方式</span>
+<h2 tabindex="-1">让译文按你的习惯呈现</h2>
+<p>在「显示模式」中选择译文替换、原色对照或双色对照。已经翻译的内容会立即切换，无需再等一次。</p>
+<div class="guide-tip">只想看某一段？开启「段落模式」，按住 Ctrl 点击段落。开启「悬浮球」后，也能直接在页面中翻译、恢复原文和切换设置。</div>
+</div>
+<div class="guide-visual">
+<div class="mode-picker" role="group" aria-label="体验显示模式">
+<button class="btn btn-secondary" data-mode="replace" aria-pressed="false">译文替换</button>
+<button class="btn btn-secondary" data-mode="original" aria-pressed="true">原色对照</button>
+<button class="btn btn-secondary" data-mode="color" aria-pressed="false">双色对照</button>
+</div>
+<div class="reading-sample" id="modeSample">
+<p data-original>Make time for the things you love.</p>
+<p class="sample-translation">给热爱的事情留一点时间。</p><small>显示方式示意，可点击上方按钮切换</small>
+</div>
+</div>
+</article>
+<article class="guide-card" id="step-4" data-guide-step="3">
+<div class="guide-copy"><span class="eyebrow">更多功能</span>
+<h2 tabindex="-1">不止网页，还有图片与 PDF</h2>
+<p>图片：点击「图片翻译」旁的扳手，安装文字识别模型后开启功能。悬停网页图片点击「译」，或在图片上右键选择 WuPage 翻译。</p>
+<div class="guide-tip">PDF：打开文档，点击弹窗中的「翻译PDF」进入双栏工作区；也可拖放文件。按需翻译附近页面，编辑译文后导出。</div>
+</div>
+<div class="guide-visual">
+<img class="product-shot" src="assets/img/showcase/PDF-ppt-trans.png" alt="PDF 工作区，左侧原文右侧译文">
+<p>想用自己的 AI 服务或离线翻译？<a href="api.html">查看翻译服务指南 →</a>
+</p>
+</div>
+</article>
+<div class="guide-controls" hidden>
+<button class="btn btn-secondary" id="guidePrev">上一步</button>
+<a href="index.html#demo">先看看阅读效果</a>
+<button class="btn btn-primary" id="guideNext">下一步 →</button>
+</div><noscript>
+<p>可直接阅读以上全部步骤。</p></noscript>
+</div>
+</section>
+</main>  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html#top" class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+              <rect width="28" height="28" rx="8" fill="url(#footerGrad)"/>
+              <path d="M7 9.5h14M7 14h9M7 18.5h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              <defs>
+<linearGradient id="footerGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>
+            </svg>
+          </span>
+          <span class="brand-name">WuPage Translator</span>
+        </a>
+        <p class="footer-tagline">一键翻译整个网页，双语对照阅读。<br />网页、图片与 PDF，在浏览器里轻松读懂。</p>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>产品</h4>
+          <a href="index.html#features">功能特色</a>
+          <a href="index.html#demo">阅读效果</a>
+        <a href="guide.html">使用引导</a>
+        </div>
+        <div class="footer-col">
+          <h4>帮助与支持</h4>
+          <a href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">GitHub 仓库</a>
+          <a href="/api.html">翻译服务指南</a>
+          <a href="index.html#install">下载安装</a>
+        </div>
+        <div class="footer-col">
+          <h4>翻译服务</h4>
+          <a href="/api.html#gweb">Google Web</a>
+          <a href="/api.html#ms">微软 Translator</a>
+          <a href="/api.html#gcloud">Google Cloud</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 WuPage Translator. 开源项目。</span>
+        <span class="footer-built">让外文阅读更轻松</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js?v=20261031" defer></script>
+  <script src="assets/js/docs.js" defer></script>
+<script src="assets/js/guide.js?v=20261031" defer></script></body>
+</html>

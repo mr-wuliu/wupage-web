@@ -7,20 +7,20 @@
   <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
   <title>WuPage Translator — 一键翻译整个网页，双语对照阅读</title>
-  <meta name="description" content="基于 Manifest V3 的浏览器翻译扩展，支持 Chrome 与 Edge。一键翻译整个网页，双语对照阅读，支持多种翻译服务，无需自建代理。" />
+  <meta name="description" content="翻译网页、图片与 PDF，按自己的节奏阅读外文。支持双语对照、译文编辑与离线翻译，安装后即可开始。" />
   <meta name="author" content="WuPage Translator" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="WuPage Translator — 一键翻译整个网页" />
-  <meta property="og:description" content="基于 Manifest V3 的浏览器翻译扩展，双语对照阅读，支持多种翻译服务。" />
+  <meta property="og:description" content="网页、图片与 PDF 翻译，双语阅读与译文编辑。" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="zh_CN" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important;}.pdf-p .trans{display:block !important;}</style></noscript>
+  <link rel="stylesheet" href="assets/css/style.css?v=20261031" />
 </head>
 <body>
   <!-- ============ HEADER ============ -->
@@ -44,7 +44,8 @@
 
       <nav class="nav-desktop" aria-label="主导航">
         <a href="#features">功能特色</a>
-        <a href="#demo">功能演示</a>
+        <a href="#demo">阅读效果</a>
+        <a href="guide.html">使用引导</a>
         <a href="#install">下载安装</a>
       </nav>
 
@@ -62,7 +63,8 @@
 
     <nav class="nav-mobile" id="mobileNav" aria-label="移动端导航" hidden>
       <a href="#features">功能特色</a>
-      <a href="#demo">功能演示</a>
+      <a href="#demo">阅读效果</a>
+        <a href="guide.html">使用引导</a>
       <a href="#install">下载安装</a>
       <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">前往 GitHub 仓库</a>
     </nav>
@@ -81,30 +83,33 @@
       <div class="container hero-inner">
         <span class="pill reveal" data-reveal>
           <span class="pill-dot"></span>
-          Manifest V3 · Chrome / Edge
+          网页 · 图片 · PDF
         </span>
         <h1 class="hero-title reveal" data-reveal id="heroTitle">
           <span class="grad-text">WuPage</span> Translator
         </h1>
-        <p class="hero-tagline reveal" data-reveal>一键翻译整个网页，双语对照阅读，支持多种翻译服务</p>
+        <p class="hero-tagline reveal" data-reveal>从网页到 PDF，让外文阅读更轻松</p>
         <p class="hero-subtext reveal" data-reveal>
-          基于 Manifest V3 的浏览器翻译扩展，支持 Chrome 与 Edge。<br class="hide-mobile" />
-          无需自建代理，请求直达翻译服务。
+          读文章、看图片、校对文档，在熟悉的浏览器里完成。<br class="hide-mobile" />
+          安装后即可翻译，也能选择你喜欢的 AI 或本地离线服务。
         </p>
         <div class="hero-cta reveal" data-reveal>
           <a href="#install" class="btn btn-primary btn-lg" id="heroDownload">
             免费下载
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 3v10m0 0L5 9m4 4l4-4M3 15h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#demo" class="btn btn-secondary btn-lg">查看演示</a>
+          <a href="guide.html" class="btn btn-secondary btn-lg">跟着引导开始</a>
         </div>
 
         <div class="hero-stats reveal" data-reveal>
-          <div class="stat"><span class="stat-num">6+</span><span class="stat-label">翻译服务</span></div>
+          <div class="stat"><span class="stat-num">多种</span><span class="stat-label">翻译服务</span>
+</div>
           <span class="stat-divider" aria-hidden="true"></span>
-          <div class="stat"><span class="stat-num">2</span><span class="stat-label">浏览器</span></div>
+          <div class="stat"><span class="stat-num">3</span><span class="stat-label">阅读模式</span>
+</div>
           <span class="stat-divider" aria-hidden="true"></span>
-          <div class="stat"><span class="stat-num">0</span><span class="stat-label">自建代理</span></div>
+          <div class="stat"><span class="stat-num">离线</span><span class="stat-label">也能翻译</span>
+</div>
         </div>
       </div>
     </section>
@@ -123,291 +128,149 @@
             <div class="feature-icon" style="--ic-1:#6366f1;--ic-2:#3b82f6">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 16l4 2-4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3>一键全文翻译</h3>
-            <p>点击即可翻译整个页面，无需选中文字。整页内容即刻获得对照译文。</p>
+            <h3>一键翻译，接着读</h3>
+<p>在当前网页查看译文，滚动加载的新内容也能继续翻译。只想读一段？开启段落模式，按住 Ctrl 点击即可。</p>
           </article>
 
           <article class="card feature-card reveal" data-reveal>
             <div class="feature-icon" style="--ic-1:#0ea5e9;--ic-2:#06b6d4">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h7M4 12h7M4 17h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 7l5 1m-5 4l5 1m-5 4l5 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
-            <h3>双语对照渲染</h3>
-            <p>保留原文，译文紧跟其后插入，对照阅读更清晰，长文也不迷路。</p>
+            <h3>三种显示，随心切换</h3>
+<p>只看译文，或保留原文逐段对照。原色与双色对照都可选择，切换时无需重新翻译。</p>
           </article>
 
           <article class="card feature-card reveal" data-reveal>
             <div class="feature-icon" style="--ic-1:#14b8a6;--ic-2:#06b6d4">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5L12 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
             </div>
-            <h3>多翻译服务支持</h3>
-            <p>内置 Google Web、微软、Google Cloud、OpenAI 兼容、HTTP 模板，按需切换。</p>
+            <h3>图片里的文字，也能看懂</h3>
+<p>安装文字识别模型后，悬停图片点击「译」，或从右键菜单翻译图片。原图与译图随时切换。</p>
           </article>
 
           <article class="card feature-card reveal" data-reveal>
             <div class="feature-icon" style="--ic-1:#8b5cf6;--ic-2:#6366f1">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7l8-4 8 4M4 7v10l8 4 8-4V7M4 7l8 4 8-4M12 11v10" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
             </div>
-            <h3>本地缓存</h3>
-            <p>按「服务+目标语言+原文」缓存，重复内容不重复请求，省额度也省时间。</p>
+            <h3>PDF 从阅读到校对</h3>
+<p>原文、译文双栏对照，边读边翻译附近页面。直接修改译文、调整位置，校对后导出 PDF。</p>
           </article>
 
           <article class="card feature-card reveal" data-reveal>
             <div class="feature-icon" style="--ic-1:#3b82f6;--ic-2:#0ea5e9">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
-            <h3>悬浮球快捷入口</h3>
-            <p>页面悬浮球，随时唤起翻译，无需打开弹窗，操作路径更短。</p>
+            <h3>悬浮球，顺手就能用</h3>
+<p>点击翻译或恢复原文，悬停展开语言与服务菜单。拖到习惯的位置，阅读时少一点打断。</p>
           </article>
 
           <article class="card feature-card reveal" data-reveal>
             <div class="feature-icon" style="--ic-1:#6366f1;--ic-2:#14b8a6">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/></svg>
             </div>
-            <h3>段落模式</h3>
-            <p>可切换段落级翻译，精细化控制翻译粒度，适合逐段精读。</p>
+            <h3>选择自己的翻译方式</h3>
+<p>默认服务无需密钥；也可使用 DeepSeek、GLM 等服务，或下载本地语言模型，离线阅读。</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ DEMO ============ -->
     <section class="section" id="demo" aria-labelledby="demoTitle">
-      <div class="container">
-        <div class="section-head reveal" data-reveal>
-          <span class="eyebrow">功能演示</span>
-          <h2 class="section-title" id="demoTitle">真实的插件界面，看图即懂</h2>
-          <p class="section-desc">WuPage Translator v1.5.5 真实使用截图 —— 从弹窗控制、选项配置到双语对照效果，每张图本身就是一份使用指南。</p>
-        </div>
-
-        <div class="showcase-tabs reveal" data-reveal role="tablist" aria-label="功能演示切换">
-          <button class="showcase-tab is-active" role="tab" aria-selected="true" data-showcase-tab="popup">弹窗 Popup</button>
-          <button class="showcase-tab" role="tab" aria-selected="false" data-showcase-tab="options">选项页 Options</button>
-          <button class="showcase-tab" role="tab" aria-selected="false" data-showcase-tab="bilingual">双语对照</button>
-        </div>
-
-        <!-- (A) Popup screenshot -->
-        <div class="showcase-panel is-active reveal" data-reveal data-showcase-panel="popup">
-          <div class="browser-frame">
-            <div class="browser-bar">
-              <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
-              <span class="browser-url">chrome-extension://wupage/popup.html</span>
-            </div>
-            <div class="browser-body screenshot-body popup-stage">
-              <img class="screenshot-img" src="assets/img/showcase/popup.png" alt="WuPage Translator 弹窗真实截图：显示翻译语言选择、翻译服务、段落模式与悬浮球开关、翻译全文按钮" loading="lazy" width="320" height="560">
-            </div>
-          </div>
-          <div class="showcase-caption">
-            <h3>弹窗 · 一步开始翻译</h3>
-            <p>点击工具栏 WuPage 图标呼出面板。在「目标语言」与「翻译服务」下拉中选择（推荐先用免 Key 的 <code>Google Web</code>），点击「翻译全文」即可。需要重置时点底部「清除缓存」。</p>
-          </div>
-        </div>
-
-        <!-- (B) Options screenshot -->
-        <div class="showcase-panel reveal" data-reveal data-showcase-panel="options">
-          <div class="browser-frame">
-            <div class="browser-bar">
-              <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
-              <span class="browser-url">chrome-extension://wupage/options.html</span>
-            </div>
-            <div class="browser-body screenshot-body options-stage">
-              <img class="screenshot-img" src="assets/img/showcase/options.png" alt="WuPage Translator 选项页真实截图：通用设置（翻译语言/分块大小/并发数/缓存/悬浮球）与翻译服务配置（Google Web Translate）" loading="lazy" width="945" height="869">
-            </div>
-          </div>
-          <div class="showcase-caption">
-            <h3>选项页 · 高级配置</h3>
-            <p>点击弹窗内的「设置」进入。配置通用项（分块大小、并发数、缓存开关、悬浮球显示），并管理各翻译服务商的密钥、参数与连通性测试。</p>
-          </div>
-        </div>
-
-        <!-- (C) Bilingual screenshot -->
-        <div class="showcase-panel reveal" data-reveal data-showcase-panel="bilingual">
-          <div class="browser-frame">
-            <div class="browser-bar">
-              <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
-              <span class="browser-url">https://en.wikipedia.org/wiki/Web_browser</span>
-            </div>
-            <div class="browser-body screenshot-body article-stage">
-              <img class="screenshot-img" src="assets/img/showcase/bilingual.png" alt="WuPage Translator 在 Wikipedia Web_browser 词条上的真实翻译截图：左侧目录与正文首段已译为中文，与英文原文并列显示" loading="lazy" width="1280" height="800">
-            </div>
-          </div>
-          <div class="showcase-caption">
-            <h3>双语对照 · 翻译效果</h3>
-            <p>点击「翻译全文」后，原文下方立即插入译文，段落对照便于精读与对照学习。可在弹窗内开启「段落模式」，按需逐段翻译，精细化控制翻译粒度。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
+<div class="container">
+<div class="section-head"><span class="eyebrow">阅读效果</span>
+<h2 class="section-title" id="demoTitle">读懂内容，也保留熟悉的版面</h2>
+<p class="section-desc">看看网页原文、翻译后的页面，以及 PDF 双栏阅读的真实效果。</p>
+</div>
+<div class="showcase-tabs" role="tablist" aria-label="阅读效果">
+<button class="showcase-tab is-active" id="tab-original" role="tab" aria-controls="panel-original" aria-selected="true" tabindex="0" data-showcase-tab="original">网页原文</button>
+<button class="showcase-tab " id="tab-bilingual" role="tab" aria-controls="panel-bilingual" aria-selected="false" tabindex="-1" data-showcase-tab="bilingual">网页译文</button>
+<button class="showcase-tab " id="tab-pdf" role="tab" aria-controls="panel-pdf" aria-selected="false" tabindex="-1" data-showcase-tab="pdf">PDF 双栏对照</button>
+</div>
+<div class="showcase-panel is-active" id="panel-original" role="tabpanel" aria-labelledby="tab-original" data-showcase-panel="original">
+<div class="browser-frame">
+<img class="product-shot" src="assets/img/showcase/capture_madoka_raw.png" alt="网页原文：翻译前的日文页面。" loading="lazy">
+</div>
+<div class="showcase-caption">
+<h3>网页原文</h3>
+<p>翻译前的日文页面。</p>
+</div>
+</div>
+<div class="showcase-panel " id="panel-bilingual" role="tabpanel" aria-labelledby="tab-bilingual" data-showcase-panel="bilingual">
+<div class="browser-frame">
+<img class="product-shot" src="assets/img/showcase/capture_madoka_trans.png" alt="网页译文：译文替换模式：在原页面阅读简体中文。也可选择原色对照或双色对照。" loading="lazy">
+</div>
+<div class="showcase-caption">
+<h3>网页译文</h3>
+<p>译文替换模式：在原页面阅读简体中文。也可选择原色对照或双色对照。</p>
+</div>
+</div>
+<div class="showcase-panel " id="panel-pdf" role="tabpanel" aria-labelledby="tab-pdf" data-showcase-panel="pdf">
+<div class="browser-frame">
+<img class="product-shot" src="assets/img/showcase/PDF-ppt-trans.png" alt="PDF 双栏对照：左侧原文，右侧译文。直接编辑译文块，校对后下载译文 PDF；纯扫描件暂不支持。" loading="lazy">
+</div>
+<div class="showcase-caption">
+<h3>PDF 双栏对照</h3>
+<p>左侧原文，右侧译文。直接编辑译文块，校对后下载译文 PDF；纯扫描件暂不支持。</p>
+</div>
+</div>
+</div>
+</section>
     <!-- ============ INSTALL ============ -->
     <section class="section" id="install" aria-labelledby="installTitle">
-      <div class="container">
-        <div class="section-head reveal" data-reveal>
-          <span class="eyebrow">下载安装</span>
-          <h2 class="section-title" id="installTitle">选择适合你的安装方式</h2>
-          <p class="section-desc">四种安装方式,从商店一键安装到源码编译,任你选择。</p>
-        </div>
-
-        <div class="docs-layout reveal" data-reveal>
-          <!-- LEFT SIDEBAR -->
-          <aside class="docs-sidebar" aria-label="安装方式列表">
-            <nav class="docs-nav" aria-label="安装方式导航">
-              <a href="#install-edge" class="docs-nav-link is-active">Edge 商店 <em>已上线</em></a>
-              <a href="#install-chrome" class="docs-nav-link">Chrome 商店 <em>审核中</em></a>
-              <a href="#install-github" class="docs-nav-link">GitHub 下载 <em>v1.5.5</em></a>
-              <a href="#install-source" class="docs-nav-link">从源码编译 <em>开发者</em></a>
-            </nav>
-          </aside>
-
-          <!-- RIGHT CONTENT -->
-          <div class="docs-content">
-
-            <!-- ========== Edge Add-ons (featured, 已上线) ========== -->
-            <article id="install-edge" class="docs-article docs-article-featured reveal" data-reveal>
-              <header class="docs-article-head">
-                <span class="api-badge api-badge-brand">已上线</span>
-                <h2>Microsoft Edge Add-ons</h2>
-                <p class="api-lead">Edge 用户可从官方 Add-ons 商店一键安装,无需手动加载,支持自动更新。</p>
-              </header>
-              <div class="docs-callout">
-                <ul class="docs-checklist">
-                  <li>Microsoft Edge 浏览器（Windows / macOS / Linux）</li>
-                  <li>商店分发,Manifest V3,自动更新</li>
-                </ul>
-              </div>
-              <div style="margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center;">
-                <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/wupage-translator/ophhojnppohaklhcdaheplkodopmplfg" target="_blank" rel="noopener">前往 Edge Add-ons →</a>
-                <span style="font-size: var(--fs-sm); color: var(--text-muted);">免费 · 一键安装</span>
-              </div>
-            </article>
-
-            <!-- ========== Chrome Web Store (审核中) ========== -->
-            <article id="install-chrome" class="docs-article reveal" data-reveal>
-              <header class="docs-article-head">
-                <span class="api-badge api-badge-muted">审核中</span>
-                <h2>Chrome Web Store</h2>
-                <p class="api-lead">Chrome Web Store 已提交,正在审核中。上线后可一键安装。在此之前请使用 Edge 商店或 GitHub 下载。</p>
-              </header>
-              <div class="docs-callout">
-                <ul class="docs-checklist">
-                  <li>Chrome Web Store（即将上架）</li>
-                </ul>
-              </div>
-              <div style="margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center;">
-                <button type="button" class="btn btn-primary" disabled aria-disabled="true" style="opacity: 0.6; cursor: not-allowed;">Chrome 审核中</button>
-              </div>
-            </article>
-
-            <!-- ========== GitHub 下载 ========== -->
-            <article id="install-github" class="docs-article reveal" data-reveal>
-              <header class="docs-article-head">
-                <span class="api-badge api-badge-brand">v1.5.5</span>
-                <h2>GitHub 下载</h2>
-                <p class="api-lead">下载已打包的扩展 ZIP,解压后即可加载使用。</p>
-              </header>
-              <ol class="docs-steps">
-                <li class="docs-step">
-                  <span class="docs-step-num">1</span>
-                  <div>
-                    <h3>下载压缩包</h3>
-                    <p><code>wupage-1.5.5-chrome.zip</code>（约 5.6 MB）</p>
-                  </div>
-                </li>
-                <li class="docs-step">
-                  <span class="docs-step-num">2</span>
-                  <div>
-                    <h3>解压</h3>
-                    <p>解压到任意目录。</p>
-                  </div>
-                </li>
-                <li class="docs-step">
-                  <span class="docs-step-num">3</span>
-                  <div>
-                    <h3>打开扩展管理页</h3>
-                    <p>Chrome 访问 <code>chrome://extensions</code>,Edge 访问 <code>edge://extensions</code>。</p>
-                  </div>
-                </li>
-                <li class="docs-step">
-                  <span class="docs-step-num">4</span>
-                  <div>
-                    <h3>开启「开发者模式」</h3>
-                    <p>在扩展管理页右上角开启「开发者模式」开关。</p>
-                  </div>
-                </li>
-                <li class="docs-step">
-                  <span class="docs-step-num">5</span>
-                  <div>
-                    <h3>加载已解压的扩展程序</h3>
-                    <p>点击「加载已解压的扩展程序」→ 选择解压后的目录。</p>
-                  </div>
-                </li>
-              </ol>
-              <div style="margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center;">
-                <a class="btn btn-primary" href="https://github.com/mr-wuliu/wupage/releases/download/v1.5.5/wupage-1.5.5-chrome.zip" download>⬇ 下载 v1.5.5 ZIP</a>
-                <a href="https://github.com/mr-wuliu/wupage/releases/tag/v1.5.5" target="_blank" rel="noopener" style="font-size: var(--fs-sm); color: var(--text-muted);">查看发布说明 →</a>
-              </div>
-            </article>
-
-            <!-- ========== 从源码编译 ========== -->
-            <article id="install-source" class="docs-article reveal" data-reveal>
-              <header class="docs-article-head">
-                <span class="api-badge api-badge-muted">适合开发者</span>
-                <h2>从源码编译</h2>
-                <p class="api-lead">克隆仓库、安装依赖、构建产物,完全开源。</p>
-              </header>
-              <ol class="docs-steps">
-                <li class="docs-step">
-                  <span class="docs-step-num">1</span>
-                  <div>
-                    <h3>克隆仓库</h3>
-                    <div class="code-block"><code>git clone https://github.com/mr-wuliu/wupage</code></div>
-                  </div>
-                </li>
-                <li class="docs-step">
-                  <span class="docs-step-num">2</span>
-                  <div>
-                    <h3>安装依赖并构建</h3>
-                    <div class="code-block"><code>npm install &amp;&amp; npm run build</code></div>
-                  </div>
-                </li>
-                <li class="docs-step">
-                  <span class="docs-step-num">3</span>
-                  <div>
-                    <h3>打开扩展管理页</h3>
-                    <p>Chrome 访问 <code>chrome://extensions</code>,Edge 访问 <code>edge://extensions</code>。</p>
-                  </div>
-                </li>
-                <li class="docs-step">
-                  <span class="docs-step-num">4</span>
-                  <div>
-                    <h3>开启「开发者模式」</h3>
-                    <p>在扩展管理页右上角开启「开发者模式」开关。</p>
-                  </div>
-                </li>
-                <li class="docs-step">
-                  <span class="docs-step-num">5</span>
-                  <div>
-                    <h3>加载已解压的扩展程序</h3>
-                    <p>点击「加载已解压的扩展程序」→ 选择仓库中的 <code>dist/</code> 目录。</p>
-                  </div>
-                </li>
-              </ol>
-              <div style="margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center;">
-                <a class="btn btn-primary" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" style="margin-right: 6px; vertical-align: -2px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-                  前往 GitHub 仓库
-                </a>
-                <ul class="install-meta" style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: var(--s-2); font-size: var(--fs-xs);">
-                  <li>Manifest V3</li>
-                  <li>TypeScript + Vite</li>
-                  <li>Chrome / Edge</li>
-                </ul>
-              </div>
-            </article>
-
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="container">
+<div class="section-head"><span class="eyebrow">开始使用</span>
+<h2 class="section-title" id="installTitle">装好扩展，开始第一次翻译</h2>
+<p class="section-desc">推荐 Edge 商店安装。Chrome 可下载发布包手动安装。</p>
+</div>
+<div class="feature-grid install-grid">
+<article class="card feature-card" id="install-edge"><span class="eyebrow">推荐</span>
+<h3>Microsoft Edge</h3>
+<p>打开商店，点击「获取」。安装后将 WuPage 固定到工具栏，并刷新要翻译的网页。</p>
+<a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/wupage-translator/ophhojnppohaklhcdaheplkodopmplfg" target="_blank" rel="noopener">从 Edge 商店安装 ↗</a>
+</article>
+<article class="card feature-card" id="install-github"><span class="eyebrow">Chrome / Edge</span>
+<h3>下载发布包</h3>
+<p>下载最新发布中的 Edge ZIP 包并解压，在扩展管理页开启「开发者模式」，加载解压后的目录。</p>
+<a class="btn btn-secondary" href="https://github.com/mr-wuliu/wupage/releases/latest" target="_blank" rel="noopener">下载最新版本 ↗</a>
+</article>
+<article class="card feature-card" id="install-firefox"><span class="eyebrow">测试版</span>
+<h3>Firefox</h3>
+<p>需要 Firefox 154 或更新版本，以及独立的 Firefox 测试包。临时加载后，重启浏览器需再次加载。</p>
+<a class="btn btn-secondary" href="https://github.com/mr-wuliu/wupage#安装" target="_blank" rel="noopener">查看测试版安装说明 ↗</a>
+</article>
+</div>
+<div class="guide-invite">
+<div>
+<h3>已经安装好了？</h3>
+<p>从第一次网页翻译开始，一步步找到适合你的阅读方式。</p>
+</div>
+<a class="btn btn-primary" href="guide.html">开始使用引导 →</a>
+</div>
+</div>
+</section>
+<section class="section section-subtle" id="faq">
+<div class="container faq-list">
+<div class="section-head"><span class="eyebrow">常见问题</span>
+<h2 class="section-title">开始之前，你可能想知道</h2>
+</div>
+<details>
+<summary>需要付费或填写密钥吗？</summary>
+<p>默认的 Google Web Translate 无需密钥。你也可以自行配置其他翻译服务，用量和费用以服务商为准。默认服务不可用时，可检查网络或切换服务。</p>
+</details>
+<details>
+<summary>可以离线翻译吗？</summary>
+<p>可以。在设置中选择「Firefox 本地翻译（实验）」，下载所需语言模型。模型就绪后，Chrome、Edge 也能离线使用，不需要安装 Firefox。此功能会占用本机存储和计算资源。</p>
+</details>
+<details>
+<summary>图片和 PDF 有什么要求？</summary>
+<p>图片翻译需要先安装文字识别模型，支持中、英、日文字；复杂背景可能影响效果。PDF 需要包含可提取的文字，暂不支持纯扫描件。导出的译文 PDF 保留版面，但文字无法选择或搜索。</p>
+</details>
+<details>
+<summary>翻译内容会发送到哪里？</summary>
+<p>在线翻译时，待翻译文字直接交给你选择的服务商处理。选择本地翻译时，文字在本机处理。设置、密钥和可选翻译缓存保存在浏览器本地。</p>
+</details>
+</div>
+</section>
   </main>
 
   <!-- ============ FOOTER ============ -->
@@ -419,24 +282,26 @@
             <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
               <rect width="28" height="28" rx="8" fill="url(#footerGrad)"/>
               <path d="M7 9.5h14M7 14h9M7 18.5h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-              <defs><linearGradient id="footerGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>
+              <defs>
+<linearGradient id="footerGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>
             </svg>
           </span>
           <span class="brand-name">WuPage Translator</span>
         </a>
-        <p class="footer-tagline">一键翻译整个网页，双语对照阅读。<br />基于 Manifest V3，请求直达翻译服务，无需自建代理。</p>
+        <p class="footer-tagline">一键翻译整个网页，双语对照阅读。<br />网页、图片与 PDF，在浏览器里轻松读懂。</p>
       </div>
 
       <div class="footer-cols">
         <div class="footer-col">
           <h4>产品</h4>
           <a href="#features">功能特色</a>
-          <a href="#demo">功能演示</a>
+          <a href="#demo">阅读效果</a>
+        <a href="guide.html">使用引导</a>
         </div>
         <div class="footer-col">
-          <h4>开发</h4>
+          <h4>帮助与支持</h4>
           <a href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">GitHub 仓库</a>
-          <a href="/api.html">API 文档</a>
+          <a href="/api.html">翻译服务指南</a>
           <a href="#install">下载安装</a>
         </div>
         <div class="footer-col">
@@ -450,12 +315,12 @@
     <div class="footer-bottom">
       <div class="container">
         <span>© 2026 WuPage Translator. 开源项目。</span>
-        <span class="footer-built">Built with HTML · CSS · JS · 零构建</span>
+        <span class="footer-built">让外文阅读更轻松</span>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/main.js?v=20261031" defer></script>
   <script src="assets/js/docs.js" defer></script>
 </body>
 </html>
