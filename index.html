@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <noscript><style>.reveal{opacity:1 !important;transform:none !important;}.pdf-p .trans{display:block !important;}</style></noscript>
-  <link rel="stylesheet" href="assets/css/style.css?v=20261102" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261102-2" />
 </head>
 <body>
   <!-- ============ HEADER ============ -->
@@ -46,6 +46,7 @@
         <a href="#features">功能特色</a>
         <a href="#demo">阅读效果</a>
         <a href="guide.html">使用引导</a>
+        <a href="#pricing">价格与支持</a>
         <a href="#install">下载安装</a>
       </nav>
 
@@ -65,6 +66,7 @@
       <a href="#features">功能特色</a>
       <a href="#demo">阅读效果</a>
         <a href="guide.html">使用引导</a>
+        <a href="#pricing">价格与支持</a>
       <a href="#install">下载安装</a>
       <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">前往 GitHub 仓库</a>
     </nav>
@@ -100,6 +102,7 @@
           </a>
           <a href="guide.html" class="btn btn-secondary btn-lg">跟着引导开始</a>
         </div>
+        <p class="hero-pricing">扩展免费 · 无订阅费 · 支持自愿 <a href="#pricing">查看价格与免费范围 →</a></p>
 
         <div class="hero-stats reveal" data-reveal>
           <div class="stat"><span class="stat-num">多种</span><span class="stat-label">翻译服务</span>
@@ -215,6 +218,60 @@
 </div>
 </div>
 </section>
+    <section class="section section-subtle" id="pricing" aria-labelledby="pricingTitle">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">价格与支持</span>
+          <h2 class="section-title" id="pricingTitle">扩展免费使用，支持完全自愿</h2>
+          <p class="section-desc">WuPage 不收取扩展使用费。在线 API 的费用由服务商收取；支持项目不会解锁额外功能。</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="card pricing-card" aria-labelledby="freeTitle">
+            <span class="eyebrow">WuPage 扩展</span>
+            <h3 id="freeTitle">免费使用</h3>
+            <p class="pricing-price">免费 <span>无扩展使用费 · 无订阅费</span></p>
+            <p>当前提供的扩展功能均可免费使用，无需注册 WuPage 账户或付款。</p>
+            <ul>
+              <li>网页与选中文字翻译、双语对照阅读</li>
+              <li>图片文字识别与翻译、文本层 PDF 翻译及导出</li>
+              <li>自选翻译服务、配置自己的 API 密钥</li>
+              <li>下载模型后使用本地离线翻译</li>
+            </ul>
+            <p class="pricing-detail">免费范围指 WuPage 的功能使用权；在线服务额度、网络流量及第三方费用另计。PDF 暂不支持纯扫描件。</p>
+            <a class="btn btn-primary" href="#install">免费下载扩展</a>
+          </article>
+          <article class="card pricing-card" aria-labelledby="providerTitle">
+            <span class="eyebrow">按需选择</span>
+            <h3 id="providerTitle">第三方翻译服务</h3>
+            <p class="pricing-price pricing-price-text">按服务商计费</p>
+            <p>使用预置免密钥服务无需向 WuPage 支付翻译费用；这类服务可能有频率、地区及可用性限制。</p>
+            <ul>
+              <li>DeepSeek、GLM 等自备 API 可能按用量收费</li>
+              <li>费用及免费额度以服务商账户和官网为准</li>
+              <li>您直接向服务商付款，WuPage 不代收或加价</li>
+              <li>本地翻译在模型就绪后无需在线翻译 API</li>
+            </ul>
+            <p class="pricing-detail">向 WuPage 提供支持不会增加第三方额度，也不抵扣第三方 API 账单。</p>
+            <a class="btn btn-secondary" href="api.html">了解翻译服务与费用</a>
+          </article>
+          <article class="card pricing-card pricing-support" aria-labelledby="supportTitle">
+            <span class="eyebrow">一次性 · 自愿</span>
+            <h3 id="supportTitle">自愿打赏</h3>
+            <p class="pricing-price">US$5 / US$15 <span>美元 · 两档可选 · 单次打赏</span></p>
+            <p>单纯向开发者表达支持，不购买任何商品或服务。两档均不附带功能、额度或其他权益，是否打赏由您决定。</p>
+            <ul>
+              <li>单次付款，不自动续费或自动充值</li>
+              <li>不建立积分余额，不购买翻译次数</li>
+              <li>不提供任何对应服务，不承诺开发进度</li>
+              <li>付款后 7 个日历日内可申请全额退款</li>
+            </ul>
+            <p class="pricing-detail">当前尚未开放在线打赏入口。开放后可选择 US$5 或 US$15，每次单独确认；适用税费及最终总额会在结账前展示，可能产生的银行或汇兑费用以支付机构为准。</p>
+            <a class="btn btn-secondary" href="terms.html#refunds">查看打赏与退款规则</a>
+          </article>
+        </div>
+        <p class="pricing-contact">收费或退款问题请联系 <a href="mailto:master.wuliu@gmail.com">master.wuliu@gmail.com</a>。了解<a href="terms.html">服务条款</a>与<a href="privacy.html">隐私政策</a>。</p>
+      </div>
+    </section>
     <!-- ============ INSTALL ============ -->
     <section class="section" id="install" aria-labelledby="installTitle">
 <div class="container">
@@ -255,7 +312,7 @@
 </div>
 <details>
 <summary>需要付费或填写密钥吗？</summary>
-<p>默认的 Google Web Translate 无需密钥。你也可以自行配置其他翻译服务，用量和费用以服务商为准。默认服务不可用时，可检查网络或切换服务。</p>
+<p>WuPage 当前所有扩展功能均免费使用，没有订阅费。预置免密钥服务可直接开始，但可能受服务商限流或可用性影响；自行配置 API 时，费用由对应服务商收取。一次性支持完全自愿，不影响免费使用。<a href="#pricing">查看价格、免费范围与支持说明 →</a></p>
 </details>
 <details>
 <summary>可以离线翻译吗？</summary>
@@ -297,6 +354,7 @@
           <a href="#features">功能特色</a>
           <a href="#demo">阅读效果</a>
         <a href="guide.html">使用引导</a>
+        <a href="#pricing">价格与支持</a>
         </div>
         <div class="footer-col">
           <h4>帮助与支持</h4>
