@@ -1737,3 +1737,34 @@ code {
  .guide-controls > a { order:3; width:100%; text-align:center; }
  .guide-invite { flex-direction:column; align-items:flex-start; padding:24px; }
 }
+
+/* ---------- Legal documents ---------- */
+.legal-page { padding-top: 64px; padding-bottom: 80px; }
+.legal-heading { max-width: 800px; margin-bottom: 40px; }
+.legal-heading h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 12px 0; }
+.legal-heading p { line-height: 1.8; color: var(--text-soft); }
+.legal-heading .legal-meta { color: var(--text-muted); font-size: var(--fs-sm); margin-bottom: 16px; }
+.legal-related { margin-top: 16px; }
+.legal-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; align-items: start; }
+.legal-toc { position: sticky; top: 100px; padding: 20px; border: 1px solid var(--border); border-radius: var(--r-lg); background: var(--bg-subtle); max-height: calc(100vh - 120px); overflow-y: auto; }
+.legal-toc h2 { font-size: 1rem; margin-bottom: 12px; }
+.legal-toc ol { list-style: none; padding: 0; margin: 0; }
+.legal-toc li + li { margin-top: 10px; }
+.legal-toc a { font-size: var(--fs-sm); color: var(--text-soft); }
+.legal-content { min-width: 0; max-width: 800px; overflow-wrap: anywhere; }
+.legal-content section { scroll-margin-top: 100px; margin-bottom: 36px; }
+.legal-content h2 { font-size: 1.25rem; margin-bottom: 14px; line-height: 1.5; }
+.legal-content p, .legal-content li { line-height: 1.9; color: var(--text-soft); }
+.legal-content p + p { margin-top: 12px; }
+.legal-content ul { padding-left: 24px; }
+.legal-content li + li { margin-top: 10px; }
+.legal-page a { color: var(--primary-strong); text-decoration: underline; text-underline-offset: 3px; }
+.legal-page a:hover, .footer-legal a:hover { color: var(--primary); }
+.legal-content .legal-version { border-top: 1px solid var(--border); padding-top: 20px; font-size: var(--fs-sm); color: var(--text-muted); }
+.footer-legal { display: flex; flex-wrap: wrap; gap: 12px 20px; }
+.footer-legal a[aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 800px) {
+  .legal-page { padding-top: 36px; padding-bottom: 48px; }
+  .legal-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .legal-toc { position: static; max-height: none; }
+}
