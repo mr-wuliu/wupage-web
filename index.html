@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <noscript><style>.reveal{opacity:1 !important;transform:none !important;}.pdf-p .trans{display:block !important;}</style></noscript>
-  <link rel="stylesheet" href="assets/css/style.css?v=20261102-2" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261102-3" />
 </head>
 <body>
   <!-- ============ HEADER ============ -->
@@ -258,15 +258,26 @@
             <span class="eyebrow">一次性 · 自愿</span>
             <h3 id="supportTitle">自愿打赏</h3>
             <p class="pricing-price">US$5 / US$15 <span>美元 · 两档可选 · 单次打赏</span></p>
-            <p>单纯向开发者表达支持，不购买任何商品或服务。两档均不附带功能、额度或其他权益，是否打赏由您决定。</p>
+            <p>自愿支持 WuPage 插件及开发者。插件当前功能均免费，两档均不附带额外服务、功能、额度或其他权益，是否支持由您决定。</p>
             <ul>
               <li>单次付款，不自动续费或自动充值</li>
               <li>不建立积分余额，不购买翻译次数</li>
-              <li>不提供任何对应服务，不承诺开发进度</li>
+              <li>不提供额外服务，不承诺开发进度</li>
               <li>付款后 7 个日历日内可申请全额退款</li>
             </ul>
-            <p class="pricing-detail">当前尚未开放在线打赏入口。开放后可选择 US$5 或 US$15，每次单独确认；适用税费及最终总额会在结账前展示，可能产生的银行或汇兑费用以支付机构为准。</p>
-            <a class="btn btn-secondary" href="terms.html#refunds">查看打赏与退款规则</a>
+            <p class="pricing-detail">选择 US$5 或 US$15，每次单独确认；适用税费及最终总额会在 Waffo 收银台付款前展示，可能产生的银行或汇兑费用以支付机构为准。</p>
+            <form id="tipForm" class="tip-form" action="/api/checkout" method="post">
+              <label class="tip-consent"><input type="checkbox" name="accepted" value="yes" required />
+                <span>我已阅读<a href="/terms#support">打赏条款</a>和<a href="/privacy">隐私政策</a>，确认自愿支持免费插件，不获得额外服务或权益。</span>
+              </label>
+              <div class="tip-buttons">
+                <button class="btn btn-primary" type="submit" name="tier" value="5" disabled>打赏 US$5</button>
+                <button class="btn btn-secondary" type="submit" name="tier" value="15" disabled>打赏 US$15</button>
+              </div>
+              <p class="tip-status" id="tipStatus" role="status" aria-live="polite">正在检查收款状态…</p>
+              <noscript><p class="tip-status">请启用 JavaScript 以查看收款状态并发起打赏。</p></noscript>
+            </form>
+            <a class="tip-refund" href="/terms#refunds">查看退款规则</a>
           </article>
         </div>
         <p class="pricing-contact">收费或退款问题请联系 <a href="mailto:master.wuliu@gmail.com">master.wuliu@gmail.com</a>。了解<a href="terms.html">服务条款</a>与<a href="privacy.html">隐私政策</a>。</p>
@@ -380,5 +391,6 @@
 
   <script src="assets/js/main.js?v=20261031" defer></script>
   <script src="assets/js/docs.js" defer></script>
+  <script src="assets/js/payments.js?v=20261102" defer></script>
 </body>
 </html>

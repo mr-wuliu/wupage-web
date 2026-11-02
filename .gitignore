@@ -12,3 +12,16 @@ Thumbs.db
 # Local-only artifacts
 .playwright-mcp/
 .omo/
+
+# Dependencies, Worker state and payment secrets
+node_modules/
+.wrangler/
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+*.pem
+*.key
+.payment-setup.json
+dist/

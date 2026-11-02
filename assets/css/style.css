@@ -1789,3 +1789,14 @@ code {
 .pricing-contact a { color: var(--primary-strong); text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 1050px) { .pricing-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 560px) { .pricing-card { padding: 24px; } .hero-pricing a { display: block; margin-left: 0; } }
+
+/* One-time tip checkout */
+.tip-form { margin-top: auto; }
+.tip-consent { display: flex; align-items: flex-start; gap: 10px; font-size: var(--fs-sm); line-height: 1.7; color: var(--text-soft); }
+.tip-consent input { flex: none; width: 18px; height: 18px; margin-top: 4px; accent-color: var(--primary); }
+.tip-consent a, .tip-refund { color: var(--primary-strong); text-decoration: underline; text-underline-offset: 3px; }
+.tip-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.tip-buttons .btn { padding: 12px 8px; }
+.tip-buttons button:disabled { opacity: .55; cursor: not-allowed; }
+.pricing-card .tip-status { font-size: var(--fs-xs); margin-top: 12px; line-height: 1.7; }
+.tip-refund { margin-top: 12px; font-size: var(--fs-sm); }

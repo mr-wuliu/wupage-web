@@ -29,14 +29,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install and verify
+        run: |
+          npm ci
+          npm run check
+          npm test
+
+      - name: Configure payment secret when supplied
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          WAFFO_PRIVATE_KEY: ${{ secrets.WAFFO_PRIVATE_KEY }}
+        run: |
+          if [ -n "$WAFFO_PRIVATE_KEY" ]; then
+            printf '%s' "$WAFFO_PRIVATE_KEY" | npx wrangler secret put WAFFO_PRIVATE_KEY
+          fi
+
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # 显式 pin 防呆：wrangler-action@v4 默认即装 wrangler 4.x，
-          # 但 wrangler 5 发布后默认值会变，assets-only 配置可能再次触发 Missing entry-point（v3 时代的坑）。
           wranglerVersion: "4"
-          # wrangler-action 会读取仓库根目录的 wrangler.jsonc，把 ./ 下的全部
-          # 静态资源 + _headers 推送到 Workers Static Assets。
-          # 部署完成会输出 https://wupage-web.<workers.dev 子域>.workers.dev 地址。
+          # Build copies only public files into dist/public; private key is a Worker secret.

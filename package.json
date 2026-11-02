@@ -1,0 +1,22 @@
+{
+  "name": "wupage-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "check": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "deploy": "wrangler deploy",
+    "payments:setup": "node --experimental-strip-types scripts/setup-payments.ts",
+    "build": "node scripts/build-assets.mjs"
+  },
+  "dependencies": {
+    "@waffo/pancake-ts": "^0.27.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261102.1",
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.156.1"
+  }
+}

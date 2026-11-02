@@ -21,3 +21,16 @@ README.md
 # wrangler-action 在 CI 里 `npm i wrangler` 时自动生成，绝不能上传
 package.json
 package-lock.json
+
+# Server source, scripts, tests and secrets must never be served as assets
+src/
+scripts/
+tests/
+tsconfig.json
+.dev.vars*
+.env*
+*.pem
+*.key
+.payment-setup.json
+dist/
+.codegraph/
