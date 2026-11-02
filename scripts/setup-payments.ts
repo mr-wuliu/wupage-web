@@ -21,7 +21,7 @@ async function main() {
   }`, variables: { storeId: STORE_ID } });
   if (result.errors?.length || !result.data) throw new Error('Cannot read products in the selected production store.');
   for (const tier of ['5', '15'] as const) {
-    const name = `WuPage 自愿打赏 US$${tier}`;
+    const name = `WuPage 打赏 US$${tier}`;
     const key = `WAFFO_PRODUCT_${tier}`;
     let id = process.env[key] || state[key];
     if (!id) {
@@ -38,7 +38,7 @@ async function main() {
       }
       const { product } = await client.onetimeProducts.create({
         storeId: STORE_ID, name,
-        description: 'WuPage 浏览器插件的一次性自愿支持。当前插件功能免费，付款不附带额外服务、专属功能、翻译额度或积分，不自动续费。',
+        description: 'WuPage 浏览器插件的一次性支持。当前插件功能免费，付款不附带额外服务、专属功能、翻译额度或积分，不自动续费。',
         prices: { USD: { amount: TIERS[tier], taxCategory: category as TaxCategory } },
         successUrl: `${APP_ORIGIN}/thanks`, metadata: { purpose: 'voluntary_tip', tier },
       }, { idempotencyKey: `wupage-tip-product-${STORE_ID}-${tier}-v1` });

@@ -14,7 +14,7 @@
       available = data.available === true;
       buttons.forEach(function (button) { button.disabled = !available; });
       status.textContent = available
-        ? '选择金额后前往 Waffo 安全收银台。付款为一次性自愿支持，不提供额外服务或权益。'
+        ? '选择金额后前往 Waffo 安全收银台。付款为一次性支持，不提供额外服务或权益。'
         : '收款配置尚未完成，暂不能在线打赏。免费功能照常使用。';
     })
     .catch(function () { status.textContent = '暂时无法连接收银台，请稍后重试。免费功能照常使用。'; });
