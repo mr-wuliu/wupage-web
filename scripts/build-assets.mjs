@@ -8,4 +8,6 @@ for (const entry of await readdir(new URL('../', import.meta.url), { withFileTyp
   }
 }
 await cp(new URL('../assets/', import.meta.url), new URL('assets/', output), { recursive: true });
-console.log('Public HTML, assets and headers copied to dist/public.');
+await mkdir(new URL('updates/', output), { recursive: true });
+await cp(new URL('../updates/chromium.xml', import.meta.url), new URL('updates/chromium.xml', output));
+console.log('Public HTML, assets, extension update feed and headers copied to dist/public.');
