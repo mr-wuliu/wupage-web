@@ -75,6 +75,27 @@ test('untrusted origins, unapproved tiers and missing consent cannot create sess
   assert.equal(calls.length, 0);
 });
 
+test('checkout uses the selected language and preserves it on the return page', async () => {
+  for (const [locale, cashierLanguage] of [['en', 'en'], ['zh-CN', 'zh-Hans'], ['en-US', 'en']]) {
+    const { handler, calls } = fixture();
+    const checkoutRequest = request();
+    checkoutRequest.headers.set('Accept-Language', locale);
+    assert.equal((await handler(checkoutRequest, env)).status, 200);
+    const session = calls.at(-1)!;
+    assert.equal(session.body.language, cashierLanguage);
+    assert.equal(session.body.successUrl, `${APP_ORIGIN}/thanks?lang=${cashierLanguage === 'en' ? 'en' : 'zh-CN'}`);
+    assert.equal(session.body.currency, 'USD');
+  }
+});
+
+test('checkout errors expose stable codes for frontend translation', async () => {
+  const { handler } = fixture();
+  const unavailable = await handler(request(), {});
+  assert.equal((await unavailable.json() as any).code, 'payments.notConfigured');
+  const invalidConsent = await handler(request({ tier: '5' }), env);
+  assert.equal((await invalidConsent.json() as any).code, 'payments.invalidConsent');
+});
+
 test('changed product price fails closed before a checkout is created', async () => {
   const { handler, calls } = fixture({ wrongPrice: true });
   assert.equal((await handler(request(), env)).status, 502);

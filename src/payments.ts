@@ -99,10 +99,10 @@ export function createPaymentHandler(dependencies: Dependencies = {}) {
     }
     if (path !== '/api/checkout') return json({ error: 'Not found' }, 404);
     if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
-    if (request.headers.get('origin') !== origin) return json({ error: '请求来源无效，请从官网重新发起打赏。' }, 403);
-    if (!isConfigured(env)) return json({ error: '收款配置尚未完成，请稍后再试或联系开发者。' }, 503);
+    if (request.headers.get('origin') !== origin) return json({ error: '请求来源无效，请从官网重新发起打赏。', code: 'payments.invalidOrigin' }, 403);
+    if (!isConfigured(env)) return json({ error: '收款配置尚未完成，请稍后再试或联系开发者。', code: 'payments.notConfigured' }, 503);
     const raw = await request.text();
-    if (raw.length > 4096) return json({ error: '请求过大。' }, 413);
+    if (raw.length > 4096) return json({ error: '请求过大。', code: 'payments.payloadTooLarge' }, 413);
     let tier: unknown;
     let accepted: unknown;
     let attempt: unknown;
@@ -112,21 +112,23 @@ export function createPaymentHandler(dependencies: Dependencies = {}) {
       } else if (request.headers.get('content-type')?.includes('application/x-www-form-urlencoded')) {
         const body = new URLSearchParams(raw);
         tier = body.get('tier'); accepted = body.get('accepted'); attempt = body.get('attempt');
-      } else return json({ error: '不支持的请求格式。' }, 415);
-    } catch { return json({ error: '请求格式无效。' }, 400); }
+      } else return json({ error: '不支持的请求格式。', code: 'payments.unsupportedFormat' }, 415);
+    } catch { return json({ error: '请求格式无效。', code: 'payments.invalidFormat' }, 400); }
     if ((tier !== '5' && tier !== '15') || accepted !== 'yes') {
-      return json({ error: '请选择 US$5 或 US$15，并确认已阅读打赏说明。' }, 400);
+      return json({ error: '请选择 US$5 或 US$15，并确认已阅读打赏说明。', code: 'payments.invalidConsent' }, 400);
     }
     if (attempt != null && (typeof attempt !== 'string' || !/^[a-zA-Z0-9-]{16,64}$/.test(attempt))) {
-      return json({ error: '请求编号无效，请刷新后重试。' }, 400);
+      return json({ error: '请求编号无效，请刷新后重试。', code: 'payments.invalidAttempt' }, 400);
     }
     try {
       const client = clientFactory(env);
       const productId = tier === '5' ? env.WAFFO_PRODUCT_5! : env.WAFFO_PRODUCT_15!;
       await validateProduct(client, productId, tier);
+      const language = request.headers.get('Accept-Language');
+      const english = /^en(?:-|,|;|$)/i.test(language ?? '');
       const session = await client.checkout.createSession({
-        productId, currency: 'USD', language: 'zh-Hans',
-        successUrl: `${origin}/thanks`, expiresInSeconds: 1800,
+        productId, currency: 'USD', language: english ? 'en' : 'zh-Hans',
+        successUrl: `${origin}/thanks${language ? `?lang=${english ? 'en' : 'zh-CN'}` : ''}`, expiresInSeconds: 1800,
         metadata: { purpose: 'voluntary_tip', tier, termsVersion: '1.2' },
       }, { idempotencyKey: `wupage-tip-${attempt ?? crypto.randomUUID()}-${tier}` });
       const url = new URL(session.checkoutUrl);
@@ -139,7 +141,7 @@ export function createPaymentHandler(dependencies: Dependencies = {}) {
       return new Response(null, { status: 303, headers: { Location: session.checkoutUrl, 'Cache-Control': 'no-store' } });
     } catch {
       // Do not return upstream errors, signed headers or private key details.
-      return json({ error: '暂时无法打开收银台，请稍后重试。如已扣款，请先查收 Waffo 收据或联系开发者，避免重复付款。' }, 502);
+      return json({ error: '暂时无法打开收银台，请稍后重试。如已扣款，请先查收 Waffo 收据或联系开发者，避免重复付款。', code: 'payments.checkoutError' }, 502);
     }
   };
 }

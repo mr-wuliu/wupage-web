@@ -15,7 +15,6 @@
     if (!links.length || !articles.length) return;
 
     var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var HEADER_OFFSET = 90; // sticky header height + breathing room
 
     /* ---------- Click -> smooth scroll ---------- */
     links.forEach(function (link) {
@@ -26,9 +25,8 @@
         var target = document.getElementById(id);
         if (!target) return;
         e.preventDefault();
-        var top = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-        window.scrollTo({
-          top: top,
+        target.scrollIntoView({
+          block: 'start',
           behavior: prefersReduced ? 'auto' : 'smooth'
         });
         // Update URL hash without jump

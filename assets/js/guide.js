@@ -1,5 +1,6 @@
 (function () {
   'use strict';
+  const i18n = window.WuPageI18n;
   const steps = Array.from(document.querySelectorAll('[data-guide-step]'));
   const links = Array.from(document.querySelectorAll('[data-guide-go]'));
   const controls = document.querySelector('.guide-controls');
@@ -14,8 +15,8 @@
       else link.removeAttribute('aria-current');
     });
     prev.disabled = index === 0;
-    next.textContent = index === steps.length - 1 ? '完成，开始阅读 ↗' : '下一步 →';
-    document.getElementById('guideCount').textContent = '第 ' + (index + 1) + ' / ' + steps.length + ' 步';
+    i18n.text(next, index === steps.length - 1 ? 'guide.finish' : 'guide.next');
+    i18n.text(document.getElementById('guideCount'), 'guide.count', { current: index + 1, total: steps.length });
     if (focus) steps[index].querySelector('h2').focus({ preventScroll: true });
   }
   function fromHash(focus) {
@@ -33,7 +34,7 @@
   }
   prev.addEventListener('click', () => move(Math.max(0, current - 1)));
   next.addEventListener('click', () => {
-    if (current === steps.length - 1) location.href = 'index.html#demo';
+    if (current === steps.length - 1) location.href = i18n.localizedUrl('index.html#demo');
     else move(current + 1);
   });
   window.addEventListener('popstate', () => fromHash(false));

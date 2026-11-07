@@ -4,6 +4,7 @@
   const form = document.getElementById('tipForm');
   const status = document.getElementById('tipStatus');
   if (!form || !status) return;
+  const i18n = window.WuPageI18n;
   const buttons = Array.from(form.querySelectorAll('button[type="submit"]'));
   let available = false;
   let submitting = false;
@@ -13,31 +14,31 @@
     .then(function (data) {
       available = data.available === true;
       buttons.forEach(function (button) { button.disabled = !available; });
-      status.textContent = available
-        ? '选择金额后前往 Waffo 安全收银台。付款为一次性支持，不提供额外服务或权益。'
-        : '收款配置尚未完成，暂不能在线打赏。免费功能照常使用。';
+      i18n.text(status, available ? 'payments.ready' : 'payments.unavailable');
     })
-    .catch(function () { status.textContent = '暂时无法连接收银台，请稍后重试。免费功能照常使用。'; });
+    .catch(function () { i18n.text(status, 'payments.connectionError'); });
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
     if (!available || submitting || !event.submitter) return;
     if (!form.reportValidity()) return;
     submitting = true;
     buttons.forEach(function (button) { button.disabled = true; });
-    status.textContent = '正在打开 Waffo 收银台…';
+    i18n.text(status, 'payments.opening');
     try {
       const response = await fetch('/api/checkout', {
-        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'Accept-Language': i18n.locale },
         body: JSON.stringify({ tier: event.submitter.value, accepted: 'yes', attempt }),
       });
       const data = await response.json();
-      if (!response.ok) throw new Error(data.error || '暂时无法打开收银台，请稍后再试。');
+      if (!response.ok) throw new Error(data.code || 'payments.checkoutError');
       const url = new URL(data.checkoutUrl);
-      if (url.protocol !== 'https:' || url.hostname !== 'pancake.waffo.ai') throw new Error('收银台地址无效，请联系开发者。');
+      if (url.protocol !== 'https:' || url.hostname !== 'pancake.waffo.ai' || url.username || url.password) throw new Error('payments.invalidUrl');
       // Same-tab navigation avoids popup blockers after an async request.
       window.location.assign(url.href);
     } catch (error) {
-      status.textContent = error.message || '连接失败，请重试；如已扣款，请先核对收据。';
+      const key = /^payments\./.test(error.message) && i18n.t(error.message) !== error.message
+        ? error.message : 'payments.checkoutError';
+      i18n.text(status, key);
       submitting = false;
       buttons.forEach(function (button) { button.disabled = false; });
     }
@@ -47,6 +48,6 @@
     submitting = false;
     attempt = crypto.randomUUID();
     buttons.forEach(function (button) { button.disabled = !available; });
-    status.textContent = '如已完成付款，请查收 Waffo 收据；再次点击将发起新的打赏。';
+    i18n.text(status, 'payments.returned');
   });
 })();

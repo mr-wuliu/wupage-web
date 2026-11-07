@@ -4,6 +4,7 @@
    ============================================================ */
 (function () {
   'use strict';
+  const i18n = window.WuPageI18n;
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -17,7 +18,8 @@
     mobileNav.classList.remove('is-open');
     mobileNav.hidden = true;
     navToggle.setAttribute('aria-expanded', 'false');
-    navToggle.setAttribute('aria-label', '打开菜单');
+    navToggle.setAttribute('data-i18n-aria-label', 'common.openMenu');
+    navToggle.setAttribute('aria-label', i18n.t('common.openMenu'));
   }
 
   function openMobileNav() {
@@ -26,7 +28,8 @@
     mobileNav.classList.add('is-open');
     mobileNav.hidden = false;
     navToggle.setAttribute('aria-expanded', 'true');
-    navToggle.setAttribute('aria-label', '关闭菜单');
+    navToggle.setAttribute('data-i18n-aria-label', 'common.closeMenu');
+    navToggle.setAttribute('aria-label', i18n.t('common.closeMenu'));
   }
 
   if (navToggle && mobileNav) {
@@ -55,7 +58,7 @@
 
     // Reset on resize to desktop
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 920) closeMobileNav();
+      if (window.innerWidth > 1100) closeMobileNav();
     });
   }
 
@@ -79,17 +82,21 @@
   updateHeader();
 
   /* ---------- Smooth scroll for anchor links ---------- */
-  // Native CSS scroll-behavior handles most; add offset handling for keyboard a11y
+  // CSS scroll-padding provides one consistent offset for clicks and direct URLs.
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey ||
+          anchor.matches('[data-guide-go], .docs-nav-link')) return;
       const href = anchor.getAttribute('href');
       if (!href || href === '#' || href.length < 2) return;
-      const target = document.querySelector(href);
+      let id;
+      try { id = decodeURIComponent(href.slice(1)); } catch { return; }
+      const target = document.getElementById(id);
       if (!target) return;
       e.preventDefault();
-      const top = target.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({
-        top: top,
+      if (window.location.hash !== href) window.history.pushState(null, '', href);
+      target.scrollIntoView({
+        block: 'start',
         behavior: prefersReducedMotion ? 'auto' : 'smooth'
       });
       // Move focus for a11y without re-triggering scroll jump
@@ -97,6 +104,15 @@
       target.focus({ preventScroll: true });
     });
   });
+
+  // Cross-page fragment links must settle after translations and assets load.
+  window.addEventListener('load', function () {
+    if (!window.location.hash) return;
+    let id;
+    try { id = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (target && !target.hidden) target.scrollIntoView({ block: 'start', behavior: 'instant' });
+  }, { once: true });
 
   /* ---------- Scroll reveal (IntersectionObserver) ---------- */
   const revealEls = document.querySelectorAll('.reveal');
@@ -174,7 +190,7 @@
       heroDownload.href = 'https://microsoftedge.microsoft.com/addons/detail/wupage-translator/ophhojnppohaklhcdaheplkodopmplfg';
       heroDownload.target = '_blank';
       heroDownload.rel = 'noopener';
-      heroDownload.innerHTML = '前往 Edge Add-ons <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9h10m0 0L9 4m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      i18n.text(heroDownload.querySelector('[data-i18n]'), 'common.edgeDownload');
     }
   }
 

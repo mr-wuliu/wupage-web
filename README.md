@@ -1,6 +1,6 @@
 # WuPage Translator 产品网站
 
-WuPage 的中文产品页与使用引导，介绍网页、图片和 PDF 翻译，帮助用户完成安装、第一次翻译与服务选择。
+WuPage 的中英文产品页与使用引导，介绍网页、图片和 PDF 翻译，帮助用户完成安装、第一次翻译与服务选择。
 
 官网：<https://wupage.mrwuliu.top> · 扩展源码：<https://github.com/mr-wuliu/wupage>
 
@@ -23,6 +23,16 @@ python3 -m http.server 8765
 ```
 
 打开 <http://localhost:8765>。样式位于 `assets/css/style.css`，通用交互位于 `assets/js/main.js`，引导交互位于 `assets/js/guide.js`。
+
+## 国际化（i18n）
+
+六个页面均支持简体中文（`zh-CN`）和英文（`en`），可通过页眉的语言选择器即时切换。初始语言依次使用 URL 的 `?lang=` 参数、浏览器保存的 `wupage.locale` 偏好、浏览器语言列表，最后回退到简体中文。例如 `guide.html?lang=en#step-3` 可直接打开英文引导的第三步。手动选择会保存到本地存储；存储被禁用时，站内页面链接仍通过 URL 保持语言。未启用 JavaScript 时保留原有中文内容。
+
+文案集中在 `assets/js/locales/zh-CN.js` 和 `assets/js/locales/en.js`，两份词典使用相同的语义键。页面通过 `data-i18n="key"` 标记纯文本，通过 `data-i18n-aria-label`、`data-i18n-alt`、`data-i18n-content` 等标记属性；含链接或图标的文案分别标记其文本部分，避免覆盖子元素。`assets/js/i18n.js` 用 `textContent` 更新文本，缺失译文时回退中文，不解析翻译为 HTML。
+
+交互代码使用 `window.WuPageI18n.t(key, params)` 读取文案，或 `text(element, key, params)` 绑定可随语言切换更新的文案；参数采用 `{current}` 形式。`localizedUrl()` 为站内页面地址保留语言，`setLocale()` 切换语言并触发 `localechange` 事件。新增语言时添加同键词典、在全部页面加载该词典及增加选择项，并更新运行时的语言匹配和 Open Graph locale。词典和运行时按顺序先于交互脚本加载，静态预览无需构建。
+
+付款请求携带当前语言的 `Accept-Language`，Worker 为 Waffo 收银台选择对应语言，并在返回页 URL 保留语言。API 返回稳定的 `code` 供前端翻译错误提示；原有 `error` 文本仍保留，便于兼容其他调用方。
 
 ## 发布
 

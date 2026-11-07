@@ -6,13 +6,13 @@
   <meta name="theme-color" content="#6366f1" />
   <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
-  <title>WuPage Translator — 一键翻译整个网页，双语对照阅读</title>
-  <meta name="description" content="翻译网页、图片与 PDF，按自己的节奏阅读外文。支持双语对照、译文编辑与离线翻译，安装后即可开始。" />
+  <title data-i18n="meta.homeTitle">WuPage Translator — 一键翻译整个网页，双语对照阅读</title>
+  <meta name="description" content="翻译网页、图片与 PDF，按自己的节奏阅读外文。支持双语对照、译文编辑与离线翻译，安装后即可开始。" data-i18n-content="meta.description" />
   <meta name="author" content="WuPage Translator" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="WuPage Translator — 一键翻译整个网页" />
-  <meta property="og:description" content="网页、图片与 PDF 翻译，双语阅读与译文编辑。" />
+  <meta property="og:title" content="WuPage Translator — 一键翻译整个网页" data-i18n-content="meta.ogTitle" />
+  <meta property="og:description" content="网页、图片与 PDF 翻译，双语阅读与译文编辑。" data-i18n-content="meta.ogDescription" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="zh_CN" />
 
@@ -20,13 +20,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <noscript><style>.reveal{opacity:1 !important;transform:none !important;}.pdf-p .trans{display:block !important;}</style></noscript>
-  <link rel="stylesheet" href="assets/css/style.css?v=20261102-4" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261107-2" />
 </head>
 <body>
   <!-- ============ HEADER ============ -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-      <a href="#top" class="brand" aria-label="WuPage Translator 首页">
+      <a href="#top" class="brand" aria-label="WuPage Translator 首页" data-i18n-aria-label="common.homeLabel">
         <span class="brand-mark" aria-hidden="true">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
             <rect width="28" height="28" rx="8" fill="url(#brandGrad)"/>
@@ -42,33 +42,37 @@
         <span class="brand-name">WuPage</span>
       </a>
 
-      <nav class="nav-desktop" aria-label="主导航">
-        <a href="#features">功能特色</a>
-        <a href="#demo">阅读效果</a>
-        <a href="guide.html">使用引导</a>
-        <a href="#pricing">支持一下</a>
-        <a href="#install">下载安装</a>
+      <nav class="nav-desktop" aria-label="主导航" data-i18n-aria-label="common.mainNav">
+        <a href="#features" data-i18n="common.features">功能特色</a>
+        <a href="#demo" data-i18n="common.demo">阅读效果</a>
+        <a href="guide.html" data-i18n="common.guide">使用引导</a>
+        <a href="#pricing" data-i18n="common.support">支持一下</a>
+        <a href="#install" data-i18n="common.install">下载安装</a>
       </nav>
 
       <div class="header-actions">
+        <select class="language-select" id="languageSelect" aria-label="选择语言" data-i18n-aria-label="common.language" hidden>
+          <option value="zh-CN" lang="zh-CN">简体中文</option>
+          <option value="en" lang="en">English</option>
+        </select>
         <a class="btn btn-ghost btn-sm" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
           GitHub
         </a>
-        <a class="btn btn-primary btn-sm" href="#install">立即下载</a>
-        <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileNav">
+        <a class="btn btn-primary btn-sm" href="#install" data-i18n="common.download">立即下载</a>
+        <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileNav" data-i18n-aria-label="common.openMenu">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
 
-    <nav class="nav-mobile" id="mobileNav" aria-label="移动端导航" hidden>
-      <a href="#features">功能特色</a>
-      <a href="#demo">阅读效果</a>
-        <a href="guide.html">使用引导</a>
-        <a href="#pricing">支持一下</a>
-      <a href="#install">下载安装</a>
-      <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">前往 GitHub 仓库</a>
+    <nav class="nav-mobile" id="mobileNav" aria-label="移动端导航" hidden data-i18n-aria-label="common.mobileNav">
+      <a href="#features" data-i18n="common.features">功能特色</a>
+      <a href="#demo" data-i18n="common.demo">阅读效果</a>
+        <a href="guide.html" data-i18n="common.guide">使用引导</a>
+        <a href="#pricing" data-i18n="common.support">支持一下</a>
+      <a href="#install" data-i18n="common.install">下载安装</a>
+      <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener" data-i18n="common.visitGithub">前往 GitHub 仓库</a>
     </nav>
   </header>
 
@@ -85,24 +89,24 @@
       <div class="container hero-inner">
         <span class="pill reveal" data-reveal>
           <span class="pill-dot"></span>
-          网页 · 图片 · PDF
+          <span data-i18n="home.formats">网页 · 图片 · PDF</span>
         </span>
         <h1 class="hero-title reveal" data-reveal id="heroTitle">
           <span class="grad-text">WuPage</span> Translator
         </h1>
-        <p class="hero-tagline reveal" data-reveal>从网页到 PDF，让外文阅读更轻松</p>
+        <p class="hero-tagline reveal" data-reveal data-i18n="home.tagline">从网页到 PDF，让外文阅读更轻松</p>
         <p class="hero-subtext reveal" data-reveal>
-          读文章、看图片、校对文档，在熟悉的浏览器里完成。<br class="hide-mobile" />
-          安装后即可翻译，也能选择你喜欢的 AI 或本地离线服务。
+          <span data-i18n="home.intro">读文章、看图片、校对文档，在熟悉的浏览器里完成。</span><br class="hide-mobile" />
+          <span data-i18n="home.services">安装后即可翻译，也能选择你喜欢的 AI 或本地离线服务。</span>
         </p>
         <div class="hero-cta reveal" data-reveal>
           <a href="#install" class="btn btn-primary btn-lg" id="heroDownload">
-            免费下载
+            <span data-i18n="home.freeDownload">免费下载</span>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 3v10m0 0L5 9m4 4l4-4M3 15h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="guide.html" class="btn btn-secondary btn-lg">跟着引导开始</a>
+          <a href="guide.html" class="btn btn-secondary btn-lg" data-i18n="home.startGuide">跟着引导开始</a>
         </div>
-        <p class="hero-pricing">扩展免费 · 无订阅费 · 支持一下 <a href="#pricing">查看价格与免费范围 →</a></p>
+        <p class="hero-pricing"><span data-i18n="home.freeNotice">扩展免费 · 无订阅费 · 支持一下</span> <a href="#pricing" data-i18n="common.viewPricing">查看价格与免费范围 →</a></p>
 
       </div>
     </section>
@@ -111,9 +115,9 @@
     <section class="section" id="features" aria-labelledby="featuresTitle">
       <div class="container">
         <div class="section-head reveal" data-reveal>
-          <span class="eyebrow">功能特色</span>
-          <h2 class="section-title" id="featuresTitle">为阅读外文网页而生</h2>
-          <p class="section-desc">每一项功能都围绕「快速、清晰、可控」的翻译体验打磨。</p>
+          <span class="eyebrow" data-i18n="common.features">功能特色</span>
+          <h2 class="section-title" id="featuresTitle" data-i18n="features.title">为阅读外文网页而生</h2>
+          <p class="section-desc" data-i18n="features.description">每一项功能都围绕「快速、清晰、可控」的翻译体验打磨。</p>
         </div>
 
         <div class="feature-grid">
@@ -121,48 +125,48 @@
             <div class="feature-icon" style="--ic-1:#6366f1;--ic-2:#3b82f6">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 16l4 2-4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3>一键翻译，接着读</h3>
-<p>在当前网页查看译文，滚动加载的新内容也能继续翻译。只想读一段？开启段落模式，按住 Ctrl 点击即可。</p>
+            <h3 data-i18n="features.webTitle">一键翻译，接着读</h3>
+<p data-i18n="features.webDescription">在当前网页查看译文，滚动加载的新内容也能继续翻译。只想读一段？开启段落模式，按住 Ctrl 点击即可。</p>
           </article>
 
           <article class="card feature-card reveal" data-reveal>
             <div class="feature-icon" style="--ic-1:#0ea5e9;--ic-2:#06b6d4">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h7M4 12h7M4 17h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 7l5 1m-5 4l5 1m-5 4l5 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
-            <h3>三种显示，随心切换</h3>
-<p>只看译文，或保留原文逐段对照。原色与双色对照都可选择，切换时无需重新翻译。</p>
+            <h3 data-i18n="features.modesTitle">三种显示，随心切换</h3>
+<p data-i18n="features.modesDescription">只看译文，或保留原文逐段对照。原色与双色对照都可选择，切换时无需重新翻译。</p>
           </article>
 
           <article class="card feature-card reveal" data-reveal>
             <div class="feature-icon" style="--ic-1:#14b8a6;--ic-2:#06b6d4">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5L12 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
             </div>
-            <h3>图片里的文字，也能看懂</h3>
-<p>安装文字识别模型后，悬停图片点击「译」，或从右键菜单翻译图片。原图与译图随时切换。</p>
+            <h3 data-i18n="features.imagesTitle">图片里的文字，也能看懂</h3>
+<p data-i18n="features.imagesDescription">安装文字识别模型后，悬停图片点击「译」，或从右键菜单翻译图片。原图与译图随时切换。</p>
           </article>
 
           <article class="card feature-card reveal" data-reveal>
             <div class="feature-icon" style="--ic-1:#8b5cf6;--ic-2:#6366f1">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7l8-4 8 4M4 7v10l8 4 8-4V7M4 7l8 4 8-4M12 11v10" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
             </div>
-            <h3>PDF 从阅读到校对</h3>
-<p>原文、译文双栏对照，边读边翻译附近页面。直接修改译文、调整位置，校对后导出 PDF。</p>
+            <h3 data-i18n="features.pdfTitle">PDF 从阅读到校对</h3>
+<p data-i18n="features.pdfDescription">原文、译文双栏对照，边读边翻译附近页面。直接修改译文、调整位置，校对后导出 PDF。</p>
           </article>
 
           <article class="card feature-card reveal" data-reveal>
             <div class="feature-icon" style="--ic-1:#3b82f6;--ic-2:#0ea5e9">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" /><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
-            <h3>悬浮球，顺手就能用</h3>
-<p>点击翻译或恢复原文，悬停展开语言与服务菜单。拖到习惯的位置，阅读时少一点打断。</p>
+            <h3 data-i18n="features.floatingTitle">悬浮球，顺手就能用</h3>
+<p data-i18n="features.floatingDescription">点击翻译或恢复原文，悬停展开语言与服务菜单。拖到习惯的位置，阅读时少一点打断。</p>
           </article>
 
           <article class="card feature-card reveal" data-reveal>
             <div class="feature-icon" style="--ic-1:#6366f1;--ic-2:#14b8a6">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/></svg>
             </div>
-            <h3>选择自己的翻译方式</h3>
-<p>默认服务无需密钥；也可使用 DeepSeek、GLM 等服务，或下载本地语言模型，离线阅读。</p>
+            <h3 data-i18n="features.servicesTitle">选择自己的翻译方式</h3>
+<p data-i18n="features.servicesDescription">默认服务无需密钥；也可使用 DeepSeek、GLM 等服务，或下载本地语言模型，离线阅读。</p>
           </article>
         </div>
       </div>
@@ -170,40 +174,40 @@
 
     <section class="section" id="demo" aria-labelledby="demoTitle">
 <div class="container">
-<div class="section-head"><span class="eyebrow">阅读效果</span>
-<h2 class="section-title" id="demoTitle">读懂内容，也保留熟悉的版面</h2>
-<p class="section-desc">看看网页原文、翻译后的页面，以及 PDF 双栏阅读的真实效果。</p>
+<div class="section-head"><span class="eyebrow" data-i18n="common.demo">阅读效果</span>
+<h2 class="section-title" id="demoTitle" data-i18n="demo.title">读懂内容，也保留熟悉的版面</h2>
+<p class="section-desc" data-i18n="demo.description">看看网页原文、翻译后的页面，以及 PDF 双栏阅读的真实效果。</p>
 </div>
-<div class="showcase-tabs" role="tablist" aria-label="阅读效果">
-<button class="showcase-tab is-active" id="tab-original" role="tab" aria-controls="panel-original" aria-selected="true" tabindex="0" data-showcase-tab="original">网页原文</button>
-<button class="showcase-tab " id="tab-bilingual" role="tab" aria-controls="panel-bilingual" aria-selected="false" tabindex="-1" data-showcase-tab="bilingual">网页译文</button>
-<button class="showcase-tab " id="tab-pdf" role="tab" aria-controls="panel-pdf" aria-selected="false" tabindex="-1" data-showcase-tab="pdf">PDF 双栏对照</button>
+<div class="showcase-tabs" role="tablist" aria-label="阅读效果" data-i18n-aria-label="common.demo">
+<button class="showcase-tab is-active" id="tab-original" role="tab" aria-controls="panel-original" aria-selected="true" tabindex="0" data-showcase-tab="original" data-i18n="demo.original">网页原文</button>
+<button class="showcase-tab " id="tab-bilingual" role="tab" aria-controls="panel-bilingual" aria-selected="false" tabindex="-1" data-showcase-tab="bilingual" data-i18n="demo.translated">网页译文</button>
+<button class="showcase-tab " id="tab-pdf" role="tab" aria-controls="panel-pdf" aria-selected="false" tabindex="-1" data-showcase-tab="pdf" data-i18n="demo.pdf">PDF 双栏对照</button>
 </div>
 <div class="showcase-panel is-active" id="panel-original" role="tabpanel" aria-labelledby="tab-original" data-showcase-panel="original">
 <div class="browser-frame">
-<img class="product-shot" src="assets/img/showcase/capture_madoka_raw.png" alt="网页原文：翻译前的日文页面。" loading="lazy">
+<img class="product-shot" src="assets/img/showcase/capture_madoka_raw.png" alt="网页原文：翻译前的日文页面。" loading="lazy" data-i18n-alt="demo.originalAlt" width="1300" height="1114">
 </div>
 <div class="showcase-caption">
-<h3>网页原文</h3>
-<p>翻译前的日文页面。</p>
+<h3 data-i18n="demo.original">网页原文</h3>
+<p data-i18n="demo.originalDescription">翻译前的日文页面。</p>
 </div>
 </div>
 <div class="showcase-panel " id="panel-bilingual" role="tabpanel" aria-labelledby="tab-bilingual" data-showcase-panel="bilingual">
 <div class="browser-frame">
-<img class="product-shot" src="assets/img/showcase/capture_madoka_trans.png" alt="网页译文：译文替换模式：在原页面阅读简体中文。也可选择原色对照或双色对照。" loading="lazy">
+<img class="product-shot" src="assets/img/showcase/capture_madoka_trans.png" alt="网页译文：译文替换模式：在原页面阅读简体中文。也可选择原色对照或双色对照。" loading="lazy" data-i18n-alt="demo.translatedAlt" width="1300" height="1114">
 </div>
 <div class="showcase-caption">
-<h3>网页译文</h3>
-<p>译文替换模式：在原页面阅读简体中文。也可选择原色对照或双色对照。</p>
+<h3 data-i18n="demo.translated">网页译文</h3>
+<p data-i18n="demo.translatedDescription">译文替换模式：在原页面阅读简体中文。也可选择原色对照或双色对照。</p>
 </div>
 </div>
 <div class="showcase-panel " id="panel-pdf" role="tabpanel" aria-labelledby="tab-pdf" data-showcase-panel="pdf">
 <div class="browser-frame">
-<img class="product-shot" src="assets/img/showcase/PDF-ppt-trans.png" alt="PDF 双栏对照：左侧原文，右侧译文。直接编辑译文块，校对后下载译文 PDF；纯扫描件暂不支持。" loading="lazy">
+<img class="product-shot" src="assets/img/showcase/PDF-ppt-trans.png" alt="PDF 双栏对照：左侧原文，右侧译文。直接编辑译文块，校对后下载译文 PDF；纯扫描件暂不支持。" loading="lazy" data-i18n-alt="demo.pdfAlt" width="2558" height="2861">
 </div>
 <div class="showcase-caption">
-<h3>PDF 双栏对照</h3>
-<p>左侧原文，右侧译文。直接编辑译文块，校对后下载译文 PDF；纯扫描件暂不支持。</p>
+<h3 data-i18n="demo.pdf">PDF 双栏对照</h3>
+<p data-i18n="demo.pdfDescription">左侧原文，右侧译文。直接编辑译文块，校对后下载译文 PDF；纯扫描件暂不支持。</p>
 </div>
 </div>
 </div>
@@ -211,108 +215,118 @@
     <section class="section section-subtle" id="pricing" aria-labelledby="pricingTitle">
       <div class="container">
         <div class="section-head">
-          <span class="eyebrow">支持一下</span>
-          <h2 class="section-title" id="pricingTitle">扩展免费使用，支持一下开发者</h2>
-          <p class="section-desc">WuPage 不收取扩展使用费。在线 API 的费用由服务商收取；支持项目不会解锁额外功能。</p>
+          <span class="eyebrow" data-i18n="common.support">支持一下</span>
+          <h2 class="section-title" id="pricingTitle" data-i18n="pricing.title">扩展免费使用，支持一下开发者</h2>
+          <p class="section-desc" data-i18n="pricing.description">WuPage 不收取扩展使用费。在线 API 的费用由服务商收取；支持项目不会解锁额外功能。</p>
         </div>
         <div class="pricing-grid">
-          <article class="card pricing-card" aria-labelledby="freeTitle">
-            <span class="eyebrow">WuPage 扩展</span>
-            <h3 id="freeTitle">免费使用</h3>
-            <p class="pricing-price">免费 <span>无扩展使用费 · 无订阅费</span></p>
-            <p>当前提供的扩展功能均可免费使用，无需注册 WuPage 账户或付款。</p>
-            <ul>
-              <li>网页与选中文字翻译、双语对照阅读</li>
-              <li>图片文字识别与翻译、文本层 PDF 翻译及导出</li>
-              <li>自选翻译服务、配置自己的 API 密钥</li>
-              <li>下载模型后使用本地离线翻译</li>
-            </ul>
-            <p class="pricing-detail">免费范围指 WuPage 的功能使用权；在线服务额度、网络流量及第三方费用另计。PDF 暂不支持纯扫描件。</p>
-            <a class="btn btn-primary" href="#install">免费下载扩展</a>
-          </article>
           <article class="card pricing-card pricing-support" aria-labelledby="supportTitle">
-            <span class="eyebrow">一次性支持</span>
-            <h3 id="supportTitle">打赏</h3>
-            <p class="pricing-price">US$5 / US$15 <span>美元 · 两档可选 · 单次打赏</span></p>
-            <p>如果你觉得这个插件对你有帮助的话，可以支持一下我~</p>
-            <p class="pricing-detail">插件当前功能均免费，打赏不包括任何额外服务、功能、额度或其他权益。</p>
-            <ul>
-              <li>单次付款，不自动续费或自动充值</li>
-              <li>不建立积分余额，不购买翻译次数</li>
-              <li>不提供额外服务，不承诺开发进度</li>
-              <li>付款后 7 个日历日内可申请全额退款</li>
-            </ul>
-            <p class="pricing-detail">选择 US$5 或 US$15，每次单独确认；适用税费及最终总额会在 Waffo 收银台付款前展示，可能产生的银行或汇兑费用以支付机构为准。</p>
+            <span class="eyebrow" data-i18n="pricing.oneTime">一次性支持</span>
+            <div class="pricing-card-heading">
+              <h3 id="supportTitle" data-i18n="pricing.tip">打赏</h3>
+              <p class="pricing-price">US$5 / US$15 <span data-i18n="pricing.currency">美元 · 两档可选 · 单次打赏</span></p>
+            </div>
+            <p data-i18n="pricing.tipDescription">如果你觉得这个插件对你有帮助的话，可以支持一下我~</p>
+            <p class="pricing-detail" data-i18n="pricing.noBenefits">插件当前功能均免费，打赏不包括任何额外服务、功能、额度或其他权益。</p>
             <form id="tipForm" class="tip-form" action="/api/checkout" method="post">
               <label class="tip-consent"><input type="checkbox" name="accepted" value="yes" required />
-                <span>我已阅读<a href="/terms#support">打赏条款</a>和<a href="/privacy">隐私政策</a>，确认支持免费插件，不获得额外服务或权益。</span>
+                <span><span data-i18n="pricing.consentStart">我已阅读</span><a href="/terms#support" data-i18n="pricing.tipTerms">打赏条款</a><span data-i18n="common.and">和</span><a href="/privacy" data-i18n="common.privacy">隐私政策</a><span data-i18n="pricing.consentEnd">，确认支持免费插件，不获得额外服务或权益。</span></span>
               </label>
               <div class="tip-buttons">
-                <button class="btn btn-primary" type="submit" name="tier" value="5" disabled>打赏 US$5</button>
-                <button class="btn btn-secondary" type="submit" name="tier" value="15" disabled>打赏 US$15</button>
+                <button class="btn btn-primary" type="submit" name="tier" value="5" disabled data-i18n="pricing.tip5">打赏 US$5</button>
+                <button class="btn btn-secondary" type="submit" name="tier" value="15" disabled data-i18n="pricing.tip15">打赏 US$15</button>
               </div>
-              <p class="tip-status" id="tipStatus" role="status" aria-live="polite">正在检查收款状态…</p>
-              <noscript><p class="tip-status">请启用 JavaScript 以查看收款状态并发起打赏。</p></noscript>
+              <p class="tip-status" id="tipStatus" role="status" aria-live="polite" data-i18n="payments.checking">正在检查收款状态…</p>
+              <noscript><p class="tip-status" data-i18n="pricing.enableJs">请启用 JavaScript 以查看收款状态并发起打赏。</p></noscript>
             </form>
-            <a class="tip-refund" href="/terms#refunds">查看退款规则</a>
+            <a class="tip-refund" href="/terms#refunds" data-i18n="pricing.viewRefunds">查看退款规则</a>
+            <details class="pricing-details">
+              <summary data-i18n="pricing.supportDetails">打赏、税费与退款说明</summary>
+              <ul>
+                <li data-i18n="pricing.noRenewal">单次付款，不自动续费或自动充值</li>
+                <li data-i18n="pricing.noCredits">不建立积分余额，不购买翻译次数</li>
+                <li data-i18n="pricing.noPromises">不提供额外服务，不承诺开发进度</li>
+                <li data-i18n="pricing.refundWindow">付款后 7 个日历日内可申请全额退款</li>
+              </ul>
+              <p class="pricing-detail" data-i18n="pricing.total">选择 US$5 或 US$15，每次单独确认；适用税费及最终总额会在 Waffo 收银台付款前展示，可能产生的银行或汇兑费用以支付机构为准。</p>
+            </details>
+          </article>
+          <article class="card pricing-card" aria-labelledby="freeTitle">
+            <span class="eyebrow" data-i18n="pricing.extension">WuPage 扩展</span>
+            <div class="pricing-card-heading">
+              <h3 id="freeTitle" data-i18n="pricing.freeTitle">免费使用</h3>
+              <p class="pricing-price"><span class="pricing-amount" data-i18n="pricing.free">免费</span> <span data-i18n="pricing.noFees">无扩展使用费 · 无订阅费</span></p>
+            </div>
+            <p data-i18n="pricing.freeDescription">当前提供的扩展功能均可免费使用，无需注册 WuPage 账户或付款。</p>
+            <a class="btn btn-primary" href="#install" data-i18n="pricing.download">免费下载扩展</a>
+            <details class="pricing-details">
+              <summary data-i18n="pricing.freeDetails">查看免费功能与使用范围</summary>
+              <ul>
+                <li data-i18n="pricing.webFeature">网页与选中文字翻译、双语对照阅读</li>
+                <li data-i18n="pricing.fileFeature">图片文字识别与翻译、文本层 PDF 翻译及导出</li>
+                <li data-i18n="pricing.servicesFeature">自选翻译服务、配置自己的 API 密钥</li>
+                <li data-i18n="pricing.offlineFeature">下载模型后使用本地离线翻译</li>
+              </ul>
+              <p class="pricing-detail" data-i18n="pricing.freeScope">免费范围指 WuPage 的功能使用权；在线服务额度、网络流量及第三方费用另计。PDF 暂不支持纯扫描件。</p>
+            </details>
           </article>
         </div>
-        <p class="pricing-contact">收费或退款问题请联系 <a href="mailto:master.wuliu@gmail.com">master.wuliu@gmail.com</a>。了解<a href="terms.html">服务条款</a>与<a href="privacy.html">隐私政策</a>。</p>
+        <p class="pricing-contact"><span data-i18n="pricing.contact">收费或退款问题请联系</span> <a href="mailto:master.wuliu@gmail.com">master.wuliu@gmail.com</a><span data-i18n="pricing.readPolicies">。了解</span><a href="terms.html" data-i18n="common.terms">服务条款</a><span data-i18n="common.andPolicies">与</span><a href="privacy.html" data-i18n="common.privacy">隐私政策</a><span data-i18n="common.period">。</span></p>
       </div>
     </section>
     <!-- ============ INSTALL ============ -->
     <section class="section" id="install" aria-labelledby="installTitle">
 <div class="container">
-<div class="section-head"><span class="eyebrow">开始使用</span>
-<h2 class="section-title" id="installTitle">装好扩展，开始第一次翻译</h2>
-<p class="section-desc">推荐 Edge 商店安装。Chrome 可下载发布包手动安装。</p>
+<div class="section-head"><span class="eyebrow" data-i18n="install.eyebrow">开始使用</span>
+<h2 class="section-title" id="installTitle" data-i18n="install.title">装好扩展，开始第一次翻译</h2>
+<p class="section-desc" data-i18n="install.description">推荐 Edge 商店安装。Chrome 可下载发布包手动安装。</p>
 </div>
 <div class="feature-grid install-grid">
-<article class="card feature-card" id="install-edge"><span class="eyebrow">推荐</span>
+<article class="card feature-card" id="install-edge"><span class="eyebrow" data-i18n="install.recommended">推荐</span>
 <h3>Microsoft Edge</h3>
-<p>打开商店，点击「获取」。安装后将 WuPage 固定到工具栏，并刷新要翻译的网页。</p>
-<a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/wupage-translator/ophhojnppohaklhcdaheplkodopmplfg" target="_blank" rel="noopener">从 Edge 商店安装 ↗</a>
+<p data-i18n="install.edgeDescription">打开商店，点击「获取」。安装后将 WuPage 固定到工具栏，并刷新要翻译的网页。</p>
+<a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/wupage-translator/ophhojnppohaklhcdaheplkodopmplfg" target="_blank" rel="noopener" data-i18n="install.edgeLink">从 Edge 商店安装 ↗</a>
 </article>
 <article class="card feature-card" id="install-github"><span class="eyebrow">Chrome / Edge</span>
-<h3>下载发布包</h3>
-<p>下载最新发布中的 Edge ZIP 包并解压，在扩展管理页开启「开发者模式」，加载解压后的目录。</p>
-<a class="btn btn-secondary" href="https://github.com/mr-wuliu/wupage/releases/latest" target="_blank" rel="noopener">下载最新版本 ↗</a>
+<h3 data-i18n="install.releaseTitle">下载发布包</h3>
+<p data-i18n="install.releaseDescription">下载最新发布中的 Edge ZIP 包并解压，在扩展管理页开启「开发者模式」，加载解压后的目录。</p>
+<a class="btn btn-secondary" href="https://github.com/mr-wuliu/wupage/releases/latest" target="_blank" rel="noopener" data-i18n="install.releaseLink">下载最新版本 ↗</a>
 </article>
-<article class="card feature-card" id="install-firefox"><span class="eyebrow">测试版</span>
+<article class="card feature-card" id="install-firefox"><span class="eyebrow" data-i18n="install.beta">测试版</span>
 <h3>Firefox</h3>
-<p>需要 Firefox 154 或更新版本，以及独立的 Firefox 测试包。临时加载后，重启浏览器需再次加载。</p>
-<a class="btn btn-secondary" href="https://github.com/mr-wuliu/wupage#安装" target="_blank" rel="noopener">查看测试版安装说明 ↗</a>
+<p data-i18n="install.firefoxDescription">需要 Firefox 154 或更新版本，以及独立的 Firefox 测试包。临时加载后，重启浏览器需再次加载。</p>
+<a class="btn btn-secondary" href="https://github.com/mr-wuliu/wupage#安装" target="_blank" rel="noopener" data-i18n="install.firefoxLink">查看测试版安装说明 ↗</a>
 </article>
 </div>
 <div class="guide-invite">
 <div>
-<h3>已经安装好了？</h3>
-<p>从第一次网页翻译开始，一步步找到适合你的阅读方式。</p>
+<h3 data-i18n="install.alreadyInstalled">已经安装好了？</h3>
+<p data-i18n="install.guideDescription">从第一次网页翻译开始，一步步找到适合你的阅读方式。</p>
 </div>
-<a class="btn btn-primary" href="guide.html">开始使用引导 →</a>
+<a class="btn btn-primary" href="guide.html" data-i18n="install.guideLink">开始使用引导 →</a>
 </div>
 </div>
 </section>
 <section class="section section-subtle" id="faq">
 <div class="container faq-list">
-<div class="section-head"><span class="eyebrow">常见问题</span>
-<h2 class="section-title">开始之前，你可能想知道</h2>
+<div class="section-head"><span class="eyebrow" data-i18n="faq.eyebrow">常见问题</span>
+<h2 class="section-title" data-i18n="faq.title">开始之前，你可能想知道</h2>
 </div>
 <details>
-<summary>需要付费或填写密钥吗？</summary>
-<p>WuPage 当前所有扩展功能均免费使用，没有订阅费。预置免密钥服务可直接开始，但可能受服务商限流或可用性影响；自行配置 API 时，费用由对应服务商收取。是否支持由您决定，不影响免费使用。<a href="#pricing">查看价格、免费范围与支持说明 →</a></p>
+<summary data-i18n="faq.paymentQuestion">需要付费或填写密钥吗？</summary>
+<p><span data-i18n="faq.paymentAnswer">WuPage 当前所有扩展功能均免费使用，没有订阅费。预置免密钥服务可直接开始，但可能受服务商限流或可用性影响；自行配置 API 时，费用由对应服务商收取。是否支持由您决定，不影响免费使用。</span><a href="#pricing" data-i18n="faq.pricingLink">查看价格、免费范围与支持说明 →</a></p>
 </details>
 <details>
-<summary>可以离线翻译吗？</summary>
-<p>可以。在设置中选择「Firefox 本地翻译（实验）」，下载所需语言模型。模型就绪后，Chrome、Edge 也能离线使用，不需要安装 Firefox。此功能会占用本机存储和计算资源。</p>
+<summary data-i18n="faq.offlineQuestion">可以离线翻译吗？</summary>
+<p data-i18n="faq.offlineAnswer">可以。在设置中选择「Firefox 本地翻译（实验）」，下载所需语言模型。模型就绪后，Chrome、Edge 也能离线使用，不需要安装 Firefox。此功能会占用本机存储和计算资源。</p>
 </details>
 <details>
-<summary>图片和 PDF 有什么要求？</summary>
-<p>图片翻译需要先安装文字识别模型，支持中、英、日文字；复杂背景可能影响效果。PDF 需要包含可提取的文字，暂不支持纯扫描件。导出的译文 PDF 保留版面，但文字无法选择或搜索。</p>
+<summary data-i18n="faq.filesQuestion">图片和 PDF 有什么要求？</summary>
+<p data-i18n="faq.filesAnswer">图片翻译需要先安装文字识别模型，支持中、英、日文字；复杂背景可能影响效果。PDF 需要包含可提取的文字，暂不支持纯扫描件。导出的译文 PDF 保留版面，但文字无法选择或搜索。</p>
 </details>
 <details>
-<summary>翻译内容会发送到哪里？</summary>
-<p>在线翻译时，待翻译文字直接交给你选择的服务商处理。选择本地翻译时，文字在本机处理。设置、密钥和可选翻译缓存保存在浏览器本地。</p>
+<summary data-i18n="faq.dataQuestion">翻译内容会发送到哪里？</summary>
+<p data-i18n="faq.dataAnswer">在线翻译时，待翻译文字直接交给你选择的服务商处理。选择本地翻译时，文字在本机处理。设置、密钥和可选翻译缓存保存在浏览器本地。</p>
 </details>
 </div>
 </section>
@@ -333,41 +347,44 @@
           </span>
           <span class="brand-name">WuPage Translator</span>
         </a>
-        <p class="footer-tagline">一键翻译整个网页，双语对照阅读。<br />网页、图片与 PDF，在浏览器里轻松读懂。</p>
+        <p class="footer-tagline"><span data-i18n="footer.tagline">一键翻译整个网页，双语对照阅读。</span><br /><span data-i18n="footer.formats">网页、图片与 PDF，在浏览器里轻松读懂。</span></p>
       </div>
 
       <div class="footer-cols">
         <div class="footer-col">
-          <h4>产品</h4>
-          <a href="#features">功能特色</a>
-          <a href="#demo">阅读效果</a>
-        <a href="guide.html">使用引导</a>
-        <a href="#pricing">支持一下</a>
+          <h4 data-i18n="footer.product">产品</h4>
+          <a href="#features" data-i18n="common.features">功能特色</a>
+          <a href="#demo" data-i18n="common.demo">阅读效果</a>
+        <a href="guide.html" data-i18n="common.guide">使用引导</a>
+        <a href="#pricing" data-i18n="common.support">支持一下</a>
         </div>
         <div class="footer-col">
-          <h4>帮助与支持</h4>
-          <a href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">GitHub 仓库</a>
-          <a href="/api.html">翻译服务指南</a>
-          <a href="#install">下载安装</a>
+          <h4 data-i18n="footer.help">帮助与支持</h4>
+          <a href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener" data-i18n="common.github">GitHub 仓库</a>
+          <a href="/api.html" data-i18n="common.serviceGuide">翻译服务指南</a>
+          <a href="#install" data-i18n="common.install">下载安装</a>
         </div>
         <div class="footer-col">
-          <h4>翻译服务</h4>
+          <h4 data-i18n="common.services">翻译服务</h4>
           <a href="/api.html#gweb">Google Web</a>
-          <a href="/api.html#ms">微软 Translator</a>
+          <a href="/api.html#ms" data-i18n="common.microsoft">微软 Translator</a>
           <a href="/api.html#gcloud">Google Cloud</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <span>© 2026 WuPage Translator. 开源项目。</span>
-        <nav class="footer-legal" aria-label="法律与联系"><a href="terms.html">服务条款</a><a href="privacy.html">隐私政策</a><a href="mailto:master.wuliu@gmail.com">联系我们</a></nav>
+        <span data-i18n="footer.copyright">© 2026 WuPage Translator. 开源项目。</span>
+        <nav class="footer-legal" aria-label="法律与联系" data-i18n-aria-label="footer.legalLabel"><a href="terms.html" data-i18n="common.terms">服务条款</a><a href="privacy.html" data-i18n="common.privacy">隐私政策</a><a href="mailto:master.wuliu@gmail.com" data-i18n="common.contact">联系我们</a></nav>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=20261031" defer></script>
-  <script src="assets/js/docs.js" defer></script>
-  <script src="assets/js/payments.js?v=20261102-2" defer></script>
+  <script src="assets/js/locales/zh-CN.js?v=20261107-2" defer></script>
+  <script src="assets/js/locales/en.js?v=20261107-2" defer></script>
+  <script src="assets/js/i18n.js?v=20261107-1" defer></script>
+  <script src="assets/js/main.js?v=20261107-2" defer></script>
+  <script src="assets/js/docs.js?v=20261107-2" defer></script>
+  <script src="assets/js/payments.js?v=20261107-1" defer></script>
 </body>
 </html>

@@ -6,13 +6,13 @@
   <meta name="theme-color" content="#6366f1" />
   <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
-  <title>翻译服务指南 — WuPage Translator</title>
-  <meta name="description" content="WuPage Translator 默认免密钥服务、DeepSeek、GLM 与本地离线翻译的使用说明。" />
+  <title data-i18n="services.pageTitle">翻译服务指南 — WuPage Translator</title>
+  <meta name="description" content="WuPage Translator 默认免密钥服务、DeepSeek、GLM 与本地离线翻译的使用说明。" data-i18n-content="services.metaDescription" />
   <meta name="author" content="WuPage Translator" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="翻译服务指南 — WuPage Translator" />
-  <meta property="og:description" content="选择默认服务、AI 服务或本地离线翻译，按需开始。" />
+  <meta property="og:title" content="翻译服务指南 — WuPage Translator" data-i18n-content="services.pageTitle" />
+  <meta property="og:description" content="选择默认服务、AI 服务或本地离线翻译，按需开始。" data-i18n-content="services.ogDescription" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="zh_CN" />
 
@@ -20,13 +20,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
-  <link rel="stylesheet" href="assets/css/style.css?v=20261102-4" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261107-2" />
 </head>
 <body>
   <!-- ============ HEADER ============ -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-      <a href="/" class="brand" aria-label="WuPage Translator 首页">
+      <a href="/" class="brand" aria-label="WuPage Translator 首页" data-i18n-aria-label="common.homeLabel">
         <span class="brand-mark" aria-hidden="true">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
             <rect width="28" height="28" rx="8" fill="url(#brandGrad)"/>
@@ -42,123 +42,127 @@
         <span class="brand-name">WuPage</span>
       </a>
 
-      <nav class="nav-desktop" aria-label="主导航">
-        <a href="/#features">功能特色</a>
-        <a href="/#demo">阅读效果</a>
-<a href="guide.html">使用引导</a>
-        <a href="/#pricing">支持一下</a>
-        <a href="/#install">下载安装</a>
+      <nav class="nav-desktop" aria-label="主导航" data-i18n-aria-label="common.mainNav">
+        <a href="/#features" data-i18n="common.features">功能特色</a>
+        <a href="/#demo" data-i18n="common.demo">阅读效果</a>
+<a href="guide.html" data-i18n="common.guide">使用引导</a>
+        <a href="/#pricing" data-i18n="common.support">支持一下</a>
+        <a href="/#install" data-i18n="common.install">下载安装</a>
       </nav>
 
       <div class="header-actions">
+        <select class="language-select" id="languageSelect" aria-label="选择语言" data-i18n-aria-label="common.language" hidden>
+          <option value="zh-CN" lang="zh-CN">简体中文</option>
+          <option value="en" lang="en">English</option>
+        </select>
         <a class="btn btn-ghost btn-sm" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
           GitHub
         </a>
-        <a class="btn btn-primary btn-sm" href="/#install">立即下载</a>
-        <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileNav">
+        <a class="btn btn-primary btn-sm" href="/#install" data-i18n="common.download">立即下载</a>
+        <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileNav" data-i18n-aria-label="common.openMenu">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
 
-    <nav class="nav-mobile" id="mobileNav" aria-label="移动端导航" hidden>
-      <a href="/#features">功能特色</a>
-      <a href="/#demo">阅读效果</a>
-<a href="guide.html">使用引导</a>
-        <a href="/#pricing">支持一下</a>
-      <a href="/#install">下载安装</a>
-      <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">前往 GitHub 仓库</a>
+    <nav class="nav-mobile" id="mobileNav" aria-label="移动端导航" hidden data-i18n-aria-label="common.mobileNav">
+      <a href="/#features" data-i18n="common.features">功能特色</a>
+      <a href="/#demo" data-i18n="common.demo">阅读效果</a>
+<a href="guide.html" data-i18n="common.guide">使用引导</a>
+        <a href="/#pricing" data-i18n="common.support">支持一下</a>
+      <a href="/#install" data-i18n="common.install">下载安装</a>
+      <a class="btn btn-primary btn-block" href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener" data-i18n="common.visitGithub">前往 GitHub 仓库</a>
     </nav>
   </header>
 
 <main id="top">
 <section class="section guide-section">
 <div class="container">
-<div class="section-head"><span class="eyebrow">翻译服务指南</span>
-<h1 class="section-title">选择适合你的翻译服务</h1>
-<p class="section-desc">第一次使用，保留默认服务就好。想用 AI 或离线阅读时，再按需要配置。</p>
-<a class="btn btn-secondary" href="guide.html">返回使用引导</a>
-<p class="guide-tip">WuPage 扩展免费使用。自备 API 的费用由服务商另行收取，支持项目不会增加 API 额度。<a href="/#pricing">查看价格与免费范围 →</a></p>
+<div class="section-head"><span class="eyebrow" data-i18n="common.serviceGuide">翻译服务指南</span>
+<h1 class="section-title" data-i18n="services.title">选择适合你的翻译服务</h1>
+<p class="section-desc" data-i18n="services.description">第一次使用，保留默认服务就好。想用 AI 或离线阅读时，再按需要配置。</p>
+<a class="btn btn-secondary" href="guide.html" data-i18n="services.backToGuide">返回使用引导</a>
+<p class="guide-tip"><span data-i18n="services.freeNotice">WuPage 扩展免费使用。自备 API 的费用由服务商另行收取，支持项目不会增加 API 额度。</span><a href="/#pricing" data-i18n="common.viewPricing">查看价格与免费范围 →</a></p>
 </div>
 <div class="docs-layout">
 <aside class="docs-sidebar">
-<nav class="docs-nav" aria-label="翻译服务">
+<nav class="docs-nav" aria-label="翻译服务" data-i18n-aria-label="common.services">
 <a class="docs-nav-link" href="#gweb">Google Web Translate</a>
 <a class="docs-nav-link" href="#deepseek">DeepSeek</a>
-<a class="docs-nav-link" href="#glm">智谱 GLM</a>
-<a class="docs-nav-link" href="#local">Firefox 本地翻译（实验）</a>
+<a class="docs-nav-link" href="#glm" data-i18n="services.glm">智谱 GLM</a>
+<a class="docs-nav-link" href="#local" data-i18n="services.local">Firefox 本地翻译（实验）</a>
 <a class="docs-nav-link" href="#ms">Microsoft Translator</a>
 <a class="docs-nav-link" href="#gcloud">Google Cloud Translation</a>
-<a class="docs-nav-link" href="#openai">其他 AI 与本地服务</a>
-<a class="docs-nav-link" href="#http">自定义翻译服务</a>
+<a class="docs-nav-link" href="#openai" data-i18n="services.other">其他 AI 与本地服务</a>
+<a class="docs-nav-link" href="#http" data-i18n="services.custom">自定义翻译服务</a>
 </nav>
 </aside>
 <div class="docs-content">
 <article id="gweb" class="docs-article">
-<header class="docs-article-head"><span class="eyebrow">无需密钥，先试一次</span>
+<header class="docs-article-head"><span class="eyebrow" data-i18n="services.googleEyebrow">无需密钥，先试一次</span>
 <h2>Google Web Translate</h2>
 </header>
-<p class="api-lead">这是默认启用的服务。回到弹窗选择 Google Web Translate，点击「翻译全文」即可。若无法使用，检查网络或切换其他服务。</p>
+<p class="api-lead" data-i18n="services.googleDescription">这是默认启用的服务。回到弹窗选择 Google Web Translate，点击「翻译全文」即可。若无法使用，检查网络或切换其他服务。</p>
 </article>
 <article id="deepseek" class="docs-article">
-<header class="docs-article-head"><span class="eyebrow">使用已有的 AI 账户</span>
+<header class="docs-article-head"><span class="eyebrow" data-i18n="services.deepseekEyebrow">使用已有的 AI 账户</span>
 <h2>DeepSeek</h2>
 </header>
-<p class="api-lead">在 DeepSeek 平台创建 API Key，在 WuPage 设置中选择 DeepSeek，粘贴密钥并选择账户可用的模型。保存后，回到弹窗选择这项服务。</p>
+<p class="api-lead" data-i18n="services.deepseekDescription">在 DeepSeek 平台创建 API Key，在 WuPage 设置中选择 DeepSeek，粘贴密钥并选择账户可用的模型。保存后，回到弹窗选择这项服务。</p>
 <p>
-<a href="https://platform.deepseek.com/" target="_blank" rel="noopener">打开 DeepSeek 平台 ↗</a>
+<a href="https://platform.deepseek.com/" target="_blank" rel="noopener" data-i18n="services.deepseekLink">打开 DeepSeek 平台 ↗</a>
 </p>
 </article>
 <article id="glm" class="docs-article">
-<header class="docs-article-head"><span class="eyebrow">选择熟悉的 AI 服务</span>
-<h2>智谱 GLM</h2>
+<header class="docs-article-head"><span class="eyebrow" data-i18n="services.glmEyebrow">选择熟悉的 AI 服务</span>
+<h2 data-i18n="services.glm">智谱 GLM</h2>
 </header>
-<p class="api-lead">登录智谱开放平台，在「API Key」中创建并复制密钥。打开 WuPage 设置，选择 GLM 服务，填写密钥及账户可用的模型，保存后在弹窗中选择使用。</p>
+<p class="api-lead" data-i18n="services.glmDescription">登录智谱开放平台，在「API Key」中创建并复制密钥。打开 WuPage 设置，选择 GLM 服务，填写密钥及账户可用的模型，保存后在弹窗中选择使用。</p>
 <p>
-<a href="https://bigmodel.cn/" target="_blank" rel="noopener">打开智谱开放平台 ↗</a>
+<a href="https://bigmodel.cn/" target="_blank" rel="noopener" data-i18n="services.glmLink">打开智谱开放平台 ↗</a>
 </p>
 </article>
 <article id="local" class="docs-article">
-<header class="docs-article-head"><span class="eyebrow">下载模型，离线阅读</span>
-<h2>Firefox 本地翻译（实验）</h2>
+<header class="docs-article-head"><span class="eyebrow" data-i18n="services.localEyebrow">下载模型，离线阅读</span>
+<h2 data-i18n="services.local">Firefox 本地翻译（实验）</h2>
 </header>
-<p class="api-lead">Chrome、Edge 也能使用，无需安装 Firefox。在设置中选择此服务，按提示下载所需语言方向的模型，等到「模型已就绪」再翻译。非英语之间通常需要同时准备两个经英语中转的方向。</p>
-<div class="guide-tip">模型按语言方向下载，每个约 35–55 MB，以设置页显示为准。下载可暂停和继续，也支持离线导入。模型就绪后，文字在本机处理；运行时会增加内存、耗电和存储占用。暂不支持韩语与繁体中文。</div>
+<p class="api-lead" data-i18n="services.localDescription">Chrome、Edge 也能使用，无需安装 Firefox。在设置中选择此服务，按提示下载所需语言方向的模型，等到「模型已就绪」再翻译。非英语之间通常需要同时准备两个经英语中转的方向。</p>
+<div class="guide-tip" data-i18n="services.localTip">模型按语言方向下载，每个约 35–55 MB，以设置页显示为准。下载可暂停和继续，也支持离线导入。模型就绪后，文字在本机处理；运行时会增加内存、耗电和存储占用。暂不支持韩语与繁体中文。</div>
 </article>
 <article id="ms" class="docs-article">
-<header class="docs-article-head"><span class="eyebrow">使用 Azure 翻译账户</span>
+<header class="docs-article-head"><span class="eyebrow" data-i18n="services.azureEyebrow">使用 Azure 翻译账户</span>
 <h2>Microsoft Translator</h2>
 </header>
-<p class="api-lead">在 Azure 创建 Translator 资源，将资源的密钥和所需区域填入 WuPage 的 Microsoft Translator 设置，保存后在弹窗中选择使用。</p>
+<p class="api-lead" data-i18n="services.azureDescription">在 Azure 创建 Translator 资源，将资源的密钥和所需区域填入 WuPage 的 Microsoft Translator 设置，保存后在弹窗中选择使用。</p>
 </article>
 <article id="gcloud" class="docs-article">
-<header class="docs-article-head"><span class="eyebrow">使用 Google Cloud 账户</span>
+<header class="docs-article-head"><span class="eyebrow" data-i18n="services.cloudEyebrow">使用 Google Cloud 账户</span>
 <h2>Google Cloud Translation</h2>
 </header>
-<p class="api-lead">在 Google Cloud 启用 Cloud Translation API 并创建 API Key，将密钥填入 WuPage 的 Google Cloud Translation 设置。服务商可能要求开通结算。</p>
+<p class="api-lead" data-i18n="services.cloudDescription">在 Google Cloud 启用 Cloud Translation API 并创建 API Key，将密钥填入 WuPage 的 Google Cloud Translation 设置。服务商可能要求开通结算。</p>
 </article>
 <article id="openai" class="docs-article">
-<header class="docs-article-head"><span class="eyebrow">使用你已有的服务</span>
-<h2>其他 AI 与本地服务</h2>
+<header class="docs-article-head"><span class="eyebrow" data-i18n="services.otherEyebrow">使用你已有的服务</span>
+<h2 data-i18n="services.other">其他 AI 与本地服务</h2>
 </header>
-<p class="api-lead">在设置中添加 OpenAI Compatible 或 Anthropic Compatible 服务，填写服务商提供的服务地址、模型和所需密钥。也可连接兼容的本地服务。</p>
+<p class="api-lead" data-i18n="services.otherDescription">在设置中添加 OpenAI Compatible 或 Anthropic Compatible 服务，填写服务商提供的服务地址、模型和所需密钥。也可连接兼容的本地服务。</p>
 <p>
-<a href="https://github.com/mr-wuliu/wupage#翻译服务" target="_blank" rel="noopener">查看详细配置说明 ↗</a>
+<a href="https://github.com/mr-wuliu/wupage#翻译服务" target="_blank" rel="noopener" data-i18n="services.configurationLink">查看详细配置说明 ↗</a>
 </p>
 </article>
 <article id="http" class="docs-article">
-<header class="docs-article-head"><span class="eyebrow">有现成接口时再配置</span>
-<h2>自定义翻译服务</h2>
+<header class="docs-article-head"><span class="eyebrow" data-i18n="services.customEyebrow">有现成接口时再配置</span>
+<h2 data-i18n="services.custom">自定义翻译服务</h2>
 </header>
-<p class="api-lead">HTTP 模板适合已有自定义翻译接口的用户。具体填写方式请参考项目使用说明；日常阅读可直接选择上面的服务。</p>
+<p class="api-lead" data-i18n="services.customDescription">HTTP 模板适合已有自定义翻译接口的用户。具体填写方式请参考项目使用说明；日常阅读可直接选择上面的服务。</p>
 <p>
-<a href="https://github.com/mr-wuliu/wupage#翻译服务" target="_blank" rel="noopener">查看详细配置说明 ↗</a>
+<a href="https://github.com/mr-wuliu/wupage#翻译服务" target="_blank" rel="noopener" data-i18n="services.configurationLink">查看详细配置说明 ↗</a>
 </p>
 </article>
 </div>
 </div>
-<div class="guide-tip">第三方服务的可用性、额度和费用以服务商为准。在线翻译会将待翻译文字交给所选服务商；本地翻译会在模型就绪后于本机处理。</div>
+<div class="guide-tip" data-i18n="services.dataNotice">第三方服务的可用性、额度和费用以服务商为准。在线翻译会将待翻译文字交给所选服务商；本地翻译会在模型就绪后于本机处理。</div>
 </div>
 </section>
 </main>  <!-- ============ FOOTER ============ -->
@@ -176,40 +180,43 @@
           </span>
           <span class="brand-name">WuPage Translator</span>
         </a>
-        <p class="footer-tagline">一键翻译整个网页，双语对照阅读。<br />网页、图片与 PDF，在浏览器里轻松读懂。</p>
+        <p class="footer-tagline"><span data-i18n="footer.tagline">一键翻译整个网页，双语对照阅读。</span><br /><span data-i18n="footer.formats">网页、图片与 PDF，在浏览器里轻松读懂。</span></p>
       </div>
 
       <div class="footer-cols">
         <div class="footer-col">
-          <h4>产品</h4>
-          <a href="/#features">功能特色</a>
-          <a href="/#demo">阅读效果</a>
-<a href="guide.html">使用引导</a>
-        <a href="/#pricing">支持一下</a>
+          <h4 data-i18n="footer.product">产品</h4>
+          <a href="/#features" data-i18n="common.features">功能特色</a>
+          <a href="/#demo" data-i18n="common.demo">阅读效果</a>
+<a href="guide.html" data-i18n="common.guide">使用引导</a>
+        <a href="/#pricing" data-i18n="common.support">支持一下</a>
         </div>
         <div class="footer-col">
-          <h4>帮助与支持</h4>
-          <a href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener">GitHub 仓库</a>
-          <a href="/api.html">翻译服务指南</a>
-          <a href="/#install">下载安装</a>
+          <h4 data-i18n="footer.help">帮助与支持</h4>
+          <a href="https://github.com/mr-wuliu/wupage" target="_blank" rel="noopener" data-i18n="common.github">GitHub 仓库</a>
+          <a href="/api.html" data-i18n="common.serviceGuide">翻译服务指南</a>
+          <a href="/#install" data-i18n="common.install">下载安装</a>
         </div>
         <div class="footer-col">
-          <h4>翻译服务</h4>
+          <h4 data-i18n="common.services">翻译服务</h4>
           <a href="/api.html#gweb">Google Web</a>
-          <a href="/api.html#glm">智谱 GLM</a>
-          <a href="/api.html#ms">微软 Translator</a>
+          <a href="/api.html#glm" data-i18n="services.glm">智谱 GLM</a>
+          <a href="/api.html#ms" data-i18n="common.microsoft">微软 Translator</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <span>© 2026 WuPage Translator. 开源项目。</span>
-        <nav class="footer-legal" aria-label="法律与联系"><a href="terms.html">服务条款</a><a href="privacy.html">隐私政策</a><a href="mailto:master.wuliu@gmail.com">联系我们</a></nav>
+        <span data-i18n="footer.copyright">© 2026 WuPage Translator. 开源项目。</span>
+        <nav class="footer-legal" aria-label="法律与联系" data-i18n-aria-label="footer.legalLabel"><a href="terms.html" data-i18n="common.terms">服务条款</a><a href="privacy.html" data-i18n="common.privacy">隐私政策</a><a href="mailto:master.wuliu@gmail.com" data-i18n="common.contact">联系我们</a></nav>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=20261031" defer></script>
-  <script src="assets/js/docs.js" defer></script>
+  <script src="assets/js/locales/zh-CN.js?v=20261107-2" defer></script>
+  <script src="assets/js/locales/en.js?v=20261107-2" defer></script>
+  <script src="assets/js/i18n.js?v=20261107-1" defer></script>
+  <script src="assets/js/main.js?v=20261107-2" defer></script>
+  <script src="assets/js/docs.js?v=20261107-2" defer></script>
 </body>
 </html>
