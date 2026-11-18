@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <gupdate xmlns="http://www.google.com/update2/response" protocol="2.0">
   <app appid="fgeedjpifhmkdehbgdmngbehdfcflblc">
-    <updatecheck codebase="https://github.com/mr-wuliu/wupage/releases/download/v1.23.0/wupage-1.23.0-chromium.crx" version="1.23.0" prodversionmin="120.0.0.0" hash_sha256="238c8582c7287bcb050797cd9cea29856aab8a1df2cfc463ec85cb46e4befb38" size="6078392" />
+    <updatecheck codebase="https://github.com/mr-wuliu/wupage/releases/download/v1.23.1/wupage-1.23.1-chromium.crx" version="1.23.1" prodversionmin="120.0.0.0" hash_sha256="66a4fd7197ecfce0f1efbb3bd477e5c8b3b10a7c3f7d9227ffa1fb556edb93d1" size="6324776" />
   </app>
 </gupdate>
