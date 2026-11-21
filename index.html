@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <noscript><style>.reveal{opacity:1 !important;transform:none !important;}.pdf-p .trans{display:block !important;}</style></noscript>
-  <link rel="stylesheet" href="assets/css/style.css?v=20261107-2" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261121" />
 </head>
 <body>
   <!-- ============ HEADER ============ -->
@@ -279,25 +279,26 @@
 <div class="container">
 <div class="section-head"><span class="eyebrow" data-i18n="install.eyebrow">开始使用</span>
 <h2 class="section-title" id="installTitle" data-i18n="install.title">装好扩展，开始第一次翻译</h2>
-<p class="section-desc" data-i18n="install.description">推荐 Edge 商店安装。Chrome 可下载发布包手动安装。</p>
+<p class="section-desc" data-i18n="install.description">从浏览器的扩展商店安装。安装后将 WuPage 固定到工具栏，并刷新要翻译的网页。</p>
 </div>
 <div class="feature-grid install-grid">
-<article class="card feature-card" id="install-edge"><span class="eyebrow" data-i18n="install.recommended">推荐</span>
+<article class="card feature-card" id="install-chrome">
+<h3>Google Chrome</h3>
+<p data-i18n="install.chromeDescription">打开 Chrome 网上应用店，点击「添加至 Chrome」。</p>
+<a class="btn btn-primary" href="https://chromewebstore.google.com/detail/wupage-translator/oimcejdmobjcmiklbidamgpfmgkdaiej" target="_blank" rel="noopener" data-i18n="install.chromeLink">从 Chrome 商店安装 ↗</a>
+</article>
+<article class="card feature-card" id="install-edge">
 <h3>Microsoft Edge</h3>
-<p data-i18n="install.edgeDescription">打开商店，点击「获取」。安装后将 WuPage 固定到工具栏，并刷新要翻译的网页。</p>
+<p data-i18n="install.edgeDescription">打开 Microsoft Edge 插件商店，点击「获取」。</p>
 <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/wupage-translator/ophhojnppohaklhcdaheplkodopmplfg" target="_blank" rel="noopener" data-i18n="install.edgeLink">从 Edge 商店安装 ↗</a>
 </article>
-<article class="card feature-card" id="install-github"><span class="eyebrow">Chrome / Edge</span>
-<h3 data-i18n="install.releaseTitle">下载发布包</h3>
-<p data-i18n="install.releaseDescription">下载最新发布中的 Edge ZIP 包并解压，在扩展管理页开启「开发者模式」，加载解压后的目录。</p>
-<a class="btn btn-secondary" href="https://github.com/mr-wuliu/wupage/releases/latest" target="_blank" rel="noopener" data-i18n="install.releaseLink">下载最新版本 ↗</a>
-</article>
-<article class="card feature-card" id="install-firefox"><span class="eyebrow" data-i18n="install.beta">测试版</span>
+<article class="card feature-card" id="install-firefox">
 <h3>Firefox</h3>
-<p data-i18n="install.firefoxDescription">需要 Firefox 154 或更新版本，以及独立的 Firefox 测试包。临时加载后，重启浏览器需再次加载。</p>
-<a class="btn btn-secondary" href="https://github.com/mr-wuliu/wupage#安装" target="_blank" rel="noopener" data-i18n="install.firefoxLink">查看测试版安装说明 ↗</a>
+<p data-i18n="install.firefoxDescription">从 Firefox Add-ons 安装，需要 Firefox 154 或更新版本。</p>
+<a class="btn btn-primary" href="https://addons.mozilla.org/zh-CN/firefox/addon/wupage-translator/" target="_blank" rel="noopener" data-i18n="install.firefoxLink">从 Firefox 商店安装 ↗</a>
 </article>
 </div>
+<p class="install-downloads" id="install-github"><a class="btn btn-secondary" href="https://github.com/mr-wuliu/wupage/releases/latest" target="_blank" rel="noopener" data-i18n="install.releaseLink">下载 GitHub 发布包 ↗</a></p>
 <div class="guide-invite">
 <div>
 <h3 data-i18n="install.alreadyInstalled">已经安装好了？</h3>
@@ -380,8 +381,8 @@
     </div>
   </footer>
 
-  <script src="assets/js/locales/zh-CN.js?v=20261107-2" defer></script>
-  <script src="assets/js/locales/en.js?v=20261107-2" defer></script>
+  <script src="assets/js/locales/zh-CN.js?v=20261121" defer></script>
+  <script src="assets/js/locales/en.js?v=20261121" defer></script>
   <script src="assets/js/i18n.js?v=20261107-1" defer></script>
   <script src="assets/js/main.js?v=20261107-2" defer></script>
   <script src="assets/js/docs.js?v=20261107-2" defer></script>

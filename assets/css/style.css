@@ -1718,6 +1718,7 @@ code {
 /* Product reading examples and guided first use */
 .product-shot { display:block; width:100%; height:auto; border-radius:var(--r-lg); }
 .install-grid .btn { margin-top:24px; }
+.install-downloads { margin-top:24px; }
 .guide-invite { margin-top:40px; padding:32px; border:1px solid var(--border); border-radius:var(--r-xl); background:var(--grad-brand-soft); display:flex; align-items:center; justify-content:space-between; gap:24px; }
 .guide-invite p { margin-top:8px; color:var(--text-soft); }
 .faq-list { max-width:860px; }
